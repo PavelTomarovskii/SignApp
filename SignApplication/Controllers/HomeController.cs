@@ -8,10 +8,14 @@ using SignApplication.Global.Repository;
 
 namespace SignApplication.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        [Inject]
-        public IRepository Repository { get; set; }
+
+        public HomeController()
+            :base(true)
+        {
+
+        }
 
         public ActionResult Index()
         {

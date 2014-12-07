@@ -10,7 +10,7 @@ using SignApplication.Model;
 
 namespace SignApplication.Controllers
 {
-    public abstract class BaseController : Controller
+    public class BaseController : Controller
     {
         [Inject]
         public IRepository Repository { get; set; }
@@ -24,6 +24,30 @@ namespace SignApplication.Controllers
             {
                 return ((IUserProvider)Auth.CurrentUser.Identity).User;
             }
+        }
+
+        public BaseController()
+        {
+            if (!IsAuthenticated())
+            {
+                Response.Redirect("~/Login/Index");
+            }
+        }
+
+        public BaseController(bool IsCheckAuth)
+        {
+            if (IsCheckAuth)
+            {
+                if (!IsAuthenticated())
+                {
+                    Response.Redirect("~/Login/Index");
+                }
+            }
+        }
+
+        private bool IsAuthenticated()
+        {
+            return CurrentUser != null;
         }
 
     }

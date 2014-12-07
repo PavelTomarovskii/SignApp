@@ -11,7 +11,12 @@ namespace SignApplication.Controllers
 {
     public class LoginController : BaseController
     {
-       
+
+        public LoginController()
+            :base(false)
+        {
+
+        }
 
         public ActionResult Index()
         {
@@ -26,7 +31,11 @@ namespace SignApplication.Controllers
 
             var user = Auth.Login(email, pass, true);
 
-            return null;
+            if (user != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Login");
         }
 
         public void Test()
@@ -36,6 +45,7 @@ namespace SignApplication.Controllers
 
             }
             
+
             
             //return Json(new { resultMessage = "Ваш комментарий добавлен успешно!" });
             Response.Write("testResponse");
