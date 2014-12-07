@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Ninject;
+using SignApplication.Global.Authentication;
+using SignApplication.Model;
+
+namespace SignApplication.Controllers
+{
+    public class LoginController : Controller
+    {
+        [Inject] 
+        public IAuthentication auth;
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login()
+        {
+            string email = Request.Form["Email"];
+            string pass = Request.Form["Password"];
+            User user = auth.Login(email, pass, true);
+
+            return null;
+        }
+
+        public void Test()
+        {
+            if (Request.IsAjaxRequest())
+            {
+
+            }
+
+            //return Json(new { resultMessage = "Ваш комментарий добавлен успешно!" });
+            Response.Write("testResponse");
+            Response.End();
+            
+        }
+
+    }
+}

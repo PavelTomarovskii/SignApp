@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="AppTest">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Layout</title>
+    @RenderSection("Script",false)
+    <script src="https://code.angularjs.org/1.2.27/angular.js" type="text/javascript"></script>
+    <script src="https://code.angularjs.org/1.2.27/angular-route.js"></script>
+        <script type="text/javascript">
+                var app = angular.module("AppTest", ['ngRoute']);
+
+                app.controller("TestCtrl", ['$scope', '$http', function ($scope, $http) {
+
+                    $scope.onclick = function() {
+                        $http.get('login/test?id=9').success(function (data) {
+                            console.log(data);
+                            $scope.resultMessage = data;
+                            alert(data.resultMessage);
+                        });
+                    };
+
+                    $scope.resultMessage = "test";
+                }]);
+        </script>
+
+</head>
+<body>
+    <div ng-controller="TestCtrl">
+        @RenderBody()
+    </div>
+    <footer>
+        @RenderSection("Footer",false)
+    </footer>
+</body>
+</html>
