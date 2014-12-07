@@ -9,10 +9,9 @@ using SignApplication.Model;
 
 namespace SignApplication.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
-        [Inject] 
-        public IAuthentication auth;
+       
 
         public ActionResult Index()
         {
@@ -24,7 +23,8 @@ namespace SignApplication.Controllers
         {
             string email = Request.Form["Email"];
             string pass = Request.Form["Password"];
-            User user = auth.Login(email, pass, true);
+
+            var user = Auth.Login(email, pass, true);
 
             return null;
         }
@@ -35,7 +35,8 @@ namespace SignApplication.Controllers
             {
 
             }
-
+            
+            
             //return Json(new { resultMessage = "Ваш комментарий добавлен успешно!" });
             Response.Write("testResponse");
             Response.End();

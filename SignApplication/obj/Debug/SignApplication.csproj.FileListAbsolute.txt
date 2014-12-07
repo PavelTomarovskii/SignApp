@@ -63,3 +63,36 @@ C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication\bin\Sy
 C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication\obj\Debug\SignApplication.csprojResolveAssemblyReference.cache
 C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication\obj\Debug\SignApplication.dll
 C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication\obj\Debug\SignApplication.pdb
+C:\Diplom\SignApp\SignApplication\bin\SignApplication.dll
+C:\Diplom\SignApp\SignApplication\bin\SignApplication.pdb
+C:\Diplom\SignApp\SignApplication\bin\EntityFramework.dll
+C:\Diplom\SignApp\SignApplication\bin\EntityFramework.SqlServer.dll
+C:\Diplom\SignApp\SignApplication\bin\Microsoft.Web.Infrastructure.dll
+C:\Diplom\SignApp\SignApplication\bin\Newtonsoft.Json.dll
+C:\Diplom\SignApp\SignApplication\bin\Ninject.dll
+C:\Diplom\SignApp\SignApplication\bin\Ninject.Web.Common.dll
+C:\Diplom\SignApp\SignApplication\bin\Ninject.Web.Mvc.dll
+C:\Diplom\SignApp\SignApplication\bin\SignApplication.Model.dll
+C:\Diplom\SignApp\SignApplication\bin\System.Web.Helpers.dll
+C:\Diplom\SignApp\SignApplication\bin\System.Web.Mvc.dll
+C:\Diplom\SignApp\SignApplication\bin\System.Web.Razor.dll
+C:\Diplom\SignApp\SignApplication\bin\System.Web.WebPages.Deployment.dll
+C:\Diplom\SignApp\SignApplication\bin\System.Web.WebPages.dll
+C:\Diplom\SignApp\SignApplication\bin\System.Web.WebPages.Razor.dll
+C:\Diplom\SignApp\SignApplication\bin\WebActivatorEx.dll
+C:\Diplom\SignApp\SignApplication\bin\SignApplication.Model.pdb
+C:\Diplom\SignApp\SignApplication\bin\EntityFramework.xml
+C:\Diplom\SignApp\SignApplication\bin\EntityFramework.SqlServer.xml
+C:\Diplom\SignApp\SignApplication\bin\Ninject.xml
+C:\Diplom\SignApp\SignApplication\bin\Ninject.Web.Common.xml
+C:\Diplom\SignApp\SignApplication\bin\Ninject.Web.Mvc.xml
+C:\Diplom\SignApp\SignApplication\bin\Newtonsoft.Json.xml
+C:\Diplom\SignApp\SignApplication\bin\System.Web.Helpers.xml
+C:\Diplom\SignApp\SignApplication\bin\System.Web.Mvc.xml
+C:\Diplom\SignApp\SignApplication\bin\System.Web.Razor.xml
+C:\Diplom\SignApp\SignApplication\bin\System.Web.WebPages.xml
+C:\Diplom\SignApp\SignApplication\bin\System.Web.WebPages.Deployment.xml
+C:\Diplom\SignApp\SignApplication\bin\System.Web.WebPages.Razor.xml
+C:\Diplom\SignApp\SignApplication\obj\Debug\SignApplication.csprojResolveAssemblyReference.cache
+C:\Diplom\SignApp\SignApplication\obj\Debug\SignApplication.dll
+C:\Diplom\SignApp\SignApplication\obj\Debug\SignApplication.pdb

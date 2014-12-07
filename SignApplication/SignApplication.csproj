@@ -123,11 +123,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Global\Authentication\AuthHttpModule.cs" />
     <Compile Include="Global\Authentication\CustomAuthentication.cs" />
     <Compile Include="Global\Authentication\IAuthentication.cs" />
     <Compile Include="Global\Authentication\IUserProvider.cs" />

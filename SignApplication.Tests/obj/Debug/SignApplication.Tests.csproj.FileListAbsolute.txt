@@ -67,3 +67,37 @@ C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication.Tests\
 C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication.Tests\obj\Debug\SignApplication.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication.Tests\obj\Debug\SignApplication.Tests.dll
 C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication.Tests\obj\Debug\SignApplication.Tests.pdb
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\SignApplication.Tests.dll.config
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\SignApplication.Tests.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\SignApplication.Tests.pdb
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\EntityFramework.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\SignApplication.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.Razor.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\Ninject.Web.Common.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\Ninject.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\SignApplication.Model.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\WebActivatorEx.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\SignApplication.pdb
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\EntityFramework.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.Razor.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\Ninject.Web.Common.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\Ninject.xml
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\SignApplication.Model.pdb
+C:\Diplom\SignApp\SignApplication.Tests\obj\Debug\SignApplication.Tests.csprojResolveAssemblyReference.cache
+C:\Diplom\SignApp\SignApplication.Tests\obj\Debug\SignApplication.Tests.dll
+C:\Diplom\SignApp\SignApplication.Tests\obj\Debug\SignApplication.Tests.pdb

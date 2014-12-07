@@ -25,7 +25,7 @@ namespace SignApplication.Global.Repository
 
         public User Login(string aUserName, string aPassword)
         {
-            throw new NotImplementedException();
+            return context.Users.FirstOrDefault(x => x.EMail == aUserName && x.Password == aPassword);
         }
     }
 }

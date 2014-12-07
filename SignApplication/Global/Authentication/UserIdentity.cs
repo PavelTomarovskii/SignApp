@@ -7,16 +7,6 @@ namespace SignApplication.Global.Authentication
 {
     public class UserIndentity : IIdentity, IUserProvider
     {
-        [Inject]
-        public IAuthentication Auth { get; set; }
-
-        public User CurrentUser
-        {
-            get
-            {
-                return ((IUserProvider)Auth.CurrentUser.Identity).User;
-            }
-        }
 
         public void Init(string email, IRepository repository)
         {
