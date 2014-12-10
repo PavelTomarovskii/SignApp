@@ -131,6 +131,7 @@
     </Compile>
     <Compile Include="Global\Authentication\AuthHttpModule.cs" />
     <Compile Include="Global\Authentication\CustomAuthentication.cs" />
+    <Compile Include="Global\Authentication\CustomAuthorizeAttribute.cs" />
     <Compile Include="Global\Authentication\IAuthentication.cs" />
     <Compile Include="Global\Authentication\IUserProvider.cs" />
     <Compile Include="Global\Authentication\UserIdentity.cs" />

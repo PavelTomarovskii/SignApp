@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ninject;
+using SignApplication.Global.Authentication;
 using SignApplication.Global.Repository;
 
 namespace SignApplication.Controllers
 {
+    [CustomAuthorize]
     public class HomeController : BaseController
     {
 

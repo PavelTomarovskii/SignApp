@@ -28,21 +28,21 @@ namespace SignApplication.Controllers
 
         public BaseController()
         {
-            if (!IsAuthenticated())
-            {
-                Response.Redirect("~/Login/Index");
-            }
+            //if (!IsAuthenticated())
+            //{
+            //    Response.Redirect("~/Login/Index");
+            //}
         }
 
         public BaseController(bool IsCheckAuth)
         {
-            if (IsCheckAuth)
-            {
-                if (!IsAuthenticated())
-                {
-                    Response.Redirect("~/Login/Index");
-                }
-            }
+            //if (IsCheckAuth)
+            //{
+            //    if (!IsAuthenticated())
+            //    {
+            //        Response.Redirect("~/Login/Index");
+            //    }
+            //}
         }
 
         private bool IsAuthenticated()
