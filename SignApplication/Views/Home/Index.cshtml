@@ -1,5 +1,13 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="menu" ng-controller="menuController">
+    <ul>
+        <li>
+            <a href="#/documents"><img src="~/Themes/Default/img/48x48/folder.png"/></a>
+        </li>
+    </ul>
+</div>
+<div ng-view></div>

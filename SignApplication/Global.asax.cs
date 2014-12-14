@@ -7,7 +7,9 @@ using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
+using SignApplication.App_Start;
 using SignApplication.Model;
 using SignApplication.Model.DBConnection;
 
@@ -24,7 +26,7 @@ namespace SignApplication
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             //using (var ctx = new SignAppContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             //{
             //    Document doc = ctx.Documents.FirstOrDefault(x => x.ID == 1);/*.Include(x => x.User);*/
@@ -33,7 +35,7 @@ namespace SignApplication
 
             //    //ctx.Entry(doc).Reference(x => x.User).Load();
             //    //User u = doc.User;
-            //}
+            //}s
         }
     }
 }

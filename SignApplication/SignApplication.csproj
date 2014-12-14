@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -46,6 +50,10 @@
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -64,6 +72,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -76,9 +87,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
@@ -120,11 +128,17 @@
     <Reference Include="WebActivatorEx">
       <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -146,6 +160,495 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Angular\angular.js" />
+    <Content Include="Scripts\Application\Base\app.js" />
+    <Content Include="Scripts\Application\Document\Controllers\documentsController.js" />
+    <Content Include="Scripts\Application\Document\documentModule.js" />
+    <Content Include="Scripts\Application\Info\Controllers\infoController.js" />
+    <Content Include="Scripts\Application\Info\infoModule.js" />
+    <Content Include="Scripts\Application\Menu\Controllers\menuController.js" />
+    <Content Include="Scripts\Application\Menu\menuModule.js" />
+    <Content Include="Themes\Default\css\Site.css" />
+    <Content Include="Themes\Default\img\128x128\address_book.png" />
+    <Content Include="Themes\Default\img\128x128\alarm.png" />
+    <Content Include="Themes\Default\img\128x128\attachment.png" />
+    <Content Include="Themes\Default\img\128x128\bar_chart.png" />
+    <Content Include="Themes\Default\img\128x128\briefcase.png" />
+    <Content Include="Themes\Default\img\128x128\brush.png" />
+    <Content Include="Themes\Default\img\128x128\calculator.png" />
+    <Content Include="Themes\Default\img\128x128\calendar.png" />
+    <Content Include="Themes\Default\img\128x128\check_mark.png" />
+    <Content Include="Themes\Default\img\128x128\clock.png" />
+    <Content Include="Themes\Default\img\128x128\close.png" />
+    <Content Include="Themes\Default\img\128x128\cloudy.png" />
+    <Content Include="Themes\Default\img\128x128\cloudy_sunny.png" />
+    <Content Include="Themes\Default\img\128x128\comment_bubble.png" />
+    <Content Include="Themes\Default\img\128x128\danger_sign.png" />
+    <Content Include="Themes\Default\img\128x128\database.png" />
+    <Content Include="Themes\Default\img\128x128\digital_camera.png" />
+    <Content Include="Themes\Default\img\128x128\disc.png" />
+    <Content Include="Themes\Default\img\128x128\down_arrow.png" />
+    <Content Include="Themes\Default\img\128x128\eject.png" />
+    <Content Include="Themes\Default\img\128x128\envelope.png" />
+    <Content Include="Themes\Default\img\128x128\envelope_open.png" />
+    <Content Include="Themes\Default\img\128x128\exclamanation_mark.png" />
+    <Content Include="Themes\Default\img\128x128\fast_forward.png" />
+    <Content Include="Themes\Default\img\128x128\flag.png" />
+    <Content Include="Themes\Default\img\128x128\folder.png" />
+    <Content Include="Themes\Default\img\128x128\forbidden_sign.png" />
+    <Content Include="Themes\Default\img\128x128\heart.png" />
+    <Content Include="Themes\Default\img\128x128\house.png" />
+    <Content Include="Themes\Default\img\128x128\info.png" />
+    <Content Include="Themes\Default\img\128x128\ipad.png" />
+    <Content Include="Themes\Default\img\128x128\iphone.png" />
+    <Content Include="Themes\Default\img\128x128\joystick.png" />
+    <Content Include="Themes\Default\img\128x128\left_arrow.png" />
+    <Content Include="Themes\Default\img\128x128\lightbulb.png" />
+    <Content Include="Themes\Default\img\128x128\magnifier.png" />
+    <Content Include="Themes\Default\img\128x128\minus.png" />
+    <Content Include="Themes\Default\img\128x128\monitor.png" />
+    <Content Include="Themes\Default\img\128x128\mouse.png" />
+    <Content Include="Themes\Default\img\128x128\movie.png" />
+    <Content Include="Themes\Default\img\128x128\news.png" />
+    <Content Include="Themes\Default\img\128x128\padlock.png" />
+    <Content Include="Themes\Default\img\128x128\padlock_open.png" />
+    <Content Include="Themes\Default\img\128x128\page.png" />
+    <Content Include="Themes\Default\img\128x128\pause.png" />
+    <Content Include="Themes\Default\img\128x128\pencil.png" />
+    <Content Include="Themes\Default\img\128x128\phone.png" />
+    <Content Include="Themes\Default\img\128x128\phone_book.png" />
+    <Content Include="Themes\Default\img\128x128\phone_ringing.png" />
+    <Content Include="Themes\Default\img\128x128\photo.png" />
+    <Content Include="Themes\Default\img\128x128\pie_chart.png" />
+    <Content Include="Themes\Default\img\128x128\placemark.png" />
+    <Content Include="Themes\Default\img\128x128\play.png" />
+    <Content Include="Themes\Default\img\128x128\plus.png" />
+    <Content Include="Themes\Default\img\128x128\printer.png" />
+    <Content Include="Themes\Default\img\128x128\question_mark.png" />
+    <Content Include="Themes\Default\img\128x128\rainy.png" />
+    <Content Include="Themes\Default\img\128x128\record.png" />
+    <Content Include="Themes\Default\img\128x128\recycle_bin.png" />
+    <Content Include="Themes\Default\img\128x128\refresh.png" />
+    <Content Include="Themes\Default\img\128x128\resume.png" />
+    <Content Include="Themes\Default\img\128x128\rewind.png" />
+    <Content Include="Themes\Default\img\128x128\right_arrow.png" />
+    <Content Include="Themes\Default\img\128x128\rss.png" />
+    <Content Include="Themes\Default\img\128x128\shopping_cart.png" />
+    <Content Include="Themes\Default\img\128x128\skip_backward.png" />
+    <Content Include="Themes\Default\img\128x128\skip_forward.png" />
+    <Content Include="Themes\Default\img\128x128\smart_phone.png" />
+    <Content Include="Themes\Default\img\128x128\sound.png" />
+    <Content Include="Themes\Default\img\128x128\star.png" />
+    <Content Include="Themes\Default\img\128x128\stop.png" />
+    <Content Include="Themes\Default\img\128x128\sunny.png" />
+    <Content Include="Themes\Default\img\128x128\support.png" />
+    <Content Include="Themes\Default\img\128x128\tag.png" />
+    <Content Include="Themes\Default\img\128x128\tv.png" />
+    <Content Include="Themes\Default\img\128x128\umbrella.png" />
+    <Content Include="Themes\Default\img\128x128\up_arrow.png" />
+    <Content Include="Themes\Default\img\128x128\user.png" />
+    <Content Include="Themes\Default\img\128x128\video.png" />
+    <Content Include="Themes\Default\img\128x128\webcam.png" />
+    <Content Include="Themes\Default\img\16x16\address_book.png" />
+    <Content Include="Themes\Default\img\16x16\alarm.png" />
+    <Content Include="Themes\Default\img\16x16\attachment.png" />
+    <Content Include="Themes\Default\img\16x16\bar_chart.png" />
+    <Content Include="Themes\Default\img\16x16\briefcase.png" />
+    <Content Include="Themes\Default\img\16x16\brush.png" />
+    <Content Include="Themes\Default\img\16x16\calculator.png" />
+    <Content Include="Themes\Default\img\16x16\calendar.png" />
+    <Content Include="Themes\Default\img\16x16\check_mark.png" />
+    <Content Include="Themes\Default\img\16x16\clock.png" />
+    <Content Include="Themes\Default\img\16x16\close.png" />
+    <Content Include="Themes\Default\img\16x16\cloudy.png" />
+    <Content Include="Themes\Default\img\16x16\cloudy_sunny.png" />
+    <Content Include="Themes\Default\img\16x16\comment_bubble.png" />
+    <Content Include="Themes\Default\img\16x16\danger_sign.png" />
+    <Content Include="Themes\Default\img\16x16\database.png" />
+    <Content Include="Themes\Default\img\16x16\digital_camera.png" />
+    <Content Include="Themes\Default\img\16x16\disc.png" />
+    <Content Include="Themes\Default\img\16x16\down_arrow.png" />
+    <Content Include="Themes\Default\img\16x16\eject.png" />
+    <Content Include="Themes\Default\img\16x16\envelope.png" />
+    <Content Include="Themes\Default\img\16x16\envelope_open.png" />
+    <Content Include="Themes\Default\img\16x16\exclamanation_mark.png" />
+    <Content Include="Themes\Default\img\16x16\fast_forward.png" />
+    <Content Include="Themes\Default\img\16x16\flag.png" />
+    <Content Include="Themes\Default\img\16x16\folder.png" />
+    <Content Include="Themes\Default\img\16x16\forbidden_sign.png" />
+    <Content Include="Themes\Default\img\16x16\heart.png" />
+    <Content Include="Themes\Default\img\16x16\house.png" />
+    <Content Include="Themes\Default\img\16x16\info.png" />
+    <Content Include="Themes\Default\img\16x16\ipad.png" />
+    <Content Include="Themes\Default\img\16x16\iphone.png" />
+    <Content Include="Themes\Default\img\16x16\joystick.png" />
+    <Content Include="Themes\Default\img\16x16\left_arrow.png" />
+    <Content Include="Themes\Default\img\16x16\lightbulb.png" />
+    <Content Include="Themes\Default\img\16x16\magnifier.png" />
+    <Content Include="Themes\Default\img\16x16\minus.png" />
+    <Content Include="Themes\Default\img\16x16\monitor.png" />
+    <Content Include="Themes\Default\img\16x16\mouse.png" />
+    <Content Include="Themes\Default\img\16x16\movie.png" />
+    <Content Include="Themes\Default\img\16x16\news.png" />
+    <Content Include="Themes\Default\img\16x16\padlock.png" />
+    <Content Include="Themes\Default\img\16x16\padlock_open.png" />
+    <Content Include="Themes\Default\img\16x16\page.png" />
+    <Content Include="Themes\Default\img\16x16\pause.png" />
+    <Content Include="Themes\Default\img\16x16\pencil.png" />
+    <Content Include="Themes\Default\img\16x16\phone.png" />
+    <Content Include="Themes\Default\img\16x16\phone_book.png" />
+    <Content Include="Themes\Default\img\16x16\phone_ringing.png" />
+    <Content Include="Themes\Default\img\16x16\photo.png" />
+    <Content Include="Themes\Default\img\16x16\pie_chart.png" />
+    <Content Include="Themes\Default\img\16x16\placemark.png" />
+    <Content Include="Themes\Default\img\16x16\play.png" />
+    <Content Include="Themes\Default\img\16x16\plus.png" />
+    <Content Include="Themes\Default\img\16x16\printer.png" />
+    <Content Include="Themes\Default\img\16x16\question_mark.png" />
+    <Content Include="Themes\Default\img\16x16\rainy.png" />
+    <Content Include="Themes\Default\img\16x16\record.png" />
+    <Content Include="Themes\Default\img\16x16\recycle_bin.png" />
+    <Content Include="Themes\Default\img\16x16\refresh.png" />
+    <Content Include="Themes\Default\img\16x16\resume.png" />
+    <Content Include="Themes\Default\img\16x16\rewind.png" />
+    <Content Include="Themes\Default\img\16x16\right_arrow.png" />
+    <Content Include="Themes\Default\img\16x16\rss.png" />
+    <Content Include="Themes\Default\img\16x16\shopping_cart.png" />
+    <Content Include="Themes\Default\img\16x16\skip_backward.png" />
+    <Content Include="Themes\Default\img\16x16\skip_forward.png" />
+    <Content Include="Themes\Default\img\16x16\smart_phone.png" />
+    <Content Include="Themes\Default\img\16x16\sound.png" />
+    <Content Include="Themes\Default\img\16x16\star.png" />
+    <Content Include="Themes\Default\img\16x16\stop.png" />
+    <Content Include="Themes\Default\img\16x16\sunny.png" />
+    <Content Include="Themes\Default\img\16x16\support.png" />
+    <Content Include="Themes\Default\img\16x16\tag.png" />
+    <Content Include="Themes\Default\img\16x16\tv.png" />
+    <Content Include="Themes\Default\img\16x16\umbrella.png" />
+    <Content Include="Themes\Default\img\16x16\up_arrow.png" />
+    <Content Include="Themes\Default\img\16x16\user.png" />
+    <Content Include="Themes\Default\img\16x16\video.png" />
+    <Content Include="Themes\Default\img\16x16\webcam.png" />
+    <Content Include="Themes\Default\img\24x24\address_book.png" />
+    <Content Include="Themes\Default\img\24x24\alarm.png" />
+    <Content Include="Themes\Default\img\24x24\attachment.png" />
+    <Content Include="Themes\Default\img\24x24\bar_chart.png" />
+    <Content Include="Themes\Default\img\24x24\briefcase.png" />
+    <Content Include="Themes\Default\img\24x24\brush.png" />
+    <Content Include="Themes\Default\img\24x24\calculator.png" />
+    <Content Include="Themes\Default\img\24x24\calendar.png" />
+    <Content Include="Themes\Default\img\24x24\check_mark.png" />
+    <Content Include="Themes\Default\img\24x24\clock.png" />
+    <Content Include="Themes\Default\img\24x24\close.png" />
+    <Content Include="Themes\Default\img\24x24\cloudy.png" />
+    <Content Include="Themes\Default\img\24x24\cloudy_sunny.png" />
+    <Content Include="Themes\Default\img\24x24\comment_bubble.png" />
+    <Content Include="Themes\Default\img\24x24\danger_sign.png" />
+    <Content Include="Themes\Default\img\24x24\database.png" />
+    <Content Include="Themes\Default\img\24x24\digital_camera.png" />
+    <Content Include="Themes\Default\img\24x24\disc.png" />
+    <Content Include="Themes\Default\img\24x24\down_arrow.png" />
+    <Content Include="Themes\Default\img\24x24\eject.png" />
+    <Content Include="Themes\Default\img\24x24\envelope.png" />
+    <Content Include="Themes\Default\img\24x24\envelope_open.png" />
+    <Content Include="Themes\Default\img\24x24\exclamanation_mark.png" />
+    <Content Include="Themes\Default\img\24x24\fast_forward.png" />
+    <Content Include="Themes\Default\img\24x24\flag.png" />
+    <Content Include="Themes\Default\img\24x24\folder.png" />
+    <Content Include="Themes\Default\img\24x24\forbidden_sign.png" />
+    <Content Include="Themes\Default\img\24x24\heart.png" />
+    <Content Include="Themes\Default\img\24x24\house.png" />
+    <Content Include="Themes\Default\img\24x24\info.png" />
+    <Content Include="Themes\Default\img\24x24\ipad.png" />
+    <Content Include="Themes\Default\img\24x24\iphone.png" />
+    <Content Include="Themes\Default\img\24x24\joystick.png" />
+    <Content Include="Themes\Default\img\24x24\left_arrow.png" />
+    <Content Include="Themes\Default\img\24x24\lightbulb.png" />
+    <Content Include="Themes\Default\img\24x24\magnifier.png" />
+    <Content Include="Themes\Default\img\24x24\minus.png" />
+    <Content Include="Themes\Default\img\24x24\monitor.png" />
+    <Content Include="Themes\Default\img\24x24\mouse.png" />
+    <Content Include="Themes\Default\img\24x24\movie.png" />
+    <Content Include="Themes\Default\img\24x24\news.png" />
+    <Content Include="Themes\Default\img\24x24\padlock.png" />
+    <Content Include="Themes\Default\img\24x24\padlock_open.png" />
+    <Content Include="Themes\Default\img\24x24\page.png" />
+    <Content Include="Themes\Default\img\24x24\pause.png" />
+    <Content Include="Themes\Default\img\24x24\pencil.png" />
+    <Content Include="Themes\Default\img\24x24\phone.png" />
+    <Content Include="Themes\Default\img\24x24\phone_book.png" />
+    <Content Include="Themes\Default\img\24x24\phone_ringing.png" />
+    <Content Include="Themes\Default\img\24x24\photo.png" />
+    <Content Include="Themes\Default\img\24x24\pie_chart.png" />
+    <Content Include="Themes\Default\img\24x24\placemark.png" />
+    <Content Include="Themes\Default\img\24x24\play.png" />
+    <Content Include="Themes\Default\img\24x24\plus.png" />
+    <Content Include="Themes\Default\img\24x24\printer.png" />
+    <Content Include="Themes\Default\img\24x24\question_mark.png" />
+    <Content Include="Themes\Default\img\24x24\rainy.png" />
+    <Content Include="Themes\Default\img\24x24\record.png" />
+    <Content Include="Themes\Default\img\24x24\recycle_bin.png" />
+    <Content Include="Themes\Default\img\24x24\refresh.png" />
+    <Content Include="Themes\Default\img\24x24\resume.png" />
+    <Content Include="Themes\Default\img\24x24\rewind.png" />
+    <Content Include="Themes\Default\img\24x24\right_arrow.png" />
+    <Content Include="Themes\Default\img\24x24\rss.png" />
+    <Content Include="Themes\Default\img\24x24\shopping_cart.png" />
+    <Content Include="Themes\Default\img\24x24\skip_backward.png" />
+    <Content Include="Themes\Default\img\24x24\skip_forward.png" />
+    <Content Include="Themes\Default\img\24x24\smart_phone.png" />
+    <Content Include="Themes\Default\img\24x24\sound.png" />
+    <Content Include="Themes\Default\img\24x24\star.png" />
+    <Content Include="Themes\Default\img\24x24\stop.png" />
+    <Content Include="Themes\Default\img\24x24\sunny.png" />
+    <Content Include="Themes\Default\img\24x24\support.png" />
+    <Content Include="Themes\Default\img\24x24\tag.png" />
+    <Content Include="Themes\Default\img\24x24\tv.png" />
+    <Content Include="Themes\Default\img\24x24\umbrella.png" />
+    <Content Include="Themes\Default\img\24x24\up_arrow.png" />
+    <Content Include="Themes\Default\img\24x24\user.png" />
+    <Content Include="Themes\Default\img\24x24\video.png" />
+    <Content Include="Themes\Default\img\24x24\webcam.png" />
+    <Content Include="Themes\Default\img\32x32\address_book.png" />
+    <Content Include="Themes\Default\img\32x32\alarm.png" />
+    <Content Include="Themes\Default\img\32x32\attachment.png" />
+    <Content Include="Themes\Default\img\32x32\bar_chart.png" />
+    <Content Include="Themes\Default\img\32x32\briefcase.png" />
+    <Content Include="Themes\Default\img\32x32\brush.png" />
+    <Content Include="Themes\Default\img\32x32\calculator.png" />
+    <Content Include="Themes\Default\img\32x32\calendar.png" />
+    <Content Include="Themes\Default\img\32x32\check_mark.png" />
+    <Content Include="Themes\Default\img\32x32\clock.png" />
+    <Content Include="Themes\Default\img\32x32\close.png" />
+    <Content Include="Themes\Default\img\32x32\cloudy.png" />
+    <Content Include="Themes\Default\img\32x32\cloudy_sunny.png" />
+    <Content Include="Themes\Default\img\32x32\comment_bubble.png" />
+    <Content Include="Themes\Default\img\32x32\danger_sign.png" />
+    <Content Include="Themes\Default\img\32x32\database.png" />
+    <Content Include="Themes\Default\img\32x32\digital_camera.png" />
+    <Content Include="Themes\Default\img\32x32\disc.png" />
+    <Content Include="Themes\Default\img\32x32\down_arrow.png" />
+    <Content Include="Themes\Default\img\32x32\eject.png" />
+    <Content Include="Themes\Default\img\32x32\envelope.png" />
+    <Content Include="Themes\Default\img\32x32\envelope_open.png" />
+    <Content Include="Themes\Default\img\32x32\exclamanation_mark.png" />
+    <Content Include="Themes\Default\img\32x32\fast_forward.png" />
+    <Content Include="Themes\Default\img\32x32\flag.png" />
+    <Content Include="Themes\Default\img\32x32\folder.png" />
+    <Content Include="Themes\Default\img\32x32\forbidden_sign.png" />
+    <Content Include="Themes\Default\img\32x32\heart.png" />
+    <Content Include="Themes\Default\img\32x32\house.png" />
+    <Content Include="Themes\Default\img\32x32\info.png" />
+    <Content Include="Themes\Default\img\32x32\ipad.png" />
+    <Content Include="Themes\Default\img\32x32\iphone.png" />
+    <Content Include="Themes\Default\img\32x32\joystick.png" />
+    <Content Include="Themes\Default\img\32x32\left_arrow.png" />
+    <Content Include="Themes\Default\img\32x32\lightbulb.png" />
+    <Content Include="Themes\Default\img\32x32\magnifier.png" />
+    <Content Include="Themes\Default\img\32x32\minus.png" />
+    <Content Include="Themes\Default\img\32x32\monitor.png" />
+    <Content Include="Themes\Default\img\32x32\mouse.png" />
+    <Content Include="Themes\Default\img\32x32\movie.png" />
+    <Content Include="Themes\Default\img\32x32\news.png" />
+    <Content Include="Themes\Default\img\32x32\padlock.png" />
+    <Content Include="Themes\Default\img\32x32\padlock_open.png" />
+    <Content Include="Themes\Default\img\32x32\page.png" />
+    <Content Include="Themes\Default\img\32x32\pause.png" />
+    <Content Include="Themes\Default\img\32x32\pencil.png" />
+    <Content Include="Themes\Default\img\32x32\phone.png" />
+    <Content Include="Themes\Default\img\32x32\phone_book.png" />
+    <Content Include="Themes\Default\img\32x32\phone_ringing.png" />
+    <Content Include="Themes\Default\img\32x32\photo.png" />
+    <Content Include="Themes\Default\img\32x32\pie_chart.png" />
+    <Content Include="Themes\Default\img\32x32\placemark.png" />
+    <Content Include="Themes\Default\img\32x32\play.png" />
+    <Content Include="Themes\Default\img\32x32\plus.png" />
+    <Content Include="Themes\Default\img\32x32\printer.png" />
+    <Content Include="Themes\Default\img\32x32\question_mark.png" />
+    <Content Include="Themes\Default\img\32x32\rainy.png" />
+    <Content Include="Themes\Default\img\32x32\record.png" />
+    <Content Include="Themes\Default\img\32x32\recycle_bin.png" />
+    <Content Include="Themes\Default\img\32x32\refresh.png" />
+    <Content Include="Themes\Default\img\32x32\resume.png" />
+    <Content Include="Themes\Default\img\32x32\rewind.png" />
+    <Content Include="Themes\Default\img\32x32\right_arrow.png" />
+    <Content Include="Themes\Default\img\32x32\rss.png" />
+    <Content Include="Themes\Default\img\32x32\shopping_cart.png" />
+    <Content Include="Themes\Default\img\32x32\skip_backward.png" />
+    <Content Include="Themes\Default\img\32x32\skip_forward.png" />
+    <Content Include="Themes\Default\img\32x32\smart_phone.png" />
+    <Content Include="Themes\Default\img\32x32\sound.png" />
+    <Content Include="Themes\Default\img\32x32\star.png" />
+    <Content Include="Themes\Default\img\32x32\stop.png" />
+    <Content Include="Themes\Default\img\32x32\sunny.png" />
+    <Content Include="Themes\Default\img\32x32\support.png" />
+    <Content Include="Themes\Default\img\32x32\tag.png" />
+    <Content Include="Themes\Default\img\32x32\tv.png" />
+    <Content Include="Themes\Default\img\32x32\umbrella.png" />
+    <Content Include="Themes\Default\img\32x32\up_arrow.png" />
+    <Content Include="Themes\Default\img\32x32\user.png" />
+    <Content Include="Themes\Default\img\32x32\video.png" />
+    <Content Include="Themes\Default\img\32x32\webcam.png" />
+    <Content Include="Themes\Default\img\48x48\address_book.png" />
+    <Content Include="Themes\Default\img\48x48\alarm.png" />
+    <Content Include="Themes\Default\img\48x48\attachment.png" />
+    <Content Include="Themes\Default\img\48x48\bar_chart.png" />
+    <Content Include="Themes\Default\img\48x48\briefcase.png" />
+    <Content Include="Themes\Default\img\48x48\brush.png" />
+    <Content Include="Themes\Default\img\48x48\calculator.png" />
+    <Content Include="Themes\Default\img\48x48\calendar.png" />
+    <Content Include="Themes\Default\img\48x48\check_mark.png" />
+    <Content Include="Themes\Default\img\48x48\clock.png" />
+    <Content Include="Themes\Default\img\48x48\close.png" />
+    <Content Include="Themes\Default\img\48x48\cloudy.png" />
+    <Content Include="Themes\Default\img\48x48\cloudy_sunny.png" />
+    <Content Include="Themes\Default\img\48x48\comment_bubble.png" />
+    <Content Include="Themes\Default\img\48x48\danger_sign.png" />
+    <Content Include="Themes\Default\img\48x48\database.png" />
+    <Content Include="Themes\Default\img\48x48\digital_camera.png" />
+    <Content Include="Themes\Default\img\48x48\disc.png" />
+    <Content Include="Themes\Default\img\48x48\down_arrow.png" />
+    <Content Include="Themes\Default\img\48x48\eject.png" />
+    <Content Include="Themes\Default\img\48x48\envelope.png" />
+    <Content Include="Themes\Default\img\48x48\envelope_open.png" />
+    <Content Include="Themes\Default\img\48x48\exclamanation_mark.png" />
+    <Content Include="Themes\Default\img\48x48\fast_forward.png" />
+    <Content Include="Themes\Default\img\48x48\flag.png" />
+    <Content Include="Themes\Default\img\48x48\folder.png" />
+    <Content Include="Themes\Default\img\48x48\forbidden_sign.png" />
+    <Content Include="Themes\Default\img\48x48\heart.png" />
+    <Content Include="Themes\Default\img\48x48\house.png" />
+    <Content Include="Themes\Default\img\48x48\info.png" />
+    <Content Include="Themes\Default\img\48x48\ipad.png" />
+    <Content Include="Themes\Default\img\48x48\iphone.png" />
+    <Content Include="Themes\Default\img\48x48\joystick.png" />
+    <Content Include="Themes\Default\img\48x48\left_arrow.png" />
+    <Content Include="Themes\Default\img\48x48\lightbulb.png" />
+    <Content Include="Themes\Default\img\48x48\magnifier.png" />
+    <Content Include="Themes\Default\img\48x48\minus.png" />
+    <Content Include="Themes\Default\img\48x48\monitor.png" />
+    <Content Include="Themes\Default\img\48x48\mouse.png" />
+    <Content Include="Themes\Default\img\48x48\movie.png" />
+    <Content Include="Themes\Default\img\48x48\news.png" />
+    <Content Include="Themes\Default\img\48x48\padlock.png" />
+    <Content Include="Themes\Default\img\48x48\padlock_open.png" />
+    <Content Include="Themes\Default\img\48x48\page.png" />
+    <Content Include="Themes\Default\img\48x48\pause.png" />
+    <Content Include="Themes\Default\img\48x48\pencil.png" />
+    <Content Include="Themes\Default\img\48x48\phone.png" />
+    <Content Include="Themes\Default\img\48x48\phone_book.png" />
+    <Content Include="Themes\Default\img\48x48\phone_ringing.png" />
+    <Content Include="Themes\Default\img\48x48\photo.png" />
+    <Content Include="Themes\Default\img\48x48\pie_chart.png" />
+    <Content Include="Themes\Default\img\48x48\placemark.png" />
+    <Content Include="Themes\Default\img\48x48\play.png" />
+    <Content Include="Themes\Default\img\48x48\plus.png" />
+    <Content Include="Themes\Default\img\48x48\printer.png" />
+    <Content Include="Themes\Default\img\48x48\question_mark.png" />
+    <Content Include="Themes\Default\img\48x48\rainy.png" />
+    <Content Include="Themes\Default\img\48x48\record.png" />
+    <Content Include="Themes\Default\img\48x48\recycle_bin.png" />
+    <Content Include="Themes\Default\img\48x48\refresh.png" />
+    <Content Include="Themes\Default\img\48x48\resume.png" />
+    <Content Include="Themes\Default\img\48x48\rewind.png" />
+    <Content Include="Themes\Default\img\48x48\right_arrow.png" />
+    <Content Include="Themes\Default\img\48x48\rss.png" />
+    <Content Include="Themes\Default\img\48x48\shopping_cart.png" />
+    <Content Include="Themes\Default\img\48x48\skip_backward.png" />
+    <Content Include="Themes\Default\img\48x48\skip_forward.png" />
+    <Content Include="Themes\Default\img\48x48\smart_phone.png" />
+    <Content Include="Themes\Default\img\48x48\sound.png" />
+    <Content Include="Themes\Default\img\48x48\star.png" />
+    <Content Include="Themes\Default\img\48x48\stop.png" />
+    <Content Include="Themes\Default\img\48x48\sunny.png" />
+    <Content Include="Themes\Default\img\48x48\support.png" />
+    <Content Include="Themes\Default\img\48x48\tag.png" />
+    <Content Include="Themes\Default\img\48x48\tv.png" />
+    <Content Include="Themes\Default\img\48x48\umbrella.png" />
+    <Content Include="Themes\Default\img\48x48\up_arrow.png" />
+    <Content Include="Themes\Default\img\48x48\user.png" />
+    <Content Include="Themes\Default\img\48x48\video.png" />
+    <Content Include="Themes\Default\img\48x48\webcam.png" />
+    <Content Include="Themes\Default\img\64x64\address_book.png" />
+    <Content Include="Themes\Default\img\64x64\alarm.png" />
+    <Content Include="Themes\Default\img\64x64\attachment.png" />
+    <Content Include="Themes\Default\img\64x64\bar_chart.png" />
+    <Content Include="Themes\Default\img\64x64\briefcase.png" />
+    <Content Include="Themes\Default\img\64x64\brush.png" />
+    <Content Include="Themes\Default\img\64x64\calculator.png" />
+    <Content Include="Themes\Default\img\64x64\calendar.png" />
+    <Content Include="Themes\Default\img\64x64\check_mark.png" />
+    <Content Include="Themes\Default\img\64x64\clock.png" />
+    <Content Include="Themes\Default\img\64x64\close.png" />
+    <Content Include="Themes\Default\img\64x64\cloudy.png" />
+    <Content Include="Themes\Default\img\64x64\cloudy_sunny.png" />
+    <Content Include="Themes\Default\img\64x64\comment_bubble.png" />
+    <Content Include="Themes\Default\img\64x64\danger_sign.png" />
+    <Content Include="Themes\Default\img\64x64\database.png" />
+    <Content Include="Themes\Default\img\64x64\digital_camera.png" />
+    <Content Include="Themes\Default\img\64x64\disc.png" />
+    <Content Include="Themes\Default\img\64x64\down_arrow.png" />
+    <Content Include="Themes\Default\img\64x64\eject.png" />
+    <Content Include="Themes\Default\img\64x64\envelope.png" />
+    <Content Include="Themes\Default\img\64x64\envelope_open.png" />
+    <Content Include="Themes\Default\img\64x64\exclamanation_mark.png" />
+    <Content Include="Themes\Default\img\64x64\fast_forward.png" />
+    <Content Include="Themes\Default\img\64x64\flag.png" />
+    <Content Include="Themes\Default\img\64x64\folder.png" />
+    <Content Include="Themes\Default\img\64x64\forbidden_sign.png" />
+    <Content Include="Themes\Default\img\64x64\heart.png" />
+    <Content Include="Themes\Default\img\64x64\house.png" />
+    <Content Include="Themes\Default\img\64x64\info.png" />
+    <Content Include="Themes\Default\img\64x64\ipad.png" />
+    <Content Include="Themes\Default\img\64x64\iphone.png" />
+    <Content Include="Themes\Default\img\64x64\joystick.png" />
+    <Content Include="Themes\Default\img\64x64\left_arrow.png" />
+    <Content Include="Themes\Default\img\64x64\lightbulb.png" />
+    <Content Include="Themes\Default\img\64x64\magnifier.png" />
+    <Content Include="Themes\Default\img\64x64\minus.png" />
+    <Content Include="Themes\Default\img\64x64\monitor.png" />
+    <Content Include="Themes\Default\img\64x64\mouse.png" />
+    <Content Include="Themes\Default\img\64x64\movie.png" />
+    <Content Include="Themes\Default\img\64x64\news.png" />
+    <Content Include="Themes\Default\img\64x64\padlock.png" />
+    <Content Include="Themes\Default\img\64x64\padlock_open.png" />
+    <Content Include="Themes\Default\img\64x64\page.png" />
+    <Content Include="Themes\Default\img\64x64\pause.png" />
+    <Content Include="Themes\Default\img\64x64\pencil.png" />
+    <Content Include="Themes\Default\img\64x64\phone.png" />
+    <Content Include="Themes\Default\img\64x64\phone_book.png" />
+    <Content Include="Themes\Default\img\64x64\phone_ringing.png" />
+    <Content Include="Themes\Default\img\64x64\photo.png" />
+    <Content Include="Themes\Default\img\64x64\pie_chart.png" />
+    <Content Include="Themes\Default\img\64x64\placemark.png" />
+    <Content Include="Themes\Default\img\64x64\play.png" />
+    <Content Include="Themes\Default\img\64x64\plus.png" />
+    <Content Include="Themes\Default\img\64x64\printer.png" />
+    <Content Include="Themes\Default\img\64x64\question_mark.png" />
+    <Content Include="Themes\Default\img\64x64\rainy.png" />
+    <Content Include="Themes\Default\img\64x64\record.png" />
+    <Content Include="Themes\Default\img\64x64\recycle_bin.png" />
+    <Content Include="Themes\Default\img\64x64\refresh.png" />
+    <Content Include="Themes\Default\img\64x64\resume.png" />
+    <Content Include="Themes\Default\img\64x64\rewind.png" />
+    <Content Include="Themes\Default\img\64x64\right_arrow.png" />
+    <Content Include="Themes\Default\img\64x64\rss.png" />
+    <Content Include="Themes\Default\img\64x64\shopping_cart.png" />
+    <Content Include="Themes\Default\img\64x64\skip_backward.png" />
+    <Content Include="Themes\Default\img\64x64\skip_forward.png" />
+    <Content Include="Themes\Default\img\64x64\smart_phone.png" />
+    <Content Include="Themes\Default\img\64x64\sound.png" />
+    <Content Include="Themes\Default\img\64x64\star.png" />
+    <Content Include="Themes\Default\img\64x64\stop.png" />
+    <Content Include="Themes\Default\img\64x64\sunny.png" />
+    <Content Include="Themes\Default\img\64x64\support.png" />
+    <Content Include="Themes\Default\img\64x64\tag.png" />
+    <Content Include="Themes\Default\img\64x64\tv.png" />
+    <Content Include="Themes\Default\img\64x64\umbrella.png" />
+    <Content Include="Themes\Default\img\64x64\up_arrow.png" />
+    <Content Include="Themes\Default\img\64x64\user.png" />
+    <Content Include="Themes\Default\img\64x64\video.png" />
+    <Content Include="Themes\Default\img\64x64\webcam.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -176,6 +679,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Login\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_MasterLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Info\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Documents\List.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,1 @@
+﻿var documentModule = angular.module('signApp.documentModule', []);

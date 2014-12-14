@@ -1,0 +1,1 @@
+﻿var infoModule = angular.module('signApp.infoModule', []);

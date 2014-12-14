@@ -101,3 +101,5 @@ C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\SignApplication.Model.pdb
 C:\Diplom\SignApp\SignApplication.Tests\obj\Debug\SignApplication.Tests.csprojResolveAssemblyReference.cache
 C:\Diplom\SignApp\SignApplication.Tests\obj\Debug\SignApplication.Tests.dll
 C:\Diplom\SignApp\SignApplication.Tests\obj\Debug\SignApplication.Tests.pdb
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Diplom\SignApp\SignApplication.Tests\bin\Debug\System.Web.Optimization.xml
