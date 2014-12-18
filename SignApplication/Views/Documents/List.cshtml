@@ -1,4 +1,7 @@
-﻿<div>
+﻿@using System.Web.Optimization
+
+@Styles.Render("~/Content/fileupload")
+<div>
     <li>
         <ul>
             <a><img src="~/Themes/Default/img/48x48/plus.png"/></a>
@@ -6,6 +9,22 @@
     </li>
 </div>
 <div>
+    <fieldset>
+    <div class="control-group">
+        <label class="control-label" for="Text">
+            Image
+        </label>
+        <div class="controls">
+            <div id="UploadImage">
+                Upload 
+            </div>
+        </div>
+    </div>
+    <div>
+        <img src="" alt="" id="ImagePreview" />
+    </div>
+    </fieldset>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -22,4 +41,4 @@
         </tr>
     </table>
 </div>
-      
+@Scripts.Render("~/bundles/fileupload")

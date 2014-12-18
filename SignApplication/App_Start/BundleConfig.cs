@@ -24,8 +24,14 @@ namespace SignApplication.App_Start
                 .Include("~/Scripts/Application/Document/Controllers/*.js")
             );
 
-            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                "~/Scripts/Angular/angular.js"));
+            bundles.Add(new ScriptBundle("~/bundles/angular")
+                .Include("~/Scripts/Angular/angular.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/fileupload")
+                .Include("~/Scripts/FileUpload/*.js"));
+
+            bundles.Add(new StyleBundle("~/Content/fileupload")
+                .Include("~/Themes/FileUpload/*.css"));
 
             //bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 

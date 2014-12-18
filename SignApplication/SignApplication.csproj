@@ -168,6 +168,20 @@
     <Content Include="Scripts\Application\Info\infoModule.js" />
     <Content Include="Scripts\Application\Menu\Controllers\menuController.js" />
     <Content Include="Scripts\Application\Menu\menuModule.js" />
+    <Content Include="Scripts\FileUploader\ajax.requester.js" />
+    <Content Include="Scripts\FileUploader\button.js" />
+    <Content Include="Scripts\FileUploader\deletefile.ajax.requester.js" />
+    <Content Include="Scripts\FileUploader\dnd.js" />
+    <Content Include="Scripts\FileUploader\handler.base.js" />
+    <Content Include="Scripts\FileUploader\handler.form.js" />
+    <Content Include="Scripts\FileUploader\handler.xhr.js" />
+    <Content Include="Scripts\FileUploader\header.js" />
+    <Content Include="Scripts\FileUploader\iframe.xss.response.js" />
+    <Content Include="Scripts\FileUploader\jquery-plugin.js" />
+    <Content Include="Scripts\FileUploader\uploader.basic.js" />
+    <Content Include="Scripts\FileUploader\uploader.js" />
+    <Content Include="Scripts\FileUploader\util.js" />
+    <Content Include="Scripts\FileUploader\window.receive.message.js" />
     <Content Include="Themes\Default\css\Site.css" />
     <Content Include="Themes\Default\img\128x128\address_book.png" />
     <Content Include="Themes\Default\img\128x128\alarm.png" />
@@ -649,6 +663,7 @@
     <Content Include="Themes\Default\img\64x64\user.png" />
     <Content Include="Themes\Default\img\64x64\video.png" />
     <Content Include="Themes\Default\img\64x64\webcam.png" />
+    <Content Include="Themes\FileUpload\fineuploader.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

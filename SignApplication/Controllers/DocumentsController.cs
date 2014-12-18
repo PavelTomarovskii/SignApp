@@ -16,5 +16,10 @@ namespace SignApplication.Controllers
             return View();
         }
 
+        public ActionResult Upload(HttpPostedFileWrapper qqfile)
+        {
+            return Json(new { result = "ok", success = true });
+        }
+
     }
 }
