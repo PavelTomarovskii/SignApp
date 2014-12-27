@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ninject;
+using SignApplication.Controllers.Common;
 using SignApplication.Global.Authentication;
 using SignApplication.Model;
 
@@ -24,33 +25,16 @@ namespace SignApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login()
+        public ActionResult Login(string txtEmail, string txtPassword, bool chkRememberMe = false)
         {
-            string email = Request.Form["Email"];
-            string pass = Request.Form["Password"];
-
-            var user = Auth.Login(email, pass, true);
+            // TODO : Validate it
+            var user = Auth.Login(txtEmail, txtPassword, true);
 
             if (user != null)
             {
                 return RedirectToAction("Index", "Home");
             }
             return RedirectToAction("Index", "Login");
-        }
-
-        public void Test()
-        {
-            if (Request.IsAjaxRequest())
-            {
-
-            }
-            
-
-            
-            //return Json(new { resultMessage = "Ваш комментарий добавлен успешно!" });
-            Response.Write("testResponse");
-            Response.End();
-            
         }
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ninject;
+using SignApplication.Controllers.Common;
 using SignApplication.Global.Authentication;
 using SignApplication.Global.Repository;
 
@@ -21,12 +22,6 @@ namespace SignApplication.Controllers
 
         public ActionResult Index()
         {
-            //var user = Repository.GetUser(1);
-
-
-            var cookie = Request.Cookies["test_cookie"];
-
-
             return View();
         }
 

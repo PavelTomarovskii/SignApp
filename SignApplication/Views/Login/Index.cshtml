@@ -3,65 +3,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<form method="post" action="/Login/Login">
-    <div class="loginForm">
-        <div class="parameter">
-            <div class="parameterName">
-                <label for="txtEmail">E-mail</label>
-            </div>
-            <div class="parameterValue">
-                <input type="text" id="txtEmail" name="txtEmail"/>
-            </div>
-        </div>
-        <div class="parameter">
-            <div class="parameterName">
-                <label for="txtPass">Password</label>
-            </div>
-            <div class="parameterValue">
-                <input type="password" id="txtPass" name="txtPass"/>
-            </div>
-        </div>
-        <div class="">
-            <div>
-                <input type="submit" id="btnCancel" name="btnCancel" value="Cancel"/>
-            </div>
-            <div>
-                <input type="submit" id="btnOk" name="btnOk" value="OK"/> 
-            </div>
-        </div>
-    </div>
-</form>*@
-<h2>{{resultMessage}}</h2>
+<div class="container">
+    <form class="form-signin" action="Login/Login" method="POST">
+        <h2 class="form-signin-heading">Вход</h2>
 
-@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-horizontal" }))
-{
-    <fieldset>
-        <div class="control-group">
-            <label class="control-label" for="Email">
-                Email
+        <label for="txtEmail" class="sr-only">
+            Email address
+        </label>
+        <input type="email" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email адрес" required="" autofocus="">
+        
+        <label for="txtPassword" class="sr-only">
+            Password
+        </label>
+        <input type="password" id="txtPassword" name="txtPassword" class="form-control" placeholder="Пароль" required="">
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="chkRememberMe" name="chkRememberMe" value="rememberMe"> Запомнить меня
             </label>
-            <div class="controls">
-                @Html.ValidationMessage("Email")
-                
-                @Html.TextBox("Email")
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+    </form>
 
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="FirstName">
-                Password
-            </label>
-            <div class="controls">
-                @Html.ValidationMessage("Password")
-                @Html.Password("Password")
-            </div>
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Login</button>
-            
-           @* <input type="button" ng-click="onclick()"/>*@
-
-            @Html.ActionLink("Cancel", "Index", null, null, new { @class = "btn" })
-        </div>
-    </fieldset>
-}
+</div>

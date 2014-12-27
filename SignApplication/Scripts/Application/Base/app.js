@@ -9,7 +9,7 @@ var signApp = angular.module('signApp', [
 signApp.config(['$routeProvider',
   function ($routeProvider) {
       $routeProvider.
-          when('/menu', {
+          when('/info', {
               templateUrl: 'Info/Index',
               controller: 'infoController'
           }).
@@ -17,11 +17,15 @@ signApp.config(['$routeProvider',
               templateUrl: 'Documents/List',
               controller: 'documentsController'
           }).
+          when('/upload', {
+              templateUrl: 'Upload/Index',
+              controller: 'DemoFileUploadController'
+          }).
           //when('/documents/:documentId', {
           //    templateUrl: 'Documents/Item',
           //    controller: 'documentController'
           //}).
           otherwise({
-              redirectTo: '/menu'
+              redirectTo: '/info'
           });
   }]);

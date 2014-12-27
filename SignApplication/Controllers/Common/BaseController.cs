@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Ninject;
 using SignApplication.Global.Authentication;
 using SignApplication.Global.Repository;
 using SignApplication.Model;
 
-namespace SignApplication.Controllers
+namespace SignApplication.Controllers.Common
 {
     public class BaseController : Controller
     {
@@ -28,21 +24,12 @@ namespace SignApplication.Controllers
 
         public BaseController()
         {
-            //if (!IsAuthenticated())
-            //{
-            //    Response.Redirect("~/Login/Index");
-            //}
+
         }
 
         public BaseController(bool IsCheckAuth)
         {
-            //if (IsCheckAuth)
-            //{
-            //    if (!IsAuthenticated())
-            //    {
-            //        Response.Redirect("~/Login/Index");
-            //    }
-            //}
+
         }
 
         private bool IsAuthenticated()

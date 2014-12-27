@@ -135,11 +135,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\Common\BaseController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,25 +164,23 @@
     <Content Include="Scripts\Angular\angular.js" />
     <Content Include="Scripts\Application\Base\app.js" />
     <Content Include="Scripts\Application\Document\Controllers\documentsController.js" />
+    <Content Include="Scripts\Application\Document\Controllers\uploadController.js" />
     <Content Include="Scripts\Application\Document\documentModule.js" />
     <Content Include="Scripts\Application\Info\Controllers\infoController.js" />
     <Content Include="Scripts\Application\Info\infoModule.js" />
     <Content Include="Scripts\Application\Menu\Controllers\menuController.js" />
     <Content Include="Scripts\Application\Menu\menuModule.js" />
-    <Content Include="Scripts\FileUploader\ajax.requester.js" />
-    <Content Include="Scripts\FileUploader\button.js" />
-    <Content Include="Scripts\FileUploader\deletefile.ajax.requester.js" />
-    <Content Include="Scripts\FileUploader\dnd.js" />
-    <Content Include="Scripts\FileUploader\handler.base.js" />
-    <Content Include="Scripts\FileUploader\handler.form.js" />
-    <Content Include="Scripts\FileUploader\handler.xhr.js" />
-    <Content Include="Scripts\FileUploader\header.js" />
-    <Content Include="Scripts\FileUploader\iframe.xss.response.js" />
-    <Content Include="Scripts\FileUploader\jquery-plugin.js" />
-    <Content Include="Scripts\FileUploader\uploader.basic.js" />
-    <Content Include="Scripts\FileUploader\uploader.js" />
-    <Content Include="Scripts\FileUploader\util.js" />
-    <Content Include="Scripts\FileUploader\window.receive.message.js" />
+    <Content Include="Scripts\FileUpload\jquery.fileupload-angular.js" />
+    <Content Include="Scripts\FileUpload\jquery.fileupload-audio.js" />
+    <Content Include="Scripts\FileUpload\jquery.fileupload-image.js" />
+    <Content Include="Scripts\FileUpload\jquery.fileupload-process.js" />
+    <Content Include="Scripts\FileUpload\jquery.fileupload-validate.js" />
+    <Content Include="Scripts\FileUpload\jquery.fileupload-video.js" />
+    <Content Include="Scripts\FileUpload\jquery.fileupload.js" />
+    <Content Include="Scripts\FileUpload\jquery.iframe-transport.js" />
+    <Content Include="Scripts\FileUpload\vendor\jquery.ui.widget.js" />
+    <Content Include="Themes\Default\css\jquery.fileupload-ui.css" />
+    <Content Include="Themes\Default\css\jquery.fileupload.css" />
     <Content Include="Themes\Default\css\Site.css" />
     <Content Include="Themes\Default\img\128x128\address_book.png" />
     <Content Include="Themes\Default\img\128x128\alarm.png" />
@@ -663,7 +662,6 @@
     <Content Include="Themes\Default\img\64x64\user.png" />
     <Content Include="Themes\Default\img\64x64\video.png" />
     <Content Include="Themes\Default\img\64x64\webcam.png" />
-    <Content Include="Themes\FileUpload\fineuploader.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -676,6 +674,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\Application\Document\Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -703,6 +702,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Documents\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Upload\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

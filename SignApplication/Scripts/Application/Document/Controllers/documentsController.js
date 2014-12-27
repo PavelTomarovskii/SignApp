@@ -1,3 +1,3 @@
-﻿documentsModule.controller('documentsController', ['$scope', function ($scope) {
+﻿documentModule.controller('documentsController', ['$scope', function ($scope) {
     $scope.documents = { "": "" };
 }]);
