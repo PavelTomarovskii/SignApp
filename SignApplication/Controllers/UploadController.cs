@@ -2,17 +2,27 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
+using Ninject;
+using SignApplication.Controllers.Common;
 using SignApplication.Global.Authentication;
+using SignApplication.Global.Repository.Documents;
+using SignApplication.Global.Repository.UploadedFiles;
+using SignApplication.Model;
 
 namespace SignApplication.Controllers
 {
     [CustomAuthorize]
-    public class UploadController : Controller
+    public class UploadController : BaseController
     {
-        //
-        // GET: /Upload/
+        [Inject]
+        public IUploadedFileRepository UploadedFileRepository { get; set; }
+
+        [Inject]
+        public IDocumentRepository DocumentRepository { get; set; }
 
         public ActionResult Index()
         {
@@ -46,6 +56,16 @@ namespace SignApplication.Controllers
             return Json(r);
         }
 
+        public ActionResult Dowload()
+        {
+            return null;
+        }
+
+        public ActionResult Delete()
+        {
+            return null;
+        }
+
         private void UploadPartialFile(string fileName, HttpRequestBase request, List<ViewDataUploadFilesResult> statuses)
         {
             if (request.Files.Count != 1) throw new HttpRequestValidationException("Attempt to upload chunked file containing more than one fragment per request");
@@ -67,6 +87,7 @@ namespace SignApplication.Controllers
                 fs.Flush();
                 fs.Close();
             }
+
             statuses.Add(new ViewDataUploadFilesResult()
             {
                 name = fileName,
@@ -85,17 +106,43 @@ namespace SignApplication.Controllers
             {
                 var file = request.Files[i];
 
-                var fullPath = Path.Combine(StorageRoot, Path.GetFileName(file.FileName));
+                var filename = string.Format("{0}.{1}", Guid.NewGuid().ToString().Replace("-", "_"), GetExtention(file.ContentType));
+                var dir = Path.Combine(StorageRoot, CurrentUser.ID.ToString());
+                var fullPath = Path.Combine(dir, filename);
 
+                var dr = new DirectoryInfo(dir);
+                dr.Create();
                 file.SaveAs(fullPath);
+
+                var upfile = new UploadedFile()
+                {
+                    UserID = CurrentUser.ID,
+                    FilePath = Path.Combine(CurrentUser.ID.ToString(), filename),
+                    ContentType = file.ContentType,
+                    GroupID = (int)enumUploadedFilesGroup.Document,
+                    IsDelete = false,
+                    UploadedDate = DateTime.Now
+                };
+                UploadedFileRepository.CreateUploadedFile(upfile);
+
+                var document = new Document()
+                {
+                    Name = file.FileName,
+                    UploadedFileID = upfile.ID,
+                    IsDelete = false,
+                    UploadDate = DateTime.Now,
+                    UserID = CurrentUser.ID,
+                    StateID = (int)enumDocumentState.Upload
+                };
+                DocumentRepository.CreateDocument(document);
 
                 statuses.Add(new ViewDataUploadFilesResult()
                 {
                     name = file.FileName,
                     size = file.ContentLength,
                     type = file.ContentType,
-                    url = "/Home/Download/" + file.FileName,
-                    delete_url = "/Home/Delete/" + file.FileName,
+                    url = "/Upload/Download/" + file.FileName,
+                    delete_url = "/Upload/Delete/" + file.FileName,
                     thumbnail_url = @"data:image/png;base64," + EncodeFile(fullPath),
                     delete_type = "GET",
                 });
@@ -109,7 +156,20 @@ namespace SignApplication.Controllers
 
         private string StorageRoot
         {
-            get { return Path.Combine(Server.MapPath("~/Temp")); }
+            get { return Path.Combine(Server.MapPath("~/Docs")); }
+        }
+
+        private string GetExtention(string aContenType)
+        {
+            switch (aContenType)
+            {
+                case "image/jpeg":
+                    return "jpg";
+                case "application/pdf":
+                    return "pdf";
+                default:
+                    return "none";
+            }
         }
 
     }

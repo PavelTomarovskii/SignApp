@@ -5,24 +5,25 @@
         '/cors/result.html?%s'
     );
 }])
-    .controller('DemoFileUploadController', ['$scope', '$http', '$filter', '$window', function($scope, $http) {
+    .controller('documentFileUploadController', ['$scope', '$http', '$filter', '$window', function ($scope, $http) {
+        console.log($scope.queue);
         $scope.options = {
             url: 'Upload/Upload/'
         };
         $scope.loadingFiles = true;
-        //$http.get(url)
-        //    .then(
-        //        function (response) {
-        //            $scope.loadingFiles = false;
-        //            $scope.queue = response.data.files || [];
-        //        },
-        //        function () {
-        //            $scope.loadingFiles = false;
-        //        }
-        //    );
+        $http.get('Upload/Upload/')
+            .then(
+                function (response) {
+                    $scope.loadingFiles = false;
+                    $scope.queue = response.data.files || [];
+                },
+                function () {
+                    $scope.loadingFiles = false;
+                }
+            );
 
     }])
-    .controller('FileDestroyController', ['$scope', '$http', function($scope, $http) {
+    .controller('documentFileDestroyController', ['$scope', '$http', function ($scope, $http) {
         var file = $scope.file,
             state;
         if (file.url) {

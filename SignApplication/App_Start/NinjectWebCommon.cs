@@ -1,6 +1,10 @@
 using System.Configuration;
 using SignApplication.Global.Authentication;
+using SignApplication.Global.Mappers;
 using SignApplication.Global.Repository;
+using SignApplication.Global.Repository.Documents;
+using SignApplication.Global.Repository.UploadedFiles;
+using SignApplication.Global.Repository.Users;
 using SignApplication.Model.DBConnection;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SignApplication.App_Start.NinjectWebCommon), "Start")]
@@ -67,8 +71,13 @@ namespace SignApplication.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<SignAppContext>().ToMethod(c => new SignAppContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString));
-            kernel.Bind<IRepository>().To<Repository>().InRequestScope();
             kernel.Bind<IAuthentication>().To<CustomAuthentication>().InRequestScope();
+            kernel.Bind<IMapper>().To<CommonMapper>().InSingletonScope();
+            
+            kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
+            kernel.Bind<IDocumentRepository>().To<DocumentRepository>().InRequestScope();
+            kernel.Bind<IUploadedFileRepository>().To<UploadedFileRepository>().InRequestScope();
+            
         }        
     }
 }

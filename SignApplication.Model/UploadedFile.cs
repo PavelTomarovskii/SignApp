@@ -34,5 +34,15 @@ namespace SignApplication.Model
         [Column("FilePath", TypeName = "varchar")]
         [MaxLength(250)]
         public string FilePath { get; set; }
+
+        [Column("ContentType", TypeName = "varchar")]
+        [MaxLength(500)]
+        public string ContentType { get; set; }
+
+        [ForeignKey("User")]
+        [Column("UserID", TypeName = "int")]
+        public int UserID { get; set; }
+
+        public virtual User User { set; get; }
     }
 }

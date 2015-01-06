@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Linq;
+using Ninject;
 using SignApplication.Model;
+using SignApplication.Model.DBConnection;
 
-namespace SignApplication.Global.Repository
+namespace SignApplication.Global.Repository.Users
 {
-    public partial class Repository
+    public class UserRepository : IUserRepository
     {
+        [Inject]
+        public SignAppContext context { get; set; }
+
         public IQueryable<User> Users { get; set; }
 
         public User GetUser(int aID)

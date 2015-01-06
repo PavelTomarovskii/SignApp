@@ -14,12 +14,6 @@ namespace SignApplication.Controllers
     public class HomeController : BaseController
     {
 
-        public HomeController()
-            :base(true)
-        {
-
-        }
-
         public ActionResult Index()
         {
             return View();

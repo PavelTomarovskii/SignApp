@@ -50,10 +50,10 @@ namespace SignApplication.Model.DBConnection
             context.Users.Add(user);
             user = new User() { ID = 2, LastName = "Voronin",EMail = "voronin@gmail.com",Password = "qwerty"};
             context.Users.Add(user);
-            UploadedFile upl = new UploadedFile() { ID = 1, GroupID = 14 };
-            context.UploadedFiles.Add(upl);
-            Document doc = new Document() { ID = 1, Name = "WorkContract", UserID = 1, StateID = 1, UploadedFileID = 1};
-            context.Documents.Add(doc);
+            //UploadedFile upl = new UploadedFile() { ID = 1, GroupID = 14 };
+            //context.UploadedFiles.Add(upl);
+            //Document doc = new Document() { ID = 1, Name = "WorkContract", UserID = 1, StateID = 1, UploadedFileID = 1};
+            //context.Documents.Add(doc);
 
             base.Seed(context);
         }

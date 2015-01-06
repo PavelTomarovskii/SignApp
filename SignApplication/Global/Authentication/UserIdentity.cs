@@ -1,6 +1,7 @@
 ﻿using System.Security.Principal;
 using Ninject;
 using SignApplication.Global.Repository;
+using SignApplication.Global.Repository.Users;
 using SignApplication.Model;
 
 namespace SignApplication.Global.Authentication
@@ -8,7 +9,7 @@ namespace SignApplication.Global.Authentication
     public class UserIndentity : IIdentity, IUserProvider
     {
 
-        public void Init(string email, IRepository repository)
+        public void Init(string email, IUserRepository repository)
         {
             if (!string.IsNullOrEmpty(email))
             {

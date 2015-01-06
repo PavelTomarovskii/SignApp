@@ -12,9 +12,6 @@ namespace SignApplication.Global.Authentication
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
 
-        [Inject] 
-        public IRepository repository;
-
         public string RequiredRole;
         public int YourCustomValue;
         protected override bool AuthorizeCore(HttpContextBase httpContext)

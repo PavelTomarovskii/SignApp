@@ -1,7 +1,8 @@
 ﻿using System.Web.Mvc;
 using Ninject;
 using SignApplication.Global.Authentication;
-using SignApplication.Global.Repository;
+using SignApplication.Global.Repository.UploadedFiles;
+using SignApplication.Global.Repository.Users;
 using SignApplication.Model;
 
 namespace SignApplication.Controllers.Common
@@ -9,7 +10,7 @@ namespace SignApplication.Controllers.Common
     public class BaseController : Controller
     {
         [Inject]
-        public IRepository Repository { get; set; }
+        public IUserRepository UserRepository { get; set; }
 
         [Inject]
         public IAuthentication Auth { get; set; }
@@ -20,16 +21,6 @@ namespace SignApplication.Controllers.Common
             {
                 return ((IUserProvider)Auth.CurrentUser.Identity).User;
             }
-        }
-
-        public BaseController()
-        {
-
-        }
-
-        public BaseController(bool IsCheckAuth)
-        {
-
         }
 
         private bool IsAuthenticated()

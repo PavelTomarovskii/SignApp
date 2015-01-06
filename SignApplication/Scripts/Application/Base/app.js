@@ -17,14 +17,14 @@ signApp.config(['$routeProvider',
               templateUrl: 'Documents/List',
               controller: 'documentsController'
           }).
+           when('/document/:documentId', {
+               templateUrl: 'Documents/Edit',
+               controller: 'documentEditerController'
+           }).
           when('/upload', {
               templateUrl: 'Upload/Index',
-              controller: 'DemoFileUploadController'
+              controller: 'documentFileUploadController'
           }).
-          //when('/documents/:documentId', {
-          //    templateUrl: 'Documents/Item',
-          //    controller: 'documentController'
-          //}).
           otherwise({
               redirectTo: '/info'
           });

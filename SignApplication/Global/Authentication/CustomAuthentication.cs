@@ -4,7 +4,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using Ninject;
-using SignApplication.Global.Repository;
+using SignApplication.Global.Repository.Users;
 using SignApplication.Model;
 
 namespace SignApplication.Global.Authentication
@@ -16,7 +16,7 @@ namespace SignApplication.Global.Authentication
         public HttpContext HttpContext { get; set; }
 
         [Inject]
-        public IRepository Repository { get; set; }
+        public IUserRepository Repository { get; set; }
 
         #region IAuthentication Members
 

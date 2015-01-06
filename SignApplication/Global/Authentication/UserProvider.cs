@@ -1,5 +1,5 @@
 ﻿using System.Security.Principal;
-using SignApplication.Global.Repository;
+using SignApplication.Global.Repository.Users;
 
 namespace SignApplication.Global.Authentication
 {
@@ -25,7 +25,7 @@ namespace SignApplication.Global.Authentication
 
         #endregion
 
-        public UserProvider(string name, IRepository repository)
+        public UserProvider(string name, IUserRepository repository)
         {
             userIdentity = new UserIndentity();
             userIdentity.Init(name, repository);

@@ -13,12 +13,6 @@ namespace SignApplication.Controllers
     public class LoginController : BaseController
     {
 
-        public LoginController()
-            :base(false)
-        {
-
-        }
-
         public ActionResult Index()
         {
             return View();

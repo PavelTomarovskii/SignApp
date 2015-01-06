@@ -101,3 +101,6 @@ C:\Diplom\SignApp\SignApplication\bin\System.Web.Optimization.dll
 C:\Diplom\SignApp\SignApplication\bin\WebGrease.dll
 C:\Diplom\SignApp\SignApplication\bin\Antlr3.Runtime.pdb
 C:\Diplom\SignApp\SignApplication\bin\System.Web.Optimization.xml
+C:\Diplom\SignApp\SignApplication\bin\AutoMapper.Net4.dll
+C:\Diplom\SignApp\SignApplication\bin\AutoMapper.dll
+C:\Diplom\SignApp\SignApplication\bin\AutoMapper.xml

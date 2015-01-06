@@ -1,1 +1,14 @@
 ﻿<h1>Список документов</h1>
+
+<div class="row" ng-controller="documentsController">
+    <div class="list-group">
+        <a href="#/document/{{doc.ID}}" class="list-group-item" ng-repeat="doc in documents">
+            <h4 class="list-group-item-heading">
+                {{doc.Name}}
+            </h4>
+            <p class="list-group-item-text">
+                Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+            </p>
+        </a>
+    </div>
+</div>

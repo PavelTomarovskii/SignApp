@@ -9,13 +9,6 @@ using System.Threading.Tasks;
 
 namespace SignApplication.Model
 {
-    public enum enumState
-    {
-        Upload = 1,
-        Edit = 2,
-        ReadyToSend = 3,
-        Sent = 4
-    }
 
     [Table("SystemListValue")]
     public class SystemListValue

@@ -1,20 +1,18 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using SignApplication.Model;
 
-namespace SignApplication.Global.Repository
+namespace SignApplication.Global.Repository.Users
 {
-    public interface IRepository
+    public interface IUserRepository
     {
-        #region Users
         IQueryable<User> Users { get; set; }
         User GetUser(int aID);
         User GetUser(string aEmail);
         bool UpdateUser(User aUser);
         User Login(string aUserName, string aPassword);
-        #endregion
-
-
-
-        
     }
 }

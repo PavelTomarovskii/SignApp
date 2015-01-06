@@ -18,3 +18,13 @@ C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication.Model\
 C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication.Model\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication.Model\obj\Debug\SignApplication.Model.dll
 C:\Users\Pavel\Dropbox\My papka xD\Diplom\SignApplication\SignApplication.Model\obj\Debug\SignApplication.Model.pdb
+C:\Diplom\SignApp\SignApplication.Model\bin\Debug\SignApplication.Model.dll.config
+C:\Diplom\SignApp\SignApplication.Model\bin\Debug\SignApplication.Model.dll
+C:\Diplom\SignApp\SignApplication.Model\bin\Debug\SignApplication.Model.pdb
+C:\Diplom\SignApp\SignApplication.Model\bin\Debug\EntityFramework.dll
+C:\Diplom\SignApp\SignApplication.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Diplom\SignApp\SignApplication.Model\bin\Debug\EntityFramework.xml
+C:\Diplom\SignApp\SignApplication.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Diplom\SignApp\SignApplication.Model\obj\Debug\SignApplication.Model.csprojResolveAssemblyReference.cache
+C:\Diplom\SignApp\SignApplication.Model\obj\Debug\SignApplication.Model.dll
+C:\Diplom\SignApp\SignApplication.Model\obj\Debug\SignApplication.Model.pdb
