@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -13,8 +14,12 @@ using SignApplication.Controllers.Common;
 using SignApplication.Global.Authentication;
 using SignApplication.Global.Mappers;
 using SignApplication.Global.Repository.Documents;
+using SignApplication.Global.Repository.SystemListValues;
+using SignApplication.Global.Repository.UploadedFiles;
+using SignApplication.Global.Service.Documents;
 using SignApplication.Model;
 using SignApplication.ViewModel;
+using WebGrease.Css.Extensions;
 
 namespace SignApplication.Controllers
 {
@@ -23,10 +28,7 @@ namespace SignApplication.Controllers
     {
 
         [Inject]
-        public IDocumentRepository documentRepository { get; set; }
-
-        [Inject]
-        public IMapper ModelMapper { get; set; }
+        public IDocumentService DocumentService { get; set; }
 
         public ActionResult List()
         {
@@ -40,19 +42,37 @@ namespace SignApplication.Controllers
 
         public string GetDocuments()
         {
-            var docs = from document in documentRepository.Documents
-                        where document.UserID == CurrentUser.ID && !document.IsDelete
-                        select new DocumentView()
-                        {
-                            ID = document.ID,
-                            Name = document.Name,
-                            IsDelete = document.IsDelete,
-                            StateID = document.StateID,
-                            UploadDate = document.UploadDate,
-                            UploadedFileID = document.UploadedFileID
-                        };
-
+            var docs = DocumentService.GetDocuments(CurrentUser);
             var serializedObject = JsonConvert.SerializeObject(docs);
+            return serializedObject;
+        }
+
+        public string GetDocument(int documentID)
+        {
+            var doc = DocumentService.GetDocument(CurrentUser, documentID, DocFilePath);
+            var serializedObject = JsonConvert.SerializeObject(doc);
+            return serializedObject;
+        }
+
+        public string GetDocumentElements(int documentID)
+        {
+            var doc = DocumentService.GetDocumentElements(documentID);
+            var serializedObject = JsonConvert.SerializeObject(doc);
+            return serializedObject;
+        }
+
+        public string GetTemplateElements()
+        {
+            var doc = DocumentService.GetTemplateElements();
+            var serializedObject = JsonConvert.SerializeObject(doc);
+            return serializedObject;
+        }
+
+        [HttpPost]
+        public string UpdateDocumentElement(ContentTemplateView element)
+        {
+            var doc = DocumentService.UpdateDocumentElement(element);
+            var serializedObject = JsonConvert.SerializeObject(doc);
             return serializedObject;
         }
 

@@ -15,7 +15,6 @@ namespace SignApplication.Model
     {
         public SystemListValue()
         {
-           
         }
 
         [Key]
@@ -31,6 +30,9 @@ namespace SignApplication.Model
         [Column("Title", TypeName = "varchar")]
         [MaxLength(250)]
         public string Title { get; set; }
+
+        [Column("Del_fl", TypeName = "bit")]
+        public bool IsDelete { get; set; }
 
     }
 }

@@ -6,12 +6,16 @@ using System.Web.Mvc;
 using Ninject;
 using SignApplication.Controllers.Common;
 using SignApplication.Global.Authentication;
+using SignApplication.Global.Repository.Users;
 using SignApplication.Model;
 
 namespace SignApplication.Controllers
 {
     public class LoginController : BaseController
     {
+
+        [Inject]
+        public IUserRepository users { get; set; }
 
         public ActionResult Index()
         {

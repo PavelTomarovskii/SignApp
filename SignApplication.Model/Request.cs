@@ -45,5 +45,8 @@ namespace SignApplication.Model
         public int UploadedFileID { get; set; }
 
         public virtual UploadedFile UploadedFile { get; set; }
+
+        [Column("Del_fl", TypeName = "bit")]
+        public bool IsDelete { get; set; }
     }
 }

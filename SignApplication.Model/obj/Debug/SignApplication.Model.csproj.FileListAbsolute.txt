@@ -25,6 +25,6 @@ C:\Diplom\SignApp\SignApplication.Model\bin\Debug\EntityFramework.dll
 C:\Diplom\SignApp\SignApplication.Model\bin\Debug\EntityFramework.SqlServer.dll
 C:\Diplom\SignApp\SignApplication.Model\bin\Debug\EntityFramework.xml
 C:\Diplom\SignApp\SignApplication.Model\bin\Debug\EntityFramework.SqlServer.xml
-C:\Diplom\SignApp\SignApplication.Model\obj\Debug\SignApplication.Model.csprojResolveAssemblyReference.cache
 C:\Diplom\SignApp\SignApplication.Model\obj\Debug\SignApplication.Model.dll
 C:\Diplom\SignApp\SignApplication.Model\obj\Debug\SignApplication.Model.pdb
+C:\Diplom\SignApp\SignApplication.Model\obj\Debug\SignApplication.Model.csprojResolveAssemblyReference.cache

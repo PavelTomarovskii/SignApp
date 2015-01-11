@@ -22,21 +22,22 @@ namespace SignApplication.Model
         Signed = 8
     }
 
-    public enum enumContentElementType
-    {
-        Sign = 9
-    }
-
     public enum enumEventType
     {
-        Insert = 10,
-        Update = 11,
-        Delete = 12,
-        ReqeustIsSent = 13
+        Insert = 9,
+        Update = 10,
+        Delete = 11,
+        ReqeustIsSent = 12
     }
 
     public enum enumUploadedFilesGroup
     {
-        Document = 14
+        Document = 13
+    }
+
+    public enum enumContentType
+    {
+        Sign = 1,
+        Label = 2
     }
 }

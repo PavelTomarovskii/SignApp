@@ -34,5 +34,8 @@ namespace SignApplication.Model
         [Column("Value", TypeName = "varchar")]
         [MaxLength(1000)]
         public string Value { get; set; } // либо 1/0; текст;id image
+
+        [Column("Del_fl", TypeName = "bit")]
+        public bool IsDelete { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -117,7 +118,7 @@ namespace SignApplication.Controllers
                 var upfile = new UploadedFile()
                 {
                     UserID = CurrentUser.ID,
-                    FilePath = Path.Combine(CurrentUser.ID.ToString(), filename),
+                    FilePath = filename,
                     ContentType = file.ContentType,
                     GroupID = (int)enumUploadedFilesGroup.Document,
                     IsDelete = false,
@@ -156,7 +157,7 @@ namespace SignApplication.Controllers
 
         private string StorageRoot
         {
-            get { return Path.Combine(Server.MapPath("~/Docs")); }
+            get { return Path.Combine(Server.MapPath(DocFilePath)); }
         }
 
         private string GetExtention(string aContenType)

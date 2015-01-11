@@ -25,5 +25,8 @@ namespace SignApplication.Model
         public string Title { get; set; }
 
         public virtual ICollection<SystemListValue> SystemListValues { get; set; }
+
+        [Column("Del_fl", TypeName = "bit")]
+        public bool IsDelete { get; set; }
     }
 }

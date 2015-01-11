@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContentTemplate.cs" />
+    <Compile Include="ContentType.cs" />
     <Compile Include="DBConnection\SignAppContext.cs" />
     <Compile Include="DBConnection\SignDBInitializer.cs" />
     <Compile Include="Document.cs" />

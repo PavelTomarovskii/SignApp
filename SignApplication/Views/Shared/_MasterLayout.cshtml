@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Sign Application</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     @Styles.Render("~/Default/css")
     
     
@@ -21,7 +22,9 @@
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/uibootstrap")
     <script src="https://code.angularjs.org/1.2.27/angular-animate.js"></script>
     <script src="https://code.angularjs.org/1.2.27/angular-route.js"></script>
     <script src="https://code.angularjs.org/1.2.27/angular-resource.js"></script>
@@ -54,7 +57,6 @@
     <script src="/Scripts/FileUpload/jquery.fileupload-angular.js"></script>
     
     @Scripts.Render("~/bundles/application")
-
 </head>
 <body>
     @RenderBody()

@@ -9,7 +9,7 @@ namespace SignApplication.Global.Repository.UploadedFiles
 {
     public interface IUploadedFileRepository
     {
-        IQueryable<UploadedFile> UploadedFiles { get; set; }
+        IQueryable<UploadedFile> UploadedFiles { get; }
         void CreateUploadedFile(UploadedFile aFile);
         UploadedFile GetUploadedFile(int aID);
         bool UpdateUploadedFile(UploadedFile aFile);

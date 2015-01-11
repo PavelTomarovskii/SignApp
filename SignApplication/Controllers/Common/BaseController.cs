@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Configuration;
+using System.Web.Mvc;
 using Ninject;
 using SignApplication.Global.Authentication;
 using SignApplication.Global.Repository.UploadedFiles;
@@ -26,6 +27,14 @@ namespace SignApplication.Controllers.Common
         private bool IsAuthenticated()
         {
             return CurrentUser != null;
+        }
+
+        public string DocFilePath 
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["DocFilePath"];
+            }
         }
 
     }

@@ -25,7 +25,24 @@ namespace SignApplication.Global.Repository.Users
 
         public bool UpdateUser(User aUser)
         {
-            throw new NotImplementedException();
+            User usr = context.Users.FirstOrDefault(x => x.ID == aUser.ID);
+            if (usr != null)
+            {
+                usr = aUser;
+            }
+            context.Entry(usr).State = System.Data.Entity.EntityState.Modified;
+            return Convert.ToBoolean(context.SaveChanges());
+        }
+
+        public bool DeleteUser(User aUser)
+        {
+            User usr = context.Users.FirstOrDefault(x => x.ID == aUser.ID);
+            if (usr != null)
+            {
+                usr.IsDelete = true;
+            }
+            context.Entry(usr).State = System.Data.Entity.EntityState.Modified;
+            return Convert.ToBoolean(context.SaveChanges());
         }
 
         public User Login(string aUserName, string aPassword)

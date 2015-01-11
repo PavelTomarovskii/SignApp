@@ -1,1 +1,1 @@
-﻿var documentModule = angular.module('signApp.documentModule', ['blueimp.fileupload']);
+﻿var documentModule = angular.module('signApp.documentModule', ['blueimp.fileupload', 'ui.bootstrap']);

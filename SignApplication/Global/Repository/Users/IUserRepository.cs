@@ -13,6 +13,7 @@ namespace SignApplication.Global.Repository.Users
         User GetUser(int aID);
         User GetUser(string aEmail);
         bool UpdateUser(User aUser);
+        bool DeleteUser(User aUser);
         User Login(string aUserName, string aPassword);
     }
 }

@@ -12,13 +12,15 @@ namespace SignApplication.ViewModel
 
         public string Name { set; get; }
 
-        public DateTime? UploadDate { set; get; }
-
         public bool IsDelete { set; get; }
 
         public int StateID { set; get; }
 
+        public string State { get; set; }
+
         public int UploadedFileID { get; set; }
+
+        public string DocFilePath { get; set; }
 
     }
 }

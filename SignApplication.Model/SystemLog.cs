@@ -37,5 +37,8 @@ namespace SignApplication.Model
         [Column("Message", TypeName = "varchar")]
         [MaxLength(250)]
         public string Message { get; set; }
+
+        [Column("Del_fl", TypeName = "bit")]
+        public bool IsDelete { get; set; }
     }
 }

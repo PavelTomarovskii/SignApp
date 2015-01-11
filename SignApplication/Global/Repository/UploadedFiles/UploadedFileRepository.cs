@@ -13,30 +13,45 @@ namespace SignApplication.Global.Repository.UploadedFiles
         [Inject]
         public SignAppContext context { get; set; }
 
-        public IQueryable<UploadedFile> UploadedFiles { get; set; }
+        public IQueryable<UploadedFile> UploadedFiles
+        {
+            get
+            {
+                return context.UploadedFiles;
+            }
+        }
 
         public void CreateUploadedFile(UploadedFile aFile)
         {
-            using (context)
-            {
-                context.UploadedFiles.Add(aFile);
-                context.SaveChanges();
-            }
+            context.UploadedFiles.Add(aFile);
+            context.SaveChanges();
         }
 
         public UploadedFile GetUploadedFile(int aID)
         {
-            throw new NotImplementedException();
+            return context.UploadedFiles.FirstOrDefault(x => x.ID == aID);
         }
 
         public bool UpdateUploadedFile(UploadedFile aFile)
         {
-            throw new NotImplementedException();
+            UploadedFile uplFile = context.UploadedFiles.FirstOrDefault(x => x.ID == aFile.ID);
+            if (uplFile != null)
+            {
+                uplFile = aFile;
+            }
+            context.Entry(uplFile).State = System.Data.Entity.EntityState.Modified;
+            return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteUploadedFile(UploadedFile aFile)
         {
-            throw new NotImplementedException();
+            UploadedFile uplFile = context.UploadedFiles.FirstOrDefault(x => x.ID == aFile.ID);
+            if (uplFile != null)
+            {
+                uplFile.IsDelete = true;
+            }
+            context.Entry(uplFile).State = System.Data.Entity.EntityState.Modified;
+            return Convert.ToBoolean(context.SaveChanges());
         }
     }
 }

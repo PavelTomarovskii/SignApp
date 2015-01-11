@@ -31,11 +31,14 @@ namespace SignApplication.Model
 
         public virtual SystemListValue Content { get; set; }
 
-        [Column("X", TypeName = "float")]
-        public float X { get; set; } //расположение верхнего левого угла
+        [Column("Left", TypeName = "float")]
+        public float Left { get; set; }
 
-        [Column("Y", TypeName = "float")]
-        public float Y { get; set; } //расположение верхнего левого угла
+        [Column("Top", TypeName = "float")]
+        public float Top { get; set; }
+
+        [Column("Zindex", TypeName = "float")]
+        public int Zindex { get; set; }
 
         [Column("Width", TypeName = "float")]
         public float Width { get; set; }
@@ -49,5 +52,8 @@ namespace SignApplication.Model
 
         [Column("Required_fl", TypeName = "bit")]
         public bool IsRequired { get; set; }
+
+        [Column("Del_fl", TypeName = "bit")]
+        public bool IsDelete { get; set; }
     }
 }
