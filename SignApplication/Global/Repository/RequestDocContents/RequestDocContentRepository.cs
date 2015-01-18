@@ -34,23 +34,18 @@ namespace SignApplication.Global.Repository.RequestDocContents
 
         public bool UpdateRequestDocContent(RequestDocContent aRequestDocContent)
         {
-            RequestDocContent rdc = context.RequestDocContents.FirstOrDefault(x => x.ID == aRequestDocContent.ID);
-            if (rdc != null)
-            {
-                rdc = aRequestDocContent;
-            }
-            context.Entry(rdc).State = System.Data.Entity.EntityState.Modified;
+            context.RequestDocContents.Attach(aRequestDocContent);
+            var entry = context.Entry(aRequestDocContent);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteRequestDocContent(RequestDocContent aRequestDocContent)
         {
-            RequestDocContent rdc = context.RequestDocContents.FirstOrDefault(x => x.ID == aRequestDocContent.ID);
-            if (rdc != null)
-            {
-                rdc.IsDelete = true;
-            }
-            context.Entry(rdc).State = System.Data.Entity.EntityState.Modified;
+            aRequestDocContent.IsDelete = true;
+            context.RequestDocContents.Attach(aRequestDocContent);
+            var entry = context.Entry(aRequestDocContent);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
     }

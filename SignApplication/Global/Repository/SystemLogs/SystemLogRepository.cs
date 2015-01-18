@@ -33,23 +33,18 @@ namespace SignApplication.Global.Repository.SystemLogs
 
         public bool UpdateSystemLog(SystemLog aSystemLog)
         {
-            SystemLog sysLog = context.SystemLogs.FirstOrDefault(x => x.ID == aSystemLog.ID);
-            if (sysLog != null)
-            {
-                sysLog = aSystemLog;
-            }
-            context.Entry(sysLog).State = System.Data.Entity.EntityState.Modified;
+            context.SystemLogs.Attach(aSystemLog);
+            var entry = context.Entry(aSystemLog);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteSystemLog(SystemLog aSystemLog)
         {
-            SystemLog sysLog = context.SystemLogs.FirstOrDefault(x => x.ID == aSystemLog.ID);
-            if (sysLog != null)
-            {
-                sysLog.IsDelete = true;
-            }
-            context.Entry(sysLog).State = System.Data.Entity.EntityState.Modified;
+            aSystemLog.IsDelete = true;
+            context.SystemLogs.Attach(aSystemLog);
+            var entry = context.Entry(aSystemLog);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
     }

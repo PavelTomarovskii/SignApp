@@ -34,23 +34,18 @@ namespace SignApplication.Global.Repository.SystemLists
 
         public bool UpdateSystemList(SystemList aSystemList)
         {
-            SystemList lst = context.SystemLists.FirstOrDefault(x => x.ID == aSystemList.ID);
-            if (lst != null)
-            {
-                lst = aSystemList;
-            }
-            context.Entry(lst).State = System.Data.Entity.EntityState.Modified;
+            context.SystemLists.Attach(aSystemList);
+            var entry = context.Entry(aSystemList);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteSystemList(SystemList aSystemList)
         {
-            SystemList lst = context.SystemLists.FirstOrDefault(x => x.ID == aSystemList.ID);
-            if (lst != null)
-            {
-                lst.IsDelete = true;
-            }
-            context.Entry(lst).State = System.Data.Entity.EntityState.Modified;
+            aSystemList.IsDelete = true;
+            context.SystemLists.Attach(aSystemList);
+            var entry = context.Entry(aSystemList);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
     }

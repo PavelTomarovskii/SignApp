@@ -34,23 +34,18 @@ namespace SignApplication.Global.Repository.Requests
 
         public bool UpdateRequest(Request aRequest)
         {
-            Request req = context.Requests.FirstOrDefault(x => x.ID == aRequest.ID);
-            if (req != null)
-            {
-                req = aRequest;
-            }
-            context.Entry(req).State = System.Data.Entity.EntityState.Modified;
+            context.Requests.Attach(aRequest);
+            var entry = context.Entry(aRequest);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteRequest(Request aRequest)
         {
-            Request req = context.Requests.FirstOrDefault(x => x.ID == aRequest.ID);
-            if (req != null)
-            {
-                req.IsDelete = true;
-            }
-            context.Entry(req).State = System.Data.Entity.EntityState.Modified;
+            aRequest.IsDelete = true;
+            context.Requests.Attach(aRequest);
+            var entry = context.Entry(aRequest);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
     }

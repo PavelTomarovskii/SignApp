@@ -34,23 +34,18 @@ namespace SignApplication.Global.Repository.UploadedFiles
 
         public bool UpdateUploadedFile(UploadedFile aFile)
         {
-            UploadedFile uplFile = context.UploadedFiles.FirstOrDefault(x => x.ID == aFile.ID);
-            if (uplFile != null)
-            {
-                uplFile = aFile;
-            }
-            context.Entry(uplFile).State = System.Data.Entity.EntityState.Modified;
+            context.UploadedFiles.Attach(aFile);
+            var entry = context.Entry(aFile);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteUploadedFile(UploadedFile aFile)
         {
-            UploadedFile uplFile = context.UploadedFiles.FirstOrDefault(x => x.ID == aFile.ID);
-            if (uplFile != null)
-            {
-                uplFile.IsDelete = true;
-            }
-            context.Entry(uplFile).State = System.Data.Entity.EntityState.Modified;
+            aFile.IsDelete = true;
+            context.UploadedFiles.Attach(aFile);
+            var entry = context.Entry(aFile);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
     }

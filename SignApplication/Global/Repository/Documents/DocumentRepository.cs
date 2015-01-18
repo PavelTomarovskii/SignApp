@@ -34,23 +34,18 @@ namespace SignApplication.Global.Repository.Documents
 
         public bool UpdateDocument(Document aDocument)
         {
-            Document doc = context.Documents.FirstOrDefault(x => x.ID == aDocument.ID);
-            if (doc != null)
-            {
-                doc = aDocument;
-            }
-            context.Entry(doc).State = System.Data.Entity.EntityState.Modified;
+            context.Documents.Attach(aDocument);
+            var entry = context.Entry(aDocument);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteDocument(Document aDocument)
         {
-            Document doc = context.Documents.FirstOrDefault(x => x.ID == aDocument.ID);
-            if (doc != null)
-            {
-                doc.IsDelete = true;
-            }
-            context.Entry(doc).State = System.Data.Entity.EntityState.Modified;
+            aDocument.IsDelete = true;
+            context.Documents.Attach(aDocument);
+            var entry = context.Entry(aDocument);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
     }

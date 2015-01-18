@@ -33,23 +33,18 @@ namespace SignApplication.Global.Repository.ContentTypes
 
         public bool UpdateContentType(ContentType aContentType)
         {
-            ContentType conType = context.ContentTypes.FirstOrDefault(x => x.ID == aContentType.ID);
-            if (conType != null)
-            {
-                conType = aContentType;
-            }
-            context.Entry(conType).State = System.Data.Entity.EntityState.Modified;
+            context.ContentTypes.Attach(aContentType);
+            var entry = context.Entry(aContentType);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteContentType(ContentType aContentType)
         {
-            ContentType conType = context.ContentTypes.FirstOrDefault(x => x.ID == aContentType.ID);
-            if (conType != null)
-            {
-                conType.IsDelete = true;
-            }
-            context.Entry(conType).State = System.Data.Entity.EntityState.Modified;
+            aContentType.IsDelete = true;
+            context.ContentTypes.Attach(aContentType);
+            var entry = context.Entry(aContentType);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
     }

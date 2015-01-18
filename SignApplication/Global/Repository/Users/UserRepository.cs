@@ -25,23 +25,18 @@ namespace SignApplication.Global.Repository.Users
 
         public bool UpdateUser(User aUser)
         {
-            User usr = context.Users.FirstOrDefault(x => x.ID == aUser.ID);
-            if (usr != null)
-            {
-                usr = aUser;
-            }
-            context.Entry(usr).State = System.Data.Entity.EntityState.Modified;
+            context.Users.Attach(aUser);
+            var entry = context.Entry(aUser);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteUser(User aUser)
         {
-            User usr = context.Users.FirstOrDefault(x => x.ID == aUser.ID);
-            if (usr != null)
-            {
-                usr.IsDelete = true;
-            }
-            context.Entry(usr).State = System.Data.Entity.EntityState.Modified;
+            aUser.IsDelete = true;
+            context.Users.Attach(aUser);
+            var entry = context.Entry(aUser);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
