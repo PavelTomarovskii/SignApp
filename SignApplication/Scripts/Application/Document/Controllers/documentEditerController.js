@@ -2,22 +2,18 @@
     function ($scope, $routeParams, $q, documentFactory, documentElementFactory, documentElementService) {
 
         var documentId = $routeParams.documentId;
-        $scope.docElements = [];
         $scope.listElements = [];
 
         documentElementService.waitForLoad().then(function() {
-            $scope.listElements = documentElementService.getAllElements();
+            $scope.listElements = documentElementService.getAllTemplateElements();
         });
 
         $q.all([documentFactory.getDocument(documentId), documentElementFactory.getDocumentElements(documentId)]).then(success, failGet);
     
         function success(res) {
             $scope.document = (res[0])[0];
-            $scope.docElements = res[1];
             documentElementService.setDropableElement();
-            angular.forEach($scope.docElements, function(value, key) {
-                documentElementService.createElement(value);
-            });
+            documentElementService.setAllElements(res[1]);
         };
 
         function failGet() {
@@ -29,13 +25,18 @@
         };
         
         $scope.$on('dropNewElement', function (event, args) {
-
-            $q.all([documentElementFactory.createDocumentElement(documentId, args.newElement)]).then(function (res) {
-                $scope.docElements.push(res[0]);
-                documentElementService.createElement(res[0]);
+            $q.all([documentElementFactory.updateDocumentElement(documentId, args.newElement)]).then(function (res) {
+                documentElementService.AddElement(res[0]);
             }, failUpdate);
         });
         
+        $scope.$on('dropResizeElement', function (event, args) {
+            documentElementFactory.updateDocumentElement(documentId, args.newElement);
+        });
+
+        $scope.deleteElement = function(id) {
+            console.log(id);
+        };
 
 
     }]);

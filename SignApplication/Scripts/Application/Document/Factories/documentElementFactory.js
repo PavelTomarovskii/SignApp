@@ -14,7 +14,7 @@
             .catch(getFailed);
     };
     
-    factory.createDocumentElement = function (documentID, element) {
+    factory.updateDocumentElement = function (documentID, element) {
         element.DocumentID = documentID;
         
         var req = {

@@ -94,3 +94,7 @@
     text-transform: lowercase;
     margin: auto;
 }
+
+.elem-del {
+    cursor: pointer !important;
+}

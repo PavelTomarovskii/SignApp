@@ -1,55 +1,11 @@
 ﻿documentModule.service('documentElementService', ['$log', '$q', '$http', '$rootScope', function ($log, $q, $http, $rootScope) {
 
     var elements,
+        docElements,
         self = this;
     var loading = $q.defer();
     
-    $http.get('documents/getTemplateElements').then(function (response) {
-        elements = response.data;
-        loading.resolve();
-    });
-
-    self.waitForLoad = function () {
-        return loading.promise;
-    };
-
-    self.getAllElements = function () {
-        return elements;
-    };
-
-    self.getElementByID = function (id) {
-        if (id) {
-            var ret;
-            function findElement(element, index, array) {
-                if (element.ID == id) {
-                    ret = element;
-                }
-            }
-            elements.forEach(findElement);
-            
-            return ret;
-        }
-    };
-
-    self.setDropableElement = function () {
-        $("#droppable").droppable({
-            drop: function (event, ui) {
-                
-                var id = ui.draggable[0].attributes["id"].value.replace(/temp_elem_/g, "");
-                var tempElement = self.getElementByID(id);
-                if (tempElement) {
-                    var element = self.cloneTemplateElement(tempElement);
-                    element = self.offsetPositionByElement(event, element, $('.page'));
-                    $rootScope.$broadcast('dropNewElement', { newElement: element });
-                } else {
-                    console.log(event);
-                    console.log(ui);
-                }
-            }
-        });
-    };
-
-    self.cloneTemplateElement = function(template) {
+    function cloneTemplateElement (template) {
         var element = {
             ID: -1,
             ContentID: template.ID,
@@ -63,36 +19,130 @@
         return element;
     };
 
-    self.offsetPositionByElement = function(event, element, byElement) {
+    function offsetPositionByElement (event, element, byElement) {
         var position = byElement.offset();
         element.Left = event.clientX - position.left;
         element.Top = event.clientY - position.top;
         return element;
     };
+    
+    $http.get('documents/getTemplateElements').then(function (response) {
+        elements = response.data;
+        loading.resolve();
+    });
+
+    self.waitForLoad = function () {
+        return loading.promise;
+    };
+
+    self.getAllTemplateElements = function () {
+        return elements;
+    };
+
+    self.getTemplateElementByID = function (id) {
+        if (id) {
+            var ret;
+            function findElement(element, index, array) {
+                if (element.ID == id) {
+                    ret = element;
+                }
+            }
+            elements.forEach(findElement);
+            return ret;
+        }
+    };
+    
+    self.getAllElements = function () {
+        return docElements;
+    };
+
+    self.getElementByID = function (id) {
+        if (id) {
+            var ret;
+            function findElement(element, index, array) {
+                if (element.ID == id) {
+                    ret = element;
+                }
+            }
+            docElements.forEach(findElement);
+            return ret;
+        }
+    };
+
+    self.setAllElements = function(elems) {
+        docElements = elems;
+        angular.forEach(docElements, function (value, key) {
+            self.createElement(value);
+        });
+    };
+
+    self.AddElement = function(elem) {
+        docElements.push(elem);
+        self.createElement(elem);
+    };
+
+    self.setDropableElement = function () {
+        $("#droppable").droppable({
+            drop: function (event, ui) {
+                
+                var id = ui.draggable[0].attributes["id"].value.replace(/temp_elem_/g, "");
+                var tempElement = self.getTemplateElementByID(id);
+                if (tempElement) {
+                    var element = cloneTemplateElement(tempElement);
+                    element = offsetPositionByElement(event, element, $('.page'));
+                    $rootScope.$broadcast('dropNewElement', { newElement: element });
+                } else {
+                    var id = ui.draggable[0].attributes["id"].value.replace(/elem_/g, "");
+                    var docElement = self.getElementByID(id);
+                    if (docElement) {
+                        self.updateElement(docElement, event);
+                    }
+                }
+            }
+        });
+    };
 
     self.createElement = function (element) {
-        $('.page').append($('<div/>', {
-            id: 'elem' + element.ID,
-            'class': 'doc-elem',
-            'html': '<span class="elem-text">' + element.Text + '</span>',
-            'style': 'top: ' + element.Top + 'px; left: ' + element.Left + 'px; z-index:' + element.Zindex + '; width:' + element.Width + 'px; height:' + element.Height + 'px;'
-        }));
-        var newElem = $('#elem' + element.ID);
+        $('.page')
+            .append($('<div/>', {
+                id: 'elem_' + element.ID,
+                'class': 'doc-elem',
+                //'html': '<span class="elem-text">' + element.Text + '</span>',
+                'style': 'top: ' + element.Top + 'px; left: ' + element.Left + 'px; z-index:' + element.Zindex + '; width:' + element.Width + 'px; height:' + element.Height + 'px;'
+            })
+            .append($('<span/>', {
+                'class': 'elem-text',
+                'html': element.Text
+            }))
+            .append($('<div/>', {
+                'class': 'ui-icon ui-icon-close elem-del',
+                'ng-click': 'deleteElement(' + element.ID + ')'
+            }))
+
+            );
+        var newElem = $('#elem_' + element.ID);
         
         newElem.resizable({
             containment: ".page",
             minHeight: 40,
             minWidth: 80,
             stop: function(event, ui) {
-                console.log(event);
-                console.log(ui);
+                var id = ui.element[0].attributes["id"].value.replace(/elem_/g, "");
+                var docElement = self.getElementByID(id);
+                if (docElement) {
+                    self.updateElement(docElement, event);
+                }
             }
         });
         newElem.draggable({ revert: "invalid" });
     };
 
-    self.updateElementPosition = function () {
-        
+    self.updateElement = function (element, event) {
+        var jqElem = $('#elem_' + element.ID);
+        element.Width = jqElem.width();
+        element.Height = jqElem.height();
+        element = offsetPositionByElement(event, element, $('.page'));
+        $rootScope.$broadcast('dropResizeElement', { newElement: element });
     };
 
 }]);

@@ -34,23 +34,18 @@ namespace SignApplication.Global.Repository.ContentTemplates
 
         public bool UpdateContentTemplate(ContentTemplate aContentTemplate)
         {
-            ContentTemplate conTemp = context.ContentTemplates.FirstOrDefault(x => x.ID == aContentTemplate.ID);
-            if (conTemp != null)
-            {
-                conTemp = aContentTemplate;
-            }
-            context.Entry(conTemp).State = System.Data.Entity.EntityState.Modified;
+            context.ContentTemplates.Attach(aContentTemplate);
+            var entry = context.Entry(aContentTemplate);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
 
         public bool DeleteContentTemplate(ContentTemplate aContentTemplate)
         {
-            ContentTemplate conTemp = context.ContentTemplates.FirstOrDefault(x => x.ID == aContentTemplate.ID);
-            if (conTemp != null)
-            {
-                conTemp.IsDelete = true;
-            }
-            context.Entry(conTemp).State = System.Data.Entity.EntityState.Modified;
+            aContentTemplate.IsDelete = true;
+            context.ContentTemplates.Attach(aContentTemplate);
+            var entry = context.Entry(aContentTemplate);
+            entry.State = System.Data.Entity.EntityState.Modified;
             return Convert.ToBoolean(context.SaveChanges());
         }
     }
