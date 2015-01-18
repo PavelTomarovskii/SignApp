@@ -18,6 +18,8 @@ namespace SignApplication.Global.Service.Documents
 {
     public class DocumentService : IDocumentService
     {
+        private readonly int DefaultZindex = 100;
+
         [Inject]
         public IDocumentRepository DocumentRepository { get; set; }
         [Inject]
@@ -77,6 +79,7 @@ namespace SignApplication.Global.Service.Documents
                         Width = element.Width,
                         Left = element.Left,
                         Top = element.Top,
+                        Zindex = element.Zindex,
                         IsRequired = element.IsRequired,
                         Text = element.Text
                     };
@@ -102,10 +105,51 @@ namespace SignApplication.Global.Service.Documents
 
         public ContentTemplateView UpdateDocumentElement(ContentTemplateView aElement)
         {
+            var elem = new ContentTemplate()
+            {
+                ID = aElement.ID,
+                ContentID = aElement.ContentID,
+                DocumentID = aElement.DocumentID,
+                Height = aElement.Height,
+                Width = aElement.Width,
+                Left = aElement.Left,
+                Top = aElement.Top,
+                Zindex = aElement.Zindex,
+                Text = aElement.Text,
+                IsDelete = aElement.IsDelete,
+                IsRequired = aElement.IsRequired
+            };
+            if (elem.ID < 0)
+            {
+                var zindexes = from item in ContentTemplateRepository.ContentTemplates
+                    where !item.IsDelete && item.DocumentID == elem.DocumentID
+                    select item.Zindex;
 
+                int zIndex = DefaultZindex;
+                if (zindexes.Any())
+                    zIndex = zindexes.Max() + 1;
+                elem.Zindex = zIndex;
 
+                ContentTemplateRepository.CreateContentTemplate(elem);
+            }
+            else
+            {
+                ContentTemplateRepository.UpdateContentTemplate(elem);
+            }
+            return new ContentTemplateView()
+            {
+                ID = elem.ID,
+                DocumentID = elem.DocumentID,
+                ContentID = elem.ContentID,
 
-            return null;
+                Height = elem.Height,
+                Width = elem.Width,
+                Left = elem.Left,
+                Top = elem.Top,
+                Zindex = elem.Zindex,
+                IsRequired = elem.IsRequired,
+                Text = elem.Text
+            };
         }
     }
 }

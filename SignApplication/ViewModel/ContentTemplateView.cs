@@ -28,5 +28,7 @@ namespace SignApplication.ViewModel
         public string Text { get; set; }
 
         public bool IsRequired { get; set; }
+
+        public bool IsDelete { get; set; }
     }
 }

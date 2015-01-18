@@ -13,7 +13,11 @@
     
         function success(res) {
             $scope.document = (res[0])[0];
+            $scope.docElements = res[1];
             documentElementService.setDropableElement();
+            angular.forEach($scope.docElements, function(value, key) {
+                documentElementService.createElement(value);
+            });
         };
 
         function failGet() {
@@ -27,9 +31,8 @@
         $scope.$on('dropNewElement', function (event, args) {
 
             $q.all([documentElementFactory.createDocumentElement(documentId, args.newElement)]).then(function (res) {
-                console.log(res);
-                //$scope.docElements.push(args.newElement);
-                documentElementService.createElement(args.newElement, $scope.docElements.length);
+                $scope.docElements.push(res[0]);
+                documentElementService.createElement(res[0]);
             }, failUpdate);
         });
         

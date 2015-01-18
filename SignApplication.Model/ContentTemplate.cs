@@ -29,7 +29,7 @@ namespace SignApplication.Model
         [Column("ContentID", TypeName = "int")]
         public int ContentID { get; set; }
 
-        public virtual SystemListValue Content { get; set; }
+        public virtual ContentType Content { get; set; }
 
         [Column("Left", TypeName = "float")]
         public float Left { get; set; }

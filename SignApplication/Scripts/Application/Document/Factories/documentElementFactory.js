@@ -15,18 +15,12 @@
     };
     
     factory.createDocumentElement = function (documentID, element) {
-
+        element.DocumentID = documentID;
+        
         var req = {
             method: 'POST',
             url: 'documents/updateDocumentElement',
-            data: {
-                DocumentID: documentID,
-                ContentID: element.ID,
-                Left: element.Left,
-                Top: element.Top,
-                Width: element.DefaultWidth,
-                Height: element.DefaultHeight
-            }
+            data: element
         };
 
         return $http(req)

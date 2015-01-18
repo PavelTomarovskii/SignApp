@@ -1,9 +1,7 @@
 ﻿documentModule.service('documentElementService', ['$log', '$q', '$http', '$rootScope', function ($log, $q, $http, $rootScope) {
 
     var elements,
-        docElements,
-        self = this,
-        dropElement = $('.page');
+        self = this;
     var loading = $q.defer();
     
     $http.get('documents/getTemplateElements').then(function (response) {
@@ -38,15 +36,31 @@
             drop: function (event, ui) {
                 
                 var id = ui.draggable[0].attributes["id"].value.replace(/temp_elem_/g, "");
-                var element = self.getElementByID(id);
-                if (element) {
-                    element = self.offsetPositionByElement(event, element, dropElement);
+                var tempElement = self.getElementByID(id);
+                if (tempElement) {
+                    var element = self.cloneTemplateElement(tempElement);
+                    element = self.offsetPositionByElement(event, element, $('.page'));
                     $rootScope.$broadcast('dropNewElement', { newElement: element });
                 } else {
-                    
+                    console.log(event);
+                    console.log(ui);
                 }
             }
         });
+    };
+
+    self.cloneTemplateElement = function(template) {
+        var element = {
+            ID: -1,
+            ContentID: template.ID,
+            Width: template.DefaultWidth,
+            Height: template.DefaultHeight,
+            Text: template.DefaultValue,
+            IsDelete: false,
+            IsRequired: true
+        };
+
+        return element;
     };
 
     self.offsetPositionByElement = function(event, element, byElement) {
@@ -56,17 +70,24 @@
         return element;
     };
 
-    self.createElement = function (element, id) {
-        element.Zindex = 100 + id;
-        dropElement.append($('<div/>', {
-            id: 'elem' + id,
+    self.createElement = function (element) {
+        $('.page').append($('<div/>', {
+            id: 'elem' + element.ID,
             'class': 'doc-elem',
-            'html': '<span class="elem-text">' + element.DefaultValue + '</span>',
-            'style': 'top: ' + element.Top + 'px; left: ' + element.Left + 'px; z-index:' + element.Zindex + '; width:' + element.DefaultWidth + 'px; height:' + element.DefaultHeight + 'px;'
+            'html': '<span class="elem-text">' + element.Text + '</span>',
+            'style': 'top: ' + element.Top + 'px; left: ' + element.Left + 'px; z-index:' + element.Zindex + '; width:' + element.Width + 'px; height:' + element.Height + 'px;'
         }));
-        var newElem = $('#elem' + id);
+        var newElem = $('#elem' + element.ID);
         
-        newElem.resizable({ containment: ".page", minHeight: 40, minWidth: 80 });
+        newElem.resizable({
+            containment: ".page",
+            minHeight: 40,
+            minWidth: 80,
+            stop: function(event, ui) {
+                console.log(event);
+                console.log(ui);
+            }
+        });
         newElem.draggable({ revert: "invalid" });
     };
 
