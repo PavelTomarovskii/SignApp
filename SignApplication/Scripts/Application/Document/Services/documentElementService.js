@@ -21,6 +21,8 @@
 
     function offsetPositionByElement (event, element, byElement) {
         var position = byElement.offset();
+        console.log(position);
+        console.log(event);
         element.Left = event.clientX - position.left;
         element.Top = event.clientY - position.top;
         return element;
@@ -90,6 +92,8 @@
                 if (tempElement) {
                     var element = cloneTemplateElement(tempElement);
                     element = offsetPositionByElement(event, element, $('.page'));
+                    console.log(element);
+
                     $rootScope.$broadcast('dropNewElement', { newElement: element });
                 } else {
                     var id = ui.draggable[0].attributes["id"].value.replace(/elem_/g, "");

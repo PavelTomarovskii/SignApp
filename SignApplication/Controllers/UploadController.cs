@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Ninject;
 using SignApplication.Controllers.Common;
 using SignApplication.Global.Authentication;
+using SignApplication.Global.Constants;
 using SignApplication.Global.Repository.Documents;
 using SignApplication.Global.Repository.UploadedFiles;
 using SignApplication.Model;
@@ -20,17 +24,17 @@ namespace SignApplication.Controllers
     public class UploadController : BaseController
     {
         [Inject]
-        public IUploadedFileRepository UploadedFileRepository { get; set; }
+        public IDocumentRepository DocumentRepository { get; set; }
 
         [Inject]
-        public IDocumentRepository DocumentRepository { get; set; }
+        public IFileService FileService { get; set; }
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Upload()
+        public async Task<ActionResult> Upload()
         {
             var r = new List<ViewDataUploadFilesResult>();
 
@@ -41,7 +45,7 @@ namespace SignApplication.Controllers
 
                 if (string.IsNullOrEmpty(headers["X-File-Name"]))
                 {
-                    UploadWholeFile(Request, statuses);
+                    await UploadWholeFile(Request, statuses);
                 }
                 else
                 {
@@ -101,41 +105,27 @@ namespace SignApplication.Controllers
             });
         }
 
-        private void UploadWholeFile(HttpRequestBase request, List<ViewDataUploadFilesResult> statuses)
+        private async Task UploadWholeFile(HttpRequestBase request, List<ViewDataUploadFilesResult> statuses)
         {
             for (int i = 0; i < request.Files.Count; i++)
             {
                 var file = request.Files[i];
 
-                var filename = string.Format("{0}.{1}", Guid.NewGuid().ToString().Replace("-", "_"), GetExtention(file.ContentType));
-                var dir = Path.Combine(StorageRoot, CurrentUser.ID.ToString());
-                var fullPath = Path.Combine(dir, filename);
-
-                var dr = new DirectoryInfo(dir);
-                dr.Create();
-                file.SaveAs(fullPath);
-
-                var upfile = new UploadedFile()
-                {
-                    UserID = CurrentUser.ID,
-                    FilePath = filename,
-                    ContentType = file.ContentType,
-                    GroupID = (int)enumUploadedFilesGroup.Document,
-                    IsDelete = false,
-                    UploadedDate = DateTime.Now
-                };
-                UploadedFileRepository.CreateUploadedFile(upfile);
-
                 var document = new Document()
                 {
                     Name = file.FileName,
-                    UploadedFileID = upfile.ID,
                     IsDelete = false,
                     UploadDate = DateTime.Now,
                     UserID = CurrentUser.ID,
                     StateID = (int)enumDocumentState.Upload
                 };
                 DocumentRepository.CreateDocument(document);
+
+                await FileService.CreateDocumentFolders(StorageRoot, CurrentUser.ID, document.ID);
+                await FileService.SaveFile(file, enumUploadedFilesGroup.Document, StorageRoot, CurrentUser.ID, document.ID);
+
+
+                //ConvertFileToPNG(@"C:\Users\Pavel\Desktop\test\test.pdf");
 
                 statuses.Add(new ViewDataUploadFilesResult()
                 {
@@ -144,7 +134,7 @@ namespace SignApplication.Controllers
                     type = file.ContentType,
                     url = "/Upload/Download/" + file.FileName,
                     delete_url = "/Upload/Delete/" + file.FileName,
-                    thumbnail_url = @"data:image/png;base64," + EncodeFile(fullPath),
+                    //thumbnail_url = @"data:image/png;base64," + EncodeFile(fullPath),
                     delete_type = "GET",
                 });
             }
@@ -153,24 +143,6 @@ namespace SignApplication.Controllers
         private string EncodeFile(string fileName)
         {
             return Convert.ToBase64String(System.IO.File.ReadAllBytes(fileName));
-        }
-
-        private string StorageRoot
-        {
-            get { return Path.Combine(Server.MapPath(DocFilePath)); }
-        }
-
-        private string GetExtention(string aContenType)
-        {
-            switch (aContenType)
-            {
-                case "image/jpeg":
-                    return "jpg";
-                case "application/pdf":
-                    return "pdf";
-                default:
-                    return "none";
-            }
         }
 
     }

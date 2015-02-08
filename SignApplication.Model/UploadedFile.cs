@@ -25,15 +25,27 @@ namespace SignApplication.Model
 
         public virtual SystemListValue Group { get; set; }
 
+        [ForeignKey("Document")]
+        [Column("DocumentID", TypeName = "int")]
+        public int DocumentID { get; set; }
+
+        public virtual Document Document { get; set; }
+
+        [Column("PageCount", TypeName = "int")]
+        public int PageCount { get; set; }
+
+        [Column("Page", TypeName = "int")]
+        public int Page { get; set; }
+
         [Column("UploadedDate", TypeName = "datetime")]
         public DateTime? UploadedDate { get; set; }
 
         [Column("Del_fl", TypeName = "bit")]
         public bool IsDelete { get; set; }
 
-        [Column("FilePath", TypeName = "varchar")]
+        [Column("FileName", TypeName = "varchar")]
         [MaxLength(250)]
-        public string FilePath { get; set; }
+        public string FileName { get; set; }
 
         [Column("ContentType", TypeName = "varchar")]
         [MaxLength(500)]

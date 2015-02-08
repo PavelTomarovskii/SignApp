@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.IO;
 using System.Web.Mvc;
 using Ninject;
 using SignApplication.Global.Authentication;
@@ -35,6 +36,11 @@ namespace SignApplication.Controllers.Common
             {
                 return ConfigurationManager.AppSettings["DocFilePath"];
             }
+        }
+
+        public string StorageRoot
+        {
+            get { return Path.Combine(Server.MapPath(DocFilePath)); }
         }
 
     }

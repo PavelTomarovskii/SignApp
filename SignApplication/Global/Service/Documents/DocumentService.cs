@@ -49,7 +49,7 @@ namespace SignApplication.Global.Service.Documents
         {
             var ret = from document in DocumentRepository.Documents
                     join state in SystemListValueRepository.SystemListValues on document.StateID equals state.ID
-                    join documentFile in UploadedFileRepository.UploadedFiles on document.UploadedFileID equals documentFile.ID
+                    join documentFile in UploadedFileRepository.UploadedFiles on document.ID equals documentFile.DocumentID
                     where document.ID == aDocumentID && document.UserID == aCurrentUser.ID && documentFile.GroupID == (int)enumUploadedFilesGroup.Document
                     select new DocumentView()
                     {
@@ -58,8 +58,8 @@ namespace SignApplication.Global.Service.Documents
                         IsDelete = document.IsDelete,
                         StateID = document.StateID,
                         State = state.Title,
-                        UploadedFileID = document.UploadedFileID,
-                        DocFilePath = aDocFilePath + documentFile.UserID.ToString() + "/" + documentFile.FilePath
+                        UploadedFileID = documentFile.ID,
+                        DocFilePath = aDocFilePath + documentFile.UserID.ToString() + "/" + documentFile.FileName
                     };
             return ret;
         }

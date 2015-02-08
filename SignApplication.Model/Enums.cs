@@ -32,7 +32,11 @@ namespace SignApplication.Model
 
     public enum enumUploadedFilesGroup
     {
-        Document = 13
+        Document = 13,
+        LargePage = 14,
+        SmallPage = 15,
+        SignPic = 16,
+        ResultDoc = 17
     }
 
     public enum enumContentType

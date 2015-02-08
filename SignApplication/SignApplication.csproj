@@ -157,6 +157,8 @@
     <Compile Include="Global\Authentication\IUserProvider.cs" />
     <Compile Include="Global\Authentication\UserIdentity.cs" />
     <Compile Include="Global\Authentication\UserProvider.cs" />
+    <Compile Include="Global\Service\File\FileService.cs" />
+    <Compile Include="Global\Service\File\IFileService.cs" />
     <Compile Include="Global\Mappers\CommonMapper.cs" />
     <Compile Include="Global\Mappers\IMapper.cs" />
     <Compile Include="Global\Repository\ContentTemplates\ContentTemplateRepository.cs" />
@@ -178,8 +180,12 @@
     <Compile Include="Global\Repository\UploadedFiles\IUploadedFileRepository.cs" />
     <Compile Include="Global\Repository\UploadedFiles\UploadedFileRepository.cs" />
     <Compile Include="Global\Repository\Users\IUserRepository.cs" />
+    <Compile Include="Global\Service\Convert\ConvertService.cs" />
+    <Compile Include="Global\Service\Convert\IConvertService.cs" />
     <Compile Include="Global\Service\Documents\DocumentService.cs" />
     <Compile Include="Global\Service\Documents\IDocumentService.cs" />
+    <Compile Include="Global\Service\Email\Email.cs" />
+    <Compile Include="Global\Service\Email\IEmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global\Repository\Users\UserRepository.cs" />
     <Compile Include="ViewModel\ContentTemplateView.cs" />

@@ -1,5 +1,6 @@
 using System.Configuration;
 using SignApplication.Global.Authentication;
+using SignApplication.Global.Constants;
 using SignApplication.Global.Mappers;
 using SignApplication.Global.Repository;
 using SignApplication.Global.Repository.ContentTemplates;
@@ -11,7 +12,9 @@ using SignApplication.Global.Repository.SystemLists;
 using SignApplication.Global.Repository.SystemListValues;
 using SignApplication.Global.Repository.UploadedFiles;
 using SignApplication.Global.Repository.Users;
+using SignApplication.Global.Service.Convert;
 using SignApplication.Global.Service.Documents;
+using SignApplication.Global.Service.File;
 using SignApplication.Model.DBConnection;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SignApplication.App_Start.NinjectWebCommon), "Start")]
@@ -80,6 +83,9 @@ namespace SignApplication.App_Start
             kernel.Bind<SignAppContext>().ToMethod(c => new SignAppContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)).InRequestScope();
             kernel.Bind<IAuthentication>().To<CustomAuthentication>().InRequestScope();
             kernel.Bind<IMapper>().To<CommonMapper>().InSingletonScope();
+
+            kernel.Bind<IFileService>().To<FileService>().InRequestScope();
+            kernel.Bind<IConvertService>().To<ConvertService>().InRequestScope();
 
             kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
             kernel.Bind<IContentTemplateRepository>().To<ContentTemplateRepository>().InRequestScope();

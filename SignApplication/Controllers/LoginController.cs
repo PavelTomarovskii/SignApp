@@ -7,6 +7,7 @@ using Ninject;
 using SignApplication.Controllers.Common;
 using SignApplication.Global.Authentication;
 using SignApplication.Global.Repository.Users;
+using SignApplication.Global.Service.Email;
 using SignApplication.Model;
 
 namespace SignApplication.Controllers
@@ -30,6 +31,8 @@ namespace SignApplication.Controllers
 
             if (user != null)
             {
+                //Email sent = new Email();
+                //sent.SendEmail(user, "");
                 return RedirectToAction("Index", "Home");
             }
             return RedirectToAction("Index", "Login");

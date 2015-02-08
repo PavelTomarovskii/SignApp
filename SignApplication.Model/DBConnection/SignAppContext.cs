@@ -13,11 +13,11 @@ namespace SignApplication.Model.DBConnection
         public SignAppContext(string aConnectionString)
             : base(aConnectionString)
         {
-            Database.SetInitializer(new SignDBInitializer());
+            //Database.SetInitializer(new SignDBInitializer());
             //Configuration.LazyLoadingEnabled = true;
 
             //Disable initializer
-            //Database.SetInitializer<SignAppContext>(null);
+            Database.SetInitializer<SignAppContext>(null);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

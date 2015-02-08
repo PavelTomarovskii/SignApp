@@ -42,10 +42,5 @@ namespace SignApplication.Model
 
         public virtual SystemListValue State { get; set; }
 
-        [ForeignKey("UploadedFile")]
-        [Column("UploadedFileID", TypeName = "int")]
-        public int UploadedFileID { get; set; }
-
-        public virtual UploadedFile UploadedFile { get; set; }
     }
 }
