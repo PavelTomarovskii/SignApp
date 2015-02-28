@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Ninject;
 using SignApplication.Controllers.Common;
 using SignApplication.Global.Authentication;
+using SignApplication.Global.Constants;
 using SignApplication.Global.Mappers;
 using SignApplication.Global.Repository.Documents;
 using SignApplication.Global.Repository.SystemListValues;
@@ -30,6 +31,9 @@ namespace SignApplication.Controllers
         [Inject]
         public IDocumentService DocumentService { get; set; }
 
+        [Inject]
+        public IFileService FileService { get; set; }
+
         public ActionResult List()
         {
             return View();
@@ -42,21 +46,23 @@ namespace SignApplication.Controllers
 
         public string GetDocuments()
         {
-            var docs = DocumentService.GetDocuments(CurrentUser);
+            var docs = DocumentService.GetDocuments(CurrentUser, DocFilePath);
             var serializedObject = JsonConvert.SerializeObject(docs);
             return serializedObject;
         }
 
-        public string GetDocument(int documentID)
+        [HttpGet]
+        public string GetDocument(int documentID, int page)
         {
-            var doc = DocumentService.GetDocument(CurrentUser, documentID, DocFilePath);
+            var doc = DocumentService.GetDocument(CurrentUser, documentID, DocFilePath, page);
             var serializedObject = JsonConvert.SerializeObject(doc);
             return serializedObject;
         }
 
-        public string GetDocumentElements(int documentID)
+        [HttpGet]
+        public string GetDocumentElements(int documentID, int page)
         {
-            var doc = DocumentService.GetDocumentElements(documentID);
+            var doc = DocumentService.GetDocumentElements(documentID, page);
             var serializedObject = JsonConvert.SerializeObject(doc);
             return serializedObject;
         }
@@ -74,6 +80,12 @@ namespace SignApplication.Controllers
             var doc = DocumentService.UpdateDocumentElement(element);
             var serializedObject = JsonConvert.SerializeObject(doc);
             return serializedObject;
+        }
+
+        [HttpPost]
+        public void UpdateDocument(DocumentView document)
+        {
+            DocumentService.UpdateDocument(document);
         }
 
     }

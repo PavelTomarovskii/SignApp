@@ -33,6 +33,9 @@ namespace SignApplication.Model
         [Column("UploadDate", TypeName = "datetime")]
         public DateTime? UploadDate { set; get; }
 
+        [Column("PageCount", TypeName = "int")]
+        public int PageCount { get; set; }
+
         [Column("Del_fl", TypeName = "bit")]
         public bool IsDelete { set; get; }
 

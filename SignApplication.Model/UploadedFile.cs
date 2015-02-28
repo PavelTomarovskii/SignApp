@@ -31,9 +31,6 @@ namespace SignApplication.Model
 
         public virtual Document Document { get; set; }
 
-        [Column("PageCount", TypeName = "int")]
-        public int PageCount { get; set; }
-
         [Column("Page", TypeName = "int")]
         public int Page { get; set; }
 

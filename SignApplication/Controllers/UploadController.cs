@@ -122,8 +122,10 @@ namespace SignApplication.Controllers
                 DocumentRepository.CreateDocument(document);
 
                 await FileService.CreateDocumentFolders(StorageRoot, CurrentUser.ID, document.ID);
-                await FileService.SaveFile(file, enumUploadedFilesGroup.Document, StorageRoot, CurrentUser.ID, document.ID);
+                Task<int> count = FileService.SaveFile(file, enumUploadedFilesGroup.Document, StorageRoot, CurrentUser.ID, document.ID);
 
+                document.PageCount = await count;
+                DocumentRepository.UpdateDocument(document);
 
                 //ConvertFileToPNG(@"C:\Users\Pavel\Desktop\test\test.pdf");
 

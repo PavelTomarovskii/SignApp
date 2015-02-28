@@ -29,6 +29,9 @@ namespace SignApplication.Model
         [Column("ContentID", TypeName = "int")]
         public int ContentID { get; set; }
 
+        [Column("Page", TypeName = "int")]
+        public int Page { get; set; }
+
         public virtual ContentType Content { get; set; }
 
         [Column("Left", TypeName = "float")]
