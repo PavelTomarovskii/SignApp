@@ -16,11 +16,23 @@ namespace SignApplication.ViewModel
 
         public int StateID { set; get; }
 
+        public bool IsReadyToSend { set; get; }
+
         public string State { get; set; }
 
         public int UploadedFileID { get; set; }
 
         public string DocFilePath { get; set; }
+
+        public int PageCount { get; set; }
+
+        public int Page { get; set; }
+
+        public DateTime? UploadDate { get; set; }
+
+        public string FileName { get; set; }
+
+        public int UserID { get; set; }
 
     }
 }

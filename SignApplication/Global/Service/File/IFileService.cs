@@ -17,7 +17,7 @@ namespace SignApplication.Global.Constants
         string ResultFilePath { get; }
 
         Task CreateDocumentFolders(string aRoot, int aUserID, int aDocumentID);
-        Task SaveFile(HttpPostedFileBase file, enumUploadedFilesGroup aFileGroup, string aRoot, int aUserID, int aDocumentID);
+        Task<int> SaveFile(HttpPostedFileBase file, enumUploadedFilesGroup aFileGroup, string aRoot, int aUserID, int aDocumentID);
 
         string GetNewFileName(string aContentType);
         string GetFilesDirectory(enumUploadedFilesGroup aFileGroup, string aRoot, int aUserID, int aDocumentID);

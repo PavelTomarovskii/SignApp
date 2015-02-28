@@ -7,17 +7,32 @@
             .catch(getDocumentFailed);
     };
     
-    factory.getDocument = function (id) {
+    factory.getDocument = function (id, page) {
 
         var req = {
             method: 'GET',
             url: 'documents/getDocument',
-            params: { documentID: id }
+            params: {
+                documentID: id,
+                page: page
+            }
         };
 
         return $http(req)
             .then(getDocumentsComplete)
             .catch(getDocumentFailed);
+    };
+
+    factory.saveDocument = function(document) {
+        var req = {
+            method: 'POST',
+            url: 'documents/updateDocument',
+            data: document
+        };
+
+        return $http(req)
+            .succes(updateDocumentSucces)
+            .error(updateDocumentError);
     };
 
     function getDocumentsComplete(response) {
@@ -26,6 +41,14 @@
     
     function getDocumentFailed(error) {
         $log.error('[documentFactory] getDocument(s) Failed' + error.data);
+    }
+
+    function updateDocumentSucces() {
+
+    }
+
+    function updateDocumentError() {
+        $log.error('[documentFactory] updateDocument Failed' + error.data);
     }
 
     return factory;

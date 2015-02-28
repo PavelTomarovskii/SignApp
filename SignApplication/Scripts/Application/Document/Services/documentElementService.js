@@ -2,6 +2,7 @@
 
     var elements,
         docElements,
+        isHasSign = false,
         self = this;
     var loading = $q.defer();
     
@@ -58,6 +59,10 @@
         return docElements;
     };
 
+    self.isHasSignElement = function() {
+        return isHasSign;
+    };
+
     self.getElementByID = function (id) {
         if (id) {
             var ret;
@@ -107,6 +112,10 @@
     };
 
     self.createElement = function (element) {
+        if (element.ContentID === 1) {
+            isHasSign = true;
+        }
+
         $('.page')
             .append($('<div/>', {
                 id: 'elem_' + element.ID,
@@ -139,6 +148,10 @@
             }
         });
         newElem.draggable({ revert: "invalid" });
+    };
+
+    self.clearAllElements = function() {
+        $('[id^=elem_]').remove();
     };
 
     self.updateElement = function (element, event) {

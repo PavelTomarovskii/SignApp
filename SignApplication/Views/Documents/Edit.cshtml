@@ -1,4 +1,10 @@
-﻿<div class="row">
+﻿<div class="row" style="text-align: center;">
+    <pagination total-items="totalPages" items-per-page="1" ng-model="currentPage" max-size="maxSize" 
+                class="pagination-sm" boundary-links="true" rotate="false" ng-change="pageChanged()"
+                previous-text="Предыдущая страница" next-text="Следующая страница" first-text="Первая" last-text="Последняя">
+    </pagination>
+</div>
+<div class="row">
     <div class="col-md-8">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -17,16 +23,37 @@
                 <tab-heading>
                     <i class="glyphicon glyphicon-wrench"></i> Компоненты
                 </tab-heading>
-                <div class="tab-content">
+                <div class="tab">
                     <document-element ng-repeat="elem in listElements" options="elem"></document-element>
                 </div>
             </tab>
             <tab>
                 <tab-heading>
+                    <i class="glyphicon glyphicon-info-sign"></i> Параметры
+                </tab-heading>
+                dsfsfds
+            </tab>
+            <tab>
+                <tab-heading>
                     <i class="glyphicon glyphicon-info-sign"></i> Опции
                 </tab-heading>
-                <div class="tab-content">
-                    
+                <div class="content tab">
+                    <div class="line">
+                        Название документа:
+                    </div>
+                    <div class="line">
+                        <input id="txtName" type="text" class="form-control" ng-model="document.Name"/> 
+                    </div>
+                    <div class="line">
+                        <button type="button" class="btn btn-primary btn-sm" ng-model="document.IsReadyToSend" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false"
+                            ng-disabled="!isHasSignElement()">
+                            <i class="glyphicon glyphicon-ok" ng-show="document.IsReadyToSend"></i> Документ готов к отправке
+                        </button>
+                    </div>
+                    <hr/>
+                    <div class="line pull-right">
+                        <input type="button" class="btn btn-success btn-sm" value="Сохранить" ng-click="saveDocument()"/>
+                    </div>
                 </div>
             </tab>
         </tabset>

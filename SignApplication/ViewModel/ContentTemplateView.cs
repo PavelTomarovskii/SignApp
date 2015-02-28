@@ -13,6 +13,8 @@ namespace SignApplication.ViewModel
 
         public int ContentID { get; set; }
 
+        public int Page { get; set; }
+
         public string ContentType { get; set; }
 
         public float Left { get; set; }

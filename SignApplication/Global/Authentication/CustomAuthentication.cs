@@ -46,7 +46,7 @@ namespace SignApplication.Global.Authentication
                   1,
                   userName,
                   DateTime.Now,
-                  DateTime.Now.Add(FormsAuthentication.Timeout),
+                  DateTime.Now.AddDays(1),
                   isPersistent,
                   string.Empty,
                   FormsAuthentication.FormsCookiePath);

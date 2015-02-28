@@ -1,12 +1,15 @@
 ﻿var documentElementFactory = function documentElementFactory($http, $log) {
     var factory = {};
 
-    factory.getDocumentElements = function (id) {
+    factory.getDocumentElements = function (id, page) {
 
         var req = {
             method: 'GET',
             url: 'documents/getDocumentElements',
-            params: { documentID: id }
+            params: {
+                documentID: id,
+                page: page
+            }
         };
 
         return $http(req)

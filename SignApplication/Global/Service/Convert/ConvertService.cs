@@ -18,8 +18,9 @@ namespace SignApplication.Global.Service.Convert
 
         public async Task<int> ConvertPDFtoPNG(int aUserID, int aDocumentID, string aFilePath, string aLargePath, string aSmallPath)
         {
-            string guid = string.Format("{0}.png", Guid.NewGuid().ToString().Replace("-", "_"));
-            await CreateFiles(aFilePath, guid, aLargePath, true);
+            string guid = Guid.NewGuid().ToString().Replace("-", "_");
+            string filename = string.Format("{0}.png", guid);
+            await CreateFiles(aFilePath, filename, aSmallPath, false);
 
             var dr = new DirectoryInfo(aSmallPath);
 
@@ -29,7 +30,7 @@ namespace SignApplication.Global.Service.Convert
                 {
                     UserID = aUserID,
                     FileName = file.Name,
-                    // Page = System.Convert.ToInt32(file.Name.Replace(guid, "").Replace(".png", "").Replace("-", "")),
+                    Page = System.Convert.ToInt32(file.Name.Replace(guid, "").Replace(".png", "").Replace("-", "")) + 1,
                     ContentType = "image/png",
                     GroupID = (int) enumUploadedFilesGroup.LargePage,
                     DocumentID = aDocumentID,
@@ -42,7 +43,7 @@ namespace SignApplication.Global.Service.Convert
                 {
                     UserID = aUserID,
                     FileName = file.Name,
-                    // Page = System.Convert.ToInt32(file.Name.Replace(guid, "").Replace(".png", "").Replace("-", "")),
+                    Page = System.Convert.ToInt32(file.Name.Replace(guid, "").Replace(".png", "").Replace("-", "")) + 1,
                     ContentType = "image/png",
                     GroupID = (int) enumUploadedFilesGroup.SmallPage,
                     DocumentID = aDocumentID,
@@ -52,7 +53,7 @@ namespace SignApplication.Global.Service.Convert
                 UploadedFileRepository.CreateUploadedFile(upfile);
             }
 
-            int z = await CreateFiles(aFilePath, guid, aSmallPath, false);
+            await CreateFiles(aFilePath, filename, aLargePath, true);
             return dr.GetFiles().Count();
         }
 
@@ -81,7 +82,7 @@ namespace SignApplication.Global.Service.Convert
                 var proc = new Process();
                 proc.StartInfo = procStartInfo;
                 proc.Start();
-
+                proc.WaitForExit();
                 return 0;
             });
 

@@ -71,11 +71,11 @@
     border-bottom-color: transparent;
 }
 
-.tab-content {
+/*.tab-content {
     border: 1px solid #ddd;
     border-top: none;
-    /*background-color: #f8f8f8;*/
-}
+    background-color: #f8f8f8;
+}*/
 
 .doc-elem {
     position: absolute !important;
@@ -97,4 +97,16 @@
 
 .elem-del {
     cursor: pointer !important;
+}
+
+.docs-elem {
+     margin-bottom: 15px; padding: 10px;   
+}
+
+.tab {
+    margin-top: 15px;
+}
+
+.line {
+    margin-bottom: 10px;
 }

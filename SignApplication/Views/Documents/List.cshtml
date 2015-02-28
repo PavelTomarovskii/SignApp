@@ -1,14 +1,54 @@
 ﻿<h1>Список документов</h1>
 
-<div class="row" ng-controller="documentsController">
-    <div class="list-group">
-        <a href="#/document/{{doc.ID}}" class="list-group-item" ng-repeat="doc in documents">
-            <h4 class="list-group-item-heading">
-                {{doc.Name}}
-            </h4>
-            <p class="list-group-item-text">
-                Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-            </p>
-        </a>
+
+<div class="container" ng-controller="documentsController">
+    <div class="row docs-elem" ng-repeat-start="doc in documents">
+        <div class="col-md-2">
+            <img class="img-thumbnail" style="width: 150px;" src="{{doc.DocFilePath}}" alt="{{doc.Name}}"/>
+        </div>
+        <div class="col-md-5" ng-hide="isDeleteQuestion">
+            <div class="row">
+                <div class="col-md-10">
+                    <h5>
+                        <a href="#/document/{{doc.ID}}" >{{doc.Name}}</a>
+                    </h5>
+                </div>
+                <div class="col-md-2">
+                    <i class="pull-right glyphicon glyphicon-remove" ng-click="isDeleteQuestion = true"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <p>Статус: {{doc.State}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <p>Страниц в документе: {{doc.PageCount}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5" ng-show="isDeleteQuestion">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Вы действительно хотите удалить документ?</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="button" class="btn btn-success btn-sm" value="Нет" ng-click="isDeleteQuestion = false" />
+                    <input type="button" class="btn btn-danger btn-sm" value="Да" ng-click=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row docs-elem">
+        <div class="col-md-12">
+            <input ng-show="doc.StateID === 3 || doc.StateID === 4" type="button" class="btn btn-primary btn-sm" value="Отправить на подпись" ng-click="sendRequest(doc)"/>
+            <p ng-hide="doc.StateID === 3 || doc.StateID === 4" >Для отправки запроса на подпись Вам необходимо пометить документ, как <b>"Готов к отправке"</b></p>
+        </div>
+    </div>
+    <div class="row" ng-repeat-end>
+        <hr/>
     </div>
 </div>

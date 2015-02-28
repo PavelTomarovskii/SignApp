@@ -84,7 +84,7 @@ namespace SignApplication.Global.Service.File
             return Path.Combine(dir, folder);
         }
 
-        public async Task SaveFile(HttpPostedFileBase file, enumUploadedFilesGroup aFileGroup, string aRoot, int aUserID, int aDocumentID)
+        public async Task<int> SaveFile(HttpPostedFileBase file, enumUploadedFilesGroup aFileGroup, string aRoot, int aUserID, int aDocumentID)
         {
             var filename = GetNewFileName(file.ContentType);
             int count = 0;
@@ -93,7 +93,6 @@ namespace SignApplication.Global.Service.File
             {
                 UserID = aUserID,
                 FileName = filename,
-                PageCount = count,
                 ContentType = file.ContentType,
                 GroupID = (int)enumUploadedFilesGroup.Document,
                 DocumentID = aDocumentID,
@@ -118,10 +117,9 @@ namespace SignApplication.Global.Service.File
                         GetFilesDirectory(enumUploadedFilesGroup.LargePage, aRoot, aUserID, aDocumentID),
                         GetFilesDirectory(enumUploadedFilesGroup.SmallPage, aRoot, aUserID, aDocumentID));
 
-                    upfile.PageCount = count;
-                    UploadedFileRepository.UpdateUploadedFile(upfile);
                     break;
             }
+            return count;
         }
 
         private string GetExtention(string aContenType)
