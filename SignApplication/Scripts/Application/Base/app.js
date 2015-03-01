@@ -4,7 +4,8 @@ var signApp = angular.module('signApp', [
     'ngRoute',
     'signApp.infoModule',
     'signApp.menuModule',
-    'signApp.documentModule']);
+    'signApp.documentModule',
+    'request.module']);
 
 signApp.config(['$routeProvider',
   function ($routeProvider) {

@@ -31,7 +31,7 @@
         };
 
         return $http(req)
-            .succes(updateDocumentSucces)
+            .success(updateDocumentSuccess)
             .error(updateDocumentError);
     };
 
@@ -43,7 +43,7 @@
         $log.error('[documentFactory] getDocument(s) Failed' + error.data);
     }
 
-    function updateDocumentSucces() {
+    function updateDocumentSuccess() {
 
     }
 

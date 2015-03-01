@@ -1,4 +1,4 @@
-﻿documentModule.controller('documentsController', ['$scope', 'documentFactory', '$q', function ($scope, documentFactory, $q) {
+﻿documentModule.controller('documentsController', ['$scope', 'documentFactory', '$q', 'requestService', function ($scope, documentFactory, $q, requestService) {
 
     $scope.isDeleteQuestion = false;
 
@@ -6,7 +6,10 @@
 
     function success(res) {
         $scope.documents = res[0];
-        console.log($scope.documents);
+
+        angular.forEach($scope.documents, function(doc) {
+            $scope.resetPersons(doc);
+        });
     };
     
     function fail() {
@@ -14,7 +17,23 @@
     };
 
     $scope.sendRequest = function(document) {
-        console.log(document);
+        requestService.createRequest(document);
+    };
+
+    $scope.addPerson = function (document) {
+        document.persons.push({ id: document.persons.length + 1, email: '', name: '' });
+    };
+    
+    $scope.removePerson = function (document, id) {
+        document.persons.splice(id - 1, 1);
+        for (var i = 0; i < document.persons.length; i++) {
+            document.persons[i].id = i + 1;
+        }
+    };
+
+    $scope.resetPersons = function(document) {
+        document.persons = [];
+        $scope.addPerson(document);
     };
 
 }]);

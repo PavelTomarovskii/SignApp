@@ -6,7 +6,7 @@
         <div class="col-md-2">
             <img class="img-thumbnail" style="width: 150px;" src="{{doc.DocFilePath}}" alt="{{doc.Name}}"/>
         </div>
-        <div class="col-md-5" ng-hide="isDeleteQuestion">
+        <div class="col-md-5" ng-hide="isDeleteQuestion || isSendRequest">
             <div class="row">
                 <div class="col-md-10">
                     <h5>
@@ -27,6 +27,12 @@
                     <p>Страниц в документе: {{doc.PageCount}}</p>
                 </div>
             </div>
+            <div class="row">
+                 <div class="col-md-12">
+                    <input ng-show="doc.StateID === 3 || doc.StateID === 4" type="button" class="btn btn-primary btn-sm" value="Отправить на подпись" ng-click="isSendRequest = true"/>
+                    <p ng-hide="doc.StateID === 3 || doc.StateID === 4" >Для отправки запроса на подпись Вам необходимо пометить документ, как <b>"Готов к отправке"</b></p>
+                </div>
+            </div>
         </div>
         <div class="col-md-5" ng-show="isDeleteQuestion">
             <div class="row">
@@ -41,11 +47,34 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row docs-elem">
-        <div class="col-md-12">
-            <input ng-show="doc.StateID === 3 || doc.StateID === 4" type="button" class="btn btn-primary btn-sm" value="Отправить на подпись" ng-click="sendRequest(doc)"/>
-            <p ng-hide="doc.StateID === 3 || doc.StateID === 4" >Для отправки запроса на подпись Вам необходимо пометить документ, как <b>"Готов к отправке"</b></p>
+        <div class="col-md-5" ng-show="isSendRequest">
+            <form name="sendRequestFrom" role="form" novalidate>
+                <div class="row" ng-repeat="person in doc.persons" style="margin-bottom: 5px;">
+                    <div class="col-md-5">
+                        <input type="email" ng-model="person.email" class="form-control" placeholder="Start to type email" required />
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" ng-model="person.name" class="form-control" placeholder="Name" required />
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addPerson(doc)">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="removePerson(doc, person.id)">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: 10px;">
+                        <input type="button" class="btn btn-warning btn-sm" value="Сброс" ng-click="resetPersons(doc)" />
+                        <input type="button" class="btn btn-danger btn-sm" value="Отменить" ng-click="isSendRequest = false" />
+                        <input type="button" class="btn btn-success btn-sm" value="Отправить" ng-click="sendRequest(doc)" ng-disabled="sendRequestFrom.$invalid"/>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="row" ng-repeat-end>
