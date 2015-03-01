@@ -19,11 +19,11 @@ namespace SignApplication.Model
         [Column("ID", TypeName = "int")]
         public int ID { get; set; }
 
-        [ForeignKey("Sender")]
-        [Column("SenderID", TypeName = "int")]
-        public int SenderID { get; set; }
+        [ForeignKey("AddressesBook")]
+        [Column("AddressesBookID", TypeName = "int")]
+        public int AddressesBookID { get; set; }
 
-        public virtual User Sender { get; set; }
+        public virtual AddressesBook AddressesBook { get; set; }
 
         [Column("Date", TypeName = "datetime")]
         public DateTime? Date { get; set; }
@@ -39,12 +39,6 @@ namespace SignApplication.Model
         public int StatusID { get; set; }
 
         public virtual SystemListValue Status { get; set; }
-
-        [ForeignKey("UploadedFile")]
-        [Column("UploadedFileID", TypeName = "int")]
-        public int UploadedFileID { get; set; }
-
-        public virtual UploadedFile UploadedFile { get; set; }
 
         [Column("Del_fl", TypeName = "bit")]
         public bool IsDelete { get; set; }

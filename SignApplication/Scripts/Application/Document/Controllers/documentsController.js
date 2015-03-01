@@ -10,11 +10,13 @@
         angular.forEach($scope.documents, function(doc) {
             $scope.resetPersons(doc);
         });
-    };
+
+        console.log($scope.documents);
+    }
     
     function fail() {
         $scope.error = "Ошибка при загрузке документов!";
-    };
+    }
 
     $scope.sendRequest = function(document) {
         requestService.createRequest(document);

@@ -41,6 +41,9 @@ namespace SignApplication.Model
         [Column("Del_fl", TypeName = "bit")]
         public bool IsDelete { set; get; }
 
+        [Column("Fake_fl", TypeName = "bit")]
+        public bool IsFake { set; get; }
+
         public bool InRoles(string roles)
         {
             return true;

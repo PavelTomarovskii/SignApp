@@ -18,7 +18,5 @@ namespace SignApplication.ViewModel
         public int StatusID { get; set; }
 
         public string Status { get; set; }
-
-        public int UploadedFileID { get; set; }
     }
 }

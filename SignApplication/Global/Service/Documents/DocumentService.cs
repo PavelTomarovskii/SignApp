@@ -50,7 +50,8 @@ namespace SignApplication.Global.Service.Documents
                           State = state.Title,
                           UploadDate = document.UploadDate,
                           DocFilePath = aDocFilePath + "/" + aCurrentUser.ID.ToString() + "/" + document.ID + "/" + FileService.SmallFilesPath + "/" + documentFile.FileName,
-                          PageCount = document.PageCount
+                          PageCount = document.PageCount,
+                          UserID = document.UserID
                       };
             return ret;
         }

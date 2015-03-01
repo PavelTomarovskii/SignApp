@@ -146,6 +146,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,8 +185,10 @@
     <Compile Include="Global\Service\Convert\IConvertService.cs" />
     <Compile Include="Global\Service\Documents\DocumentService.cs" />
     <Compile Include="Global\Service\Documents\IDocumentService.cs" />
-    <Compile Include="Global\Service\Email\Email.cs" />
-    <Compile Include="Global\Service\Email\IEmail.cs" />
+    <Compile Include="Global\Service\Email\EmailService.cs" />
+    <Compile Include="Global\Service\Email\IEmailService.cs" />
+    <Compile Include="Global\Service\Request\IRequestService.cs" />
+    <Compile Include="Global\Service\Request\RequestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global\Repository\Users\UserRepository.cs" />
     <Compile Include="ViewModel\ContentTemplateView.cs" />
@@ -193,6 +196,7 @@
     <Compile Include="ViewModel\DocumentView.cs" />
     <Compile Include="ViewModel\RequestDocContentView.cs" />
     <Compile Include="ViewModel\RequestView.cs" />
+    <Compile Include="ViewModel\SendRequestView.cs" />
     <Compile Include="ViewModel\SystemListValueView.cs" />
     <Compile Include="ViewModel\SystemListView.cs" />
     <Compile Include="ViewModel\SystemLogView.cs" />
@@ -218,6 +222,7 @@
     <Content Include="Scripts\Application\Info\infoModule.js" />
     <Content Include="Scripts\Application\Menu\Controllers\menuController.js" />
     <Content Include="Scripts\Application\Menu\menuModule.js" />
+    <Content Include="Scripts\Application\Request\request.module.js" />
     <Content Include="Scripts\FileUpload\jquery.fileupload-angular.js" />
     <Content Include="Scripts\FileUpload\jquery.fileupload-audio.js" />
     <Content Include="Scripts\FileUpload\jquery.fileupload-image.js" />
@@ -766,6 +771,9 @@
     <Content Include="Themes\Default\alexander\alexander.eot" />
     <Content Include="Themes\Default\alexander\alexander.ttf" />
     <Content Include="Themes\Default\alexander\alexander.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Application\Request\Services\request.factory.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

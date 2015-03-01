@@ -8,7 +8,7 @@ using System.Net.Mail;
 
 namespace SignApplication.Global.Service.Email
 {
-    public class Email : IEmail
+    public class EmailService : IEmailService
     {
         public bool SendEmail(User aCurrentUser, string aTextMessage, string aDocFilePath = @"C:\Users\Pavel\Desktop\test.pdf")
         {

@@ -14,7 +14,9 @@ using SignApplication.Global.Repository.UploadedFiles;
 using SignApplication.Global.Repository.Users;
 using SignApplication.Global.Service.Convert;
 using SignApplication.Global.Service.Documents;
+using SignApplication.Global.Service.Email;
 using SignApplication.Global.Service.File;
+using SignApplication.Global.Service.Request;
 using SignApplication.Model.DBConnection;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SignApplication.App_Start.NinjectWebCommon), "Start")]
@@ -86,6 +88,7 @@ namespace SignApplication.App_Start
 
             kernel.Bind<IFileService>().To<FileService>().InRequestScope();
             kernel.Bind<IConvertService>().To<ConvertService>().InRequestScope();
+            kernel.Bind<IEmailService>().To<EmailService>().InRequestScope();
 
             kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
             kernel.Bind<IContentTemplateRepository>().To<ContentTemplateRepository>().InRequestScope();
@@ -98,6 +101,7 @@ namespace SignApplication.App_Start
             kernel.Bind<ISystemListValueRepository>().To<SystemListValueRepository>().InRequestScope();
 
             kernel.Bind<IDocumentService>().To<DocumentService>().InRequestScope();
+            kernel.Bind<IRequestService>().To<RequestService>().InRequestScope();
         }        
     }
 }

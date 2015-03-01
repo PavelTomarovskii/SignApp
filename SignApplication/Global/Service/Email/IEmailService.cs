@@ -7,7 +7,7 @@ using SignApplication.Model;
 
 namespace SignApplication.Global.Service.Email
 {
-    interface IEmail
+    public interface IEmailService
     {
         bool SendEmail(User aCurrentUser, string aTextMessage, string aDocFilePath = null);
     }
