@@ -3,9 +3,11 @@ using SignApplication.Global.Authentication;
 using SignApplication.Global.Constants;
 using SignApplication.Global.Mappers;
 using SignApplication.Global.Repository;
+using SignApplication.Global.Repository.AddressesBooks;
 using SignApplication.Global.Repository.ContentTemplates;
 using SignApplication.Global.Repository.ContentTypes;
 using SignApplication.Global.Repository.Documents;
+using SignApplication.Global.Repository.Email;
 using SignApplication.Global.Repository.RequestDocContents;
 using SignApplication.Global.Repository.Requests;
 using SignApplication.Global.Repository.SystemLists;
@@ -13,6 +15,7 @@ using SignApplication.Global.Repository.SystemListValues;
 using SignApplication.Global.Repository.UploadedFiles;
 using SignApplication.Global.Repository.Users;
 using SignApplication.Global.Service.Convert;
+using SignApplication.Global.Service.Crypto;
 using SignApplication.Global.Service.Documents;
 using SignApplication.Global.Service.Email;
 using SignApplication.Global.Service.File;
@@ -89,7 +92,11 @@ namespace SignApplication.App_Start
             kernel.Bind<IFileService>().To<FileService>().InRequestScope();
             kernel.Bind<IConvertService>().To<ConvertService>().InRequestScope();
             kernel.Bind<IEmailService>().To<EmailService>().InRequestScope();
+            kernel.Bind<IDocumentService>().To<DocumentService>().InRequestScope();
+            kernel.Bind<IRequestService>().To<RequestService>().InRequestScope();
+            kernel.Bind<ICryptoService>().To<CryptoService>().InRequestScope();
 
+            kernel.Bind<IAddressesBookRepository>().To<AddressesBookRepository>().InRequestScope();
             kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
             kernel.Bind<IContentTemplateRepository>().To<ContentTemplateRepository>().InRequestScope();
             kernel.Bind<IContentTypeRepository>().To<ContentTypeRepository>().InRequestScope();
@@ -99,9 +106,7 @@ namespace SignApplication.App_Start
             kernel.Bind<ISystemListRepository>().To<SystemListRepository>().InRequestScope();
             kernel.Bind<IUploadedFileRepository>().To<UploadedFileRepository>().InRequestScope();
             kernel.Bind<ISystemListValueRepository>().To<SystemListValueRepository>().InRequestScope();
-
-            kernel.Bind<IDocumentService>().To<DocumentService>().InRequestScope();
-            kernel.Bind<IRequestService>().To<RequestService>().InRequestScope();
+            kernel.Bind<IEmailRepository>().To<EmailRepository>().InRequestScope();
         }        
     }
 }

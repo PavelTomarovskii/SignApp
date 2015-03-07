@@ -158,6 +158,12 @@
     <Compile Include="Global\Authentication\IUserProvider.cs" />
     <Compile Include="Global\Authentication\UserIdentity.cs" />
     <Compile Include="Global\Authentication\UserProvider.cs" />
+    <Compile Include="Global\Repository\AddressesBooks\AddressesBookRepository.cs" />
+    <Compile Include="Global\Repository\AddressesBooks\IAddressesBookRepository.cs" />
+    <Compile Include="Global\Repository\Email\EmailRepository.cs" />
+    <Compile Include="Global\Repository\Email\IEmailRepository.cs" />
+    <Compile Include="Global\Service\Crypto\CryptoService.cs" />
+    <Compile Include="Global\Service\Crypto\ICryptoService.cs" />
     <Compile Include="Global\Service\File\FileService.cs" />
     <Compile Include="Global\Service\File\IFileService.cs" />
     <Compile Include="Global\Mappers\CommonMapper.cs" />
@@ -718,7 +724,9 @@
     <Content Include="Themes\Default\img\64x64\video.png" />
     <Content Include="Themes\Default\img\64x64\webcam.png" />
     <Content Include="Themes\Default\img\a_blue.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

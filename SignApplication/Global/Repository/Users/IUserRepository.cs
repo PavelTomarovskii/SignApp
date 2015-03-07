@@ -10,6 +10,7 @@ namespace SignApplication.Global.Repository.Users
     public interface IUserRepository
     {
         IQueryable<User> Users { get; set; }
+        void CreateUser(User aUser);
         User GetUser(int aID);
         User GetUser(string aEmail);
         bool UpdateUser(User aUser);

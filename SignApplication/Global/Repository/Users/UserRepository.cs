@@ -13,6 +13,12 @@ namespace SignApplication.Global.Repository.Users
 
         public IQueryable<User> Users { get; set; }
 
+        public void CreateUser(User aUser)
+        {
+            context.Users.Add(aUser);
+            context.SaveChanges();
+        }
+
         public User GetUser(int aID)
         {
             return context.Users.FirstOrDefault(x => x.ID == aID);

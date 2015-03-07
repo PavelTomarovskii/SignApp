@@ -17,7 +17,8 @@ namespace SignApplication.Model.DBConnection
                 new SystemList(){ ID = 1, Title = "Document State" },
                 new SystemList(){ ID = 2, Title = "Request Status" },
                 new SystemList(){ ID = 3, Title = "Event Type" },
-                new SystemList(){ ID = 4, Title = "Uploaded Files Group" }
+                new SystemList(){ ID = 4, Title = "Uploaded Files Group" },
+                new SystemList(){ ID = 5, Title = "Email Type"}
             };
             context.SystemLists.AddRange(list);
 
@@ -42,7 +43,12 @@ namespace SignApplication.Model.DBConnection
                 new SystemListValue(){ ID = 14, SystemListID = 4, Title = "Страница документа" },
                 new SystemListValue(){ ID = 15, SystemListID = 4, Title = "Страница документа в низком качестве" },
                 new SystemListValue(){ ID = 16, SystemListID = 4, Title = "Подпись" },
-                new SystemListValue(){ ID = 17, SystemListID = 4, Title = "Оканчательный документ" }
+                new SystemListValue(){ ID = 17, SystemListID = 4, Title = "Оканчательный документ" },
+
+                new SystemListValue(){ ID = 18, SystemListID = 5, Title = "Регистрация" },
+                new SystemListValue(){ ID = 19, SystemListID = 5, Title = "Запрос на подпись" },
+                new SystemListValue(){ ID = 20, SystemListID = 5, Title = "Подписанный документ для подписавшегося" },
+                new SystemListValue(){ ID = 21, SystemListID = 5, Title = "Подписанный документ для отправителя запроса" }
                 
             };
             context.SystemListValues.AddRange(listValue);
@@ -116,6 +122,42 @@ namespace SignApplication.Model.DBConnection
             context.UploadedFiles.Add(upl);
             upl = new UploadedFile() { ID = 9, GroupID = 13, DocumentID = 9, UploadedDate = DateTime.Today, IsDelete = false, FileName = "088a629a_d1f2_40b5_8e43_53aca77eb624.jpg", ContentType = "image/jpeg", UserID = 3 };
             context.UploadedFiles.Add(upl);
+
+            EmailText emailText = new EmailText()
+            {
+                ID = 1,
+                TypeID = 18,
+                Subject = "Активация аккаунта",
+                Body = "Активация аккаунта на РаспишитесьЗдесь! \n" +
+                       "Вы успешно зарегистрировались на сервисе РаспишитесьЗдесь. \n" +
+                       "Ваш логин: <%EMAIL%> \n" +
+                       "Ваш пароль: **** (сохранен и надежно зашифрован) \n" +
+                       "Для активации аккаунта перейдите по этой ссылке. \n" +
+                       "Если по каким то причинам ссылка выше не работает, вставьте следующий адрес в сроку браузера: \n" +
+                       "https://...... \n" +
+                       "С уважением, \n" +
+                       "команда РапишитесьЗдесь"
+            };
+            context.EmailTexts.Add(emailText);
+
+            emailText = new EmailText()
+            {
+                ID = 2,
+                TypeID = 19,
+                Subject = "Запрос на подпись",
+                Body = "<html><body><p>Здравствуйте, <%NAME%>!</p> \n" +
+                    "<p><%SENDERNAME%> просит Вас подписать документ. \n" +
+                    "<%LINK%> </p>\n" +
+                    "<p>С уважением, \n" +
+                    "команда РапишитесьЗдесь</p>" +
+                    "</body></html>"
+            };
+            context.EmailTexts.Add(emailText);
+
+            //emailText = new EmailText() { ID = 3, TypeID = 3, Text = "Отправка подписанного документа подписавшимся" };
+            //context.EmailTexts.Add(emailText);
+            //emailText = new EmailText() { ID = 4, TypeID = 4, Text = "Отправка подписанного документа отправителю заявки на подпись" };
+            //context.EmailTexts.Add(emailText);
 
             base.Seed(context);
         }

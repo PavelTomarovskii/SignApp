@@ -44,4 +44,12 @@ namespace SignApplication.Model
         Sign = 1,
         Label = 2
     }
+
+    public enum enumEmailType
+    {
+        Registration = 18,
+        Request = 19,
+        SignedDocToSigner = 20,
+        SignedDocToSender = 21
+    }
 }

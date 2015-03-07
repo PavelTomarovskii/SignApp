@@ -60,9 +60,13 @@ namespace SignApplication.Model.DBConnection
         public DbSet<ContentType> ContentTypes { get; set; }
         public DbSet<RequestDocContent> RequestDocContents { get; set; }
         public DbSet<UploadedFile> UploadedFiles { get; set; }
+        public DbSet<AddressesBook> AddressesBooks { get; set; }
+        public DbSet<EmailText> EmailTexts { get; set; }
 
         public DbSet<SystemLog> SystemLogs { get; set; }
         public DbSet<SystemListValue> SystemListValues { get; set; }
         public DbSet<SystemList> SystemLists { get; set; }
+        
+
     }
 }

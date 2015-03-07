@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SignApplication.Model;
+using SignApplication.ViewModel;
 
 namespace SignApplication.Global.Service.Email
 {
     public interface IEmailService
     {
-        bool SendEmail(User aCurrentUser, string aTextMessage, string aDocFilePath = null);
+        void SendEmail_Request(AddressesBook aAddressesBook, int aRequestID);
     }
 }

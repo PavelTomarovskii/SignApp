@@ -52,6 +52,7 @@
     <Compile Include="DBConnection\SignAppContext.cs" />
     <Compile Include="DBConnection\SignDBInitializer.cs" />
     <Compile Include="Document.cs" />
+    <Compile Include="EmailText.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="RequestDocContent.cs" />

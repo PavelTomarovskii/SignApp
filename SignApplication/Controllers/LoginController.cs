@@ -31,8 +31,6 @@ namespace SignApplication.Controllers
 
             if (user != null)
             {
-                //Email sent = new Email();
-                //sent.SendEmail(user, "");
                 return RedirectToAction("Index", "Home");
             }
             return RedirectToAction("Index", "Login");
