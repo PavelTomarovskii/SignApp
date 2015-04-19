@@ -11,7 +11,13 @@ namespace SignApplication.Global.Repository.Users
         [Inject]
         public SignAppContext context { get; set; }
 
-        public IQueryable<User> Users { get; set; }
+        public IQueryable<User> Users 
+        {
+            get
+            {
+                return context.Users;
+            }
+        }
 
         public void CreateUser(User aUser)
         {

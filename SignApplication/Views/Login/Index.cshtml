@@ -2,8 +2,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="container">
+<div class="container" ng-show="vm.isShowLogin">
     <form class="form-signin" action="Login/Login" method="POST">
         <h2 class="form-signin-heading">Вход</h2>
 
@@ -23,6 +22,58 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+        <div>
+            <a class="pull-left" ng-click="vm.showForgotPassword()" href="#">Забыли пароль?</a>
+            <a class="pull-right" ng-click="vm.showRegistration()" href="#">Регистрация</a>
+        </div>
     </form>
+</div>
 
+<div class="container registration" ng-show="vm.isShowRegistration">
+    <form class="form-signin" action="Login/Register" method="POST">
+        <h2 class="form-signin-heading">Регистрация</h2>
+        <div class="row">
+            <a class="pull-left" ng-click="vm.showLogin()" href="#">< Назад</a>
+        </div>
+        <div class="row">
+            <label for="txtFirstName" class="sr-only">
+                Имя
+            </label>
+            <input type="text" id="txtFirstName" name="txtFirstName" class="form-control" placeholder="Введите ваше имя" required="" autofocus="">  
+        </div>
+        <div class="row">
+            <label for="txtSecondName" class="sr-only">
+                Фамилия
+            </label>
+            <input type="text" id="txtSecondName" name="txtSecondName" class="form-control" placeholder="Введите вашу фамилию" required="" autofocus="">
+        </div>
+        <div class="row">
+            <label for="txtLastName" class="sr-only">
+                Отчество
+            </label>
+            <input type="text" id="txtLastName" name="txtLastName" class="form-control" placeholder="Введите ваше отчество" required="" autofocus="">
+        </div>
+        <div class="row">
+            <label for="txtEmail" class="sr-only">
+                Email
+            </label>
+            <input type="text" id="txtEmail" name="txtEmail" class="form-control" placeholder="Введите ваш email" required="" autofocus="">
+        </div>
+        <div class="row">
+            <div class="g-recaptcha" data-sitekey="6Lec3AQTAAAAAC_oNumvw7SEuuBXWRbIBhThUNgg"></div>
+        </div>
+        <div class="row">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+        </div>
+    </form>
+</div>
+
+<div class="container" ng-show="vm.isShowForgotPassword">
+    <form class="form-signin" action="Login/Login" method="POST">
+        <h2 class="form-signin-heading">Забыли пароль?</h2>
+        <div class="row">
+            <a class="pull-left" ng-click="vm.showLogin()" href="#">< Назад</a>
+        </div>
+        
+    </form>
 </div>

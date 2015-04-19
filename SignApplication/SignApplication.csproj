@@ -147,6 +147,8 @@
     <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
+    <Compile Include="Controllers\SetupController.cs" />
+    <Compile Include="Controllers\SignController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -226,9 +228,11 @@
     <Content Include="Scripts\Application\Document\Factories\documentFactory.js" />
     <Content Include="Scripts\Application\Info\Controllers\infoController.js" />
     <Content Include="Scripts\Application\Info\infoModule.js" />
+    <Content Include="Scripts\Application\Login\login.js" />
     <Content Include="Scripts\Application\Menu\Controllers\menuController.js" />
     <Content Include="Scripts\Application\Menu\menuModule.js" />
     <Content Include="Scripts\Application\Request\request.module.js" />
+    <Content Include="Scripts\Application\Setup\SetupController.js" />
     <Content Include="Scripts\FileUpload\jquery.fileupload-angular.js" />
     <Content Include="Scripts\FileUpload\jquery.fileupload-audio.js" />
     <Content Include="Scripts\FileUpload\jquery.fileupload-image.js" />
@@ -724,6 +728,8 @@
     <Content Include="Themes\Default\img\64x64\video.png" />
     <Content Include="Themes\Default\img\64x64\webcam.png" />
     <Content Include="Themes\Default\img\a_blue.png" />
+    <Content Include="Themes\Default\img\signature.ico" />
+    <Content Include="Themes\Default\img\logo.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -782,6 +788,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\Application\Request\Services\request.factory.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sign\Sign.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Setup\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

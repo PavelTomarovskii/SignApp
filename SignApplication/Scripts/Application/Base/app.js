@@ -9,24 +9,28 @@ var signApp = angular.module('signApp', [
 
 signApp.config(['$routeProvider',
   function ($routeProvider) {
-      $routeProvider.
-          when('/info', {
+      $routeProvider
+          .when('/info', {
               templateUrl: 'Info/Index',
               controller: 'infoController'
-          }).
-          when('/documents', {
+          })
+          .when('/documents', {
               templateUrl: 'Documents/List',
               controller: 'documentsController'
-          }).
-           when('/document/:documentId', {
+          })
+          .when('/document/:documentId', {
                templateUrl: 'Documents/Edit',
                controller: 'documentEditerController'
-           }).
-          when('/upload', {
+          })
+          .when('/upload', {
               templateUrl: 'Upload/Index',
               controller: 'documentFileUploadController'
-          }).
-          otherwise({
+          })
+          .when('/setup', {
+              templateUrl: 'Setup/Index',
+              controller: 'SetupController'
+          })
+          .otherwise({
               redirectTo: '/info'
           });
   }]);

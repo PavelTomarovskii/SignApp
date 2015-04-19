@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using Ninject;
 using SignApplication.Global.Repository.AddressesBooks;
@@ -65,6 +66,28 @@ namespace SignApplication.Global.Service.Request
 
                 EmailService.SendEmail_Request(address, request.ID);
             }
+        }
+
+        public IQueryable<User> GetPersons(int aUserID, string aEmailPart)
+        {
+            //var ret = from address in AddressesBookRepository.AddressesBooks
+            //    join userTo in UserRepository.Users on address.SenderToID equals userTo.ID
+            //    where address.SenderFromID == aUserID
+            //    select new Persons()
+            //    {
+            //        //Email = userTo.EMail,
+            //        //Name = userTo.IsFake ? userTo.FirstName ?? "" : userTo.FirstName ?? "" + " " + userTo.PatronymicName ?? "",
+            //        UserID = userTo.ID
+            //    };
+
+            var ret1 = from address in AddressesBookRepository.AddressesBooks
+                       join userTo in UserRepository.Users on address.SenderToID equals userTo.ID
+                       where address.SenderFromID == aUserID && userTo.EMail.Contains(aEmailPart)
+                       select userTo;
+
+
+
+            return ret1;
         }
     }
 }

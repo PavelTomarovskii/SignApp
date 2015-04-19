@@ -24,6 +24,7 @@ namespace SignApplication.Global.Service.Email
         private const string NAME = "<%NAME%>";
         private const string SENDERNAME = "<%SENDERNAME%>";
         private const string LINK = "<%LINK%>";
+        private const string LINKTEXT = "<%LINKTEXT%>";
 
         [Inject]
         public IEmailRepository EmailRepository { get; set; }
@@ -44,7 +45,7 @@ namespace SignApplication.Global.Service.Email
                 using (var client = new SmtpClient())
                 {
                     var message = new MailMessage(EmailFrom, aEmailTo, aSubject, aBody);
-
+                    message.IsBodyHtml = true;
                     foreach (var aAttachment in aAttachments)
                     {
                         var attachData = new Attachment(aAttachment);
@@ -63,7 +64,7 @@ namespace SignApplication.Global.Service.Email
         private string CreateLink(int aRequestID)
         {
             var str = new StringBuilder();
-            str.AppendFormat("<a href='http://localhost:38324//{0}'>{1}</a>", CryptoService.Encrypt(aRequestID.ToString()), "Нажмите здесь");
+            str.AppendFormat("http://localhost:38324/Sign/Sign/{0}", CryptoService.Encrypt(aRequestID.ToString()));
             return str.ToString();
         }
 
@@ -84,6 +85,8 @@ namespace SignApplication.Global.Service.Email
                 : string.Format("{0} {1}", userTo.FirstName, userTo.LastName));
 
             body.Replace(LINK, CreateLink(aRequestID));
+
+            body.Replace(LINKTEXT, "Нажмите здесь");
 
             SendEmail(userTo.EMail, email.Subject, body.ToString(), new string[0]);
         }

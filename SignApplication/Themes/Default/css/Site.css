@@ -1,5 +1,6 @@
 ﻿body {
   padding-top: 70px;
+  background-color: #f1f1f1;
 }
 
 .form-signin {
@@ -118,4 +119,8 @@ input:focus:-ms-input-placeholder      {text-indent: 500px; transition: text-ind
 
 .line {
     margin-bottom: 10px;
+}
+
+.registration .row {
+    padding-bottom: 10px;
 }

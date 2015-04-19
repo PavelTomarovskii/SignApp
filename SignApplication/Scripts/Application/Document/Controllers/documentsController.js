@@ -1,4 +1,4 @@
-﻿documentModule.controller('documentsController', ['$scope', 'documentFactory', '$q', 'requestService', function ($scope, documentFactory, $q, requestService) {
+﻿documentModule.controller('documentsController', ['$scope', 'documentFactory', '$q', 'requestService', '$http', function ($scope, documentFactory, $q, requestService, $http) {
 
     $scope.isDeleteQuestion = false;
 
@@ -36,6 +36,22 @@
     $scope.resetPersons = function(document) {
         document.persons = [];
         $scope.addPerson(document);
+    };
+
+    $scope.getPersons = function ($viewValue) {
+        return $http.get('request/getPersons', {
+            params: {
+                partEmail: $viewValue
+            }
+        }).then(function (response) {
+            return response.data.map(function (item) {
+                return {
+                    email: item.Email,
+                    name: item.FirstName,
+                    userID: item.ID
+                };
+            });
+        });
     };
 
 }]);

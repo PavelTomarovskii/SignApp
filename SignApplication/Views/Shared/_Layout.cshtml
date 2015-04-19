@@ -5,15 +5,19 @@
 
 <!DOCTYPE html>
 
-<html ng-app="AppTest">
+<html ng-app="loginApp">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Sign Application</title>
+    <link href="/Themes/Default/img/signature.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     @Styles.Render("~/Default/css")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/application")
+    <script src='https://www.google.com/recaptcha/api.js' async defer=""></script>
 </head>
 <body>
-    <div ng-controller="LoginController">
+    <div ng-controller="LoginController as vm">
         @RenderBody()
     </div>
 </body>

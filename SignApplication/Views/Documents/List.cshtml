@@ -51,7 +51,8 @@
             <form name="sendRequestFrom" role="form" novalidate>
                 <div class="row" ng-repeat="person in doc.persons" style="margin-bottom: 5px;">
                     <div class="col-md-5">
-                        <input type="email" ng-model="person.email" class="form-control" placeholder="Start to type email" required />
+                        <input type="email" ng-model="person.email" class="form-control" placeholder="Start to type email" required 
+                            typeahead="tperson as tperson.email for tperson in getPersons($viewValue)"/>
                     </div>
                     <div class="col-md-5">
                         <input type="text" ng-model="person.name" class="form-control" placeholder="Name" required />

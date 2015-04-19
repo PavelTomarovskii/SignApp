@@ -43,7 +43,7 @@ namespace SignApplication.Model.DBConnection
                 new SystemListValue(){ ID = 14, SystemListID = 4, Title = "Страница документа" },
                 new SystemListValue(){ ID = 15, SystemListID = 4, Title = "Страница документа в низком качестве" },
                 new SystemListValue(){ ID = 16, SystemListID = 4, Title = "Подпись" },
-                new SystemListValue(){ ID = 17, SystemListID = 4, Title = "Оканчательный документ" },
+                new SystemListValue(){ ID = 17, SystemListID = 4, Title = "Окончательный документ" },
 
                 new SystemListValue(){ ID = 18, SystemListID = 5, Title = "Регистрация" },
                 new SystemListValue(){ ID = 19, SystemListID = 5, Title = "Запрос на подпись" },
@@ -145,10 +145,10 @@ namespace SignApplication.Model.DBConnection
                 ID = 2,
                 TypeID = 19,
                 Subject = "Запрос на подпись",
-                Body = "<html><body><p>Здравствуйте, <%NAME%>!</p> \n" +
-                    "<p><%SENDERNAME%> просит Вас подписать документ. \n" +
-                    "<%LINK%> </p>\n" +
-                    "<p>С уважением, \n" +
+                Body = "<html><body><p>Здравствуйте, <%NAME%>!</p><br/>" +
+                    "<p><%SENDERNAME%> просит Вас подписать документ.<br/>" +
+                    "<a href='<%LINK%>'><%LINKTEXT%></a></p><br/>" +
+                    "<p>С уважением, <br/>" +
                     "команда РапишитесьЗдесь</p>" +
                     "</body></html>"
             };

@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<div ng-controller="SetupController as vm">
+    <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" ng-class="{active: selection=='account'}">
+            <a href="" ng-click="selection='account'">Аккаунт</a>
+        </li>
+        <li role="presentation">
+            <a data-toggle="dropdown" href="" role="button" aria-expanded="false">
+                Параметры
+            </a>
+            <ul class="nav" role="menu" style="margin-left: 20px;">
+                <li role="presentation" ng-class="{active: selection=='general'}">
+                    <a href="" ng-click="selection='general'">Основные</a>
+                </li>
+                <li role="presentation"  ng-class="{active: selection=='request'}">
+                    <a href="" ng-click="selection='request'">Запросы</a>
+                </li>
+                <li role="presentation" ng-class="{active: selection=='sign'}">
+                    <a href="" ng-click="selection='sign'">Процесс подписи</a>
+                </li>
+                <li role="presentation" ng-class="{active: selection=='doc'}">
+                    <a href="" ng-click="selection='doc'">Документы</a>
+                </li>
+            </ul>
+        </li>
+        <li role="presentation" ng-class="{active: selection=='email'}">
+            <a href="" ng-click="selection='email'">Настройки почты</a>
+        </li>
+</ul>
+</div>
+<div class="col-md-9">
+    <h4>Настройки аккаута</h4>
+    <div ng-switch on="selection">
+        <div ng-switch-when="account">
+            <h2>account</h2>
+        </div>
+        <div ng-switch-when="general">
+            <h2>general</h2>
+        </div>
+        <div ng-switch-when="request">
+            <h2>запросы</h2>
+        </div>
+        <div ng-switch-when="sign">
+            <h2>подпись</h2>
+        </div>
+        <div ng-switch-when="doc">
+            <h2>документы</h2>
+        </div>
+        <div ng-switch-when="email">
+            <h2>почта</h2>
+        </div>
+    </div>
+</div>
+</div>

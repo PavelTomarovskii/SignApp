@@ -19,6 +19,8 @@ namespace SignApplication.App_Start
             bundles.Add(new ScriptBundle("~/bundles/application")
                     .Include("~/Scripts/Application/Base/app.js")
 
+                    .Include("~/Scripts/Application/Login/login.js")
+
                     .Include("~/Scripts/Application/Menu/menuModule.js")
                     .Include("~/Scripts/Application/Menu/Controllers/*.js")
 
@@ -30,6 +32,7 @@ namespace SignApplication.App_Start
                     .Include("~/Scripts/Application/Document/Directives/*.js")
                     .Include("~/Scripts/Application/Document/Factories/*.js")
                     .Include("~/Scripts/Application/Document/Services/*.js")
+                    .Include("~/Scripts/Application/Setup/*.js")
 
                     .Include("~/Scripts/Application/Request/request.module.js")
                     .Include("~/Scripts/Application/Request/Services/*.js")
