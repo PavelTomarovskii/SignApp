@@ -3,55 +3,250 @@
 }
 <div ng-controller="SetupController as vm">
     <div class="col-md-3">
-    <ul class="nav nav-pills nav-stacked">
-        <li role="presentation" ng-class="{active: selection=='account'}">
-            <a href="" ng-click="selection='account'">Аккаунт</a>
-        </li>
-        <li role="presentation">
-            <a data-toggle="dropdown" href="" role="button" aria-expanded="false">
-                Параметры
-            </a>
-            <ul class="nav" role="menu" style="margin-left: 20px;">
-                <li role="presentation" ng-class="{active: selection=='general'}">
-                    <a href="" ng-click="selection='general'">Основные</a>
-                </li>
-                <li role="presentation"  ng-class="{active: selection=='request'}">
-                    <a href="" ng-click="selection='request'">Запросы</a>
-                </li>
-                <li role="presentation" ng-class="{active: selection=='sign'}">
-                    <a href="" ng-click="selection='sign'">Процесс подписи</a>
-                </li>
-                <li role="presentation" ng-class="{active: selection=='doc'}">
-                    <a href="" ng-click="selection='doc'">Документы</a>
-                </li>
-            </ul>
-        </li>
-        <li role="presentation" ng-class="{active: selection=='email'}">
-            <a href="" ng-click="selection='email'">Настройки почты</a>
-        </li>
-</ul>
-</div>
-<div class="col-md-9">
-    <h4>Настройки аккаута</h4>
-    <div ng-switch on="selection">
-        <div ng-switch-when="account">
-            <h2>account</h2>
-        </div>
-        <div ng-switch-when="general">
-            <h2>general</h2>
-        </div>
-        <div ng-switch-when="request">
-            <h2>запросы</h2>
-        </div>
-        <div ng-switch-when="sign">
-            <h2>подпись</h2>
-        </div>
-        <div ng-switch-when="doc">
-            <h2>документы</h2>
-        </div>
-        <div ng-switch-when="email">
-            <h2>почта</h2>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" ng-class="{active: selection=='account'}">
+                <a href="" ng-click="selection='account'">Аккаунт</a>
+            </li>
+            <li role="presentation">
+                <a data-toggle="dropdown" href="" role="button" aria-expanded="false">
+                    Параметры
+                </a>
+                <ul class="nav" role="menu" style="margin-left: 20px;">
+                    <li role="presentation" ng-class="{active: selection=='general'}">
+                        <a href="" ng-click="selection='general'">Основные</a>
+                    </li>
+                    <li role="presentation"  ng-class="{active: selection=='request'}">
+                        <a href="" ng-click="selection='request'">Запросы</a>
+                    </li>
+                    <li role="presentation" ng-class="{active: selection=='sign'}">
+                        <a href="" ng-click="selection='sign'">Процесс подписи</a>
+                    </li>
+                    <li role="presentation" ng-class="{active: selection=='doc'}">
+                        <a href="" ng-click="selection='doc'">Документы</a>
+                    </li>
+                </ul>
+            </li>
+            <li role="presentation" ng-class="{active: selection=='email'}">
+                <a href="" ng-click="selection='email'">Настройки почты</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <div ng-switch on="selection">
+            <div ng-switch-when="account" >
+                <h4 style="padding-bottom: 25px;" >Настройки аккаута</h4>
+                <div class="container">
+                    <div class="input-group col-md-6 setup">
+                        <span class="input-group-addon parameter">Email</span>
+                        <input type="text" class="form-control" placeholder="Введите email" aria-describedby="basic-addon1">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="button">Изменить</button>
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <span class="input-group-addon parameter">Имя</span>
+                        <input type="text" class="form-control" placeholder="Введите имя" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <span class="input-group-addon parameter">Фамилия</span>
+                        <input type="text" class="form-control" placeholder="Введите фамилию" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <span class="input-group-addon parameter">Отчество</span>
+                        <input type="text" class="form-control" placeholder="Введите отчество" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="general">
+                <h4 style="padding-bottom: 25px;" >Основные настройки</h4>
+                <div class="container">
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Посылать нотификацию по окончании подписи</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Выбирите тип нотификации</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">&nbsp;Email
+                            &nbsp;
+                            <input type="checkbox" disabled="disabled">&nbsp;Sms
+                            &nbsp;
+                            <input type="checkbox" disabled="disabled">&nbsp;Личное сообщение
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Прикреплять подписанные документы к письму</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Посылать email подписавшему по окончании подписи</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Посылать напоминая</label>
+                        <span class="input-group-addon">через</span>
+                        <input type="text" class="form-control" placeholder="введите дни" aria-describedby="basic-addon1">
+                        <span class="input-group-addon">дней</span>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Переключаться на мобильную версию по возможности</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="request">
+                <h4 style="padding-bottom: 25px;" >Настройка запросов</h4>
+                <div class="container">
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Запрос действителен</label>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Выбрать кол-во <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li><a href="#">7 дней</a></li>
+                                <li><a href="#">30 дней</a></li>
+                                <li><a href="#">90 дней</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Не чистить</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Ставить чек "копия себе" (по умолчанию)</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Ставить чек "необходимо прочтение" (по умолчанию)</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <span class="input-group-addon parameter">Использовать другой email для нотификаций</span>
+                        <input type="text" class="form-control" placeholder="Введите email" aria-describedby="basic-addon1">
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="sign">
+                <h4 style="padding-bottom: 25px;">Настройка подписи</h4>
+                <div class="container">
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Рисовать подпись</label>
+                        <span class="input-group-addon">
+                            <input type="radio"> Да
+                        </span>
+                        <span class="input-group-addon">
+                            <input type="radio"> Нет
+                        </span>
+                        <span class="input-group-addon">
+                            <input type="radio"> Разрешить выбирать
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Разрешить подпись в "один клик"</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Разрешить подпись <strong>ТОЛЬКО</strong> в "один клик"</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Разрешить скачивать незавершенные PDF</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="doc">
+                <h4 style="padding-bottom: 25px;" >Настройка документов</h4>
+                <div class="container">
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Запрос действителен</label>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Выбрать кол-во <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li><a href="#">90 дней</a></li>
+                                <li><a href="#">1 год</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Не чистить</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Добавлять водные знаки</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Добавлять страницу информации</label>
+                        <span class="input-group-addon">
+                            <input type="checkbox">
+                        </span>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <span class="input-group-addon">Качество документов</span>
+                        <input type="text" class="form-control" placeholder="от 100 до 600" aria-describedby="basic-addon1">
+                        <span class="input-group-addon">dpi</span>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="email">
+                <h4 style="padding-bottom: 25px;" >Настройка писем</h4>
+                <div class="container">
+                    <div class="input-group col-md-6 setup">
+                        <label type="text" class="form-control" aria-describedby="basic-addon1">Шаблон письма</label>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Выбрать <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li><a href="#">Запрос</a></li>
+                                <li><a href="#">Подтверждение</a></li>
+                                <li><a href="#">Напоминание</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <span class="input-group-addon">Тема</span>
+                        <input type="text" class="form-control" placeholder="введите тему" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group col-md-6 setup">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <textarea aria-describedby="basic-addon1"></textarea>        
+                            </div>
+                            <div class="col-md-4">
+                                <textarea aria-describedby="basic-addon1"></textarea>        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
