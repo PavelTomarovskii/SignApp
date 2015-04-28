@@ -47,6 +47,7 @@ namespace SignApplication.App_Start
                 .Include("~/Themes/Default/alexander/alexander.css")
                 .Include("~/Themes/Default/css/Site.css")
                 .Include("~/Scripts/Charts/angular-chart.css")
+                .Include("~/Scripts/Charts/angular-chart.css.map")
                 );
 
 
