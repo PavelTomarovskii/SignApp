@@ -1,7 +1,38 @@
 ﻿<div class="contaiiner" ng-controller="infoController">
     <div class="row">
-        <div class="col-md-6">
-            <canvas id="bar" class="chart chart-bar" data="ocw.data" labels="ocw.labels" colours="ocw.colours"></canvas>
+        <h3>Сегодня</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Запросы</h4>
+            <canvas id="requestsToday" class="chart chart-doughnut"
+                    data="requests.today.data" labels="requests.today.labels" legend="true"></canvas>
+        </div>
+        <div class="col-md-3">
+            <h4>Запросы - неделя</h4>
+            <canvas id="requestsWeek" class="chart chart-line" series="requests.week.series"
+                    data="requests.week.data" labels="requests.week.labels" legend="true"></canvas>
+        </div>
+        <div class="col-md-3">
+            <h4>Документы</h4>
+            <canvas id="documentsToday" class="chart chart-doughnut"
+                    data="docs.today.data" labels="docs.today.labels" legend="true"></canvas>
+        </div>
+        <div class="col-md-3">
+            <h4>Документы PDF</h4>
+            <canvas id="documentsWeek" class="chart chart-bar" series="docs.week.series"
+                    data="docs.week.data" labels="docs.week.labels" legend="true"></canvas>
+        </div>
+        
+    </div>
+    <div class="row">
+        <h3>Статистика</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Запросы - год</h4>
+            <canvas id="lineMonth" class="chart chart-bar" series="requests.month.series"
+                    data="requests.month.data" labels="requests.month.labels" legend="true"></canvas>
         </div>
     </div>
 </div>

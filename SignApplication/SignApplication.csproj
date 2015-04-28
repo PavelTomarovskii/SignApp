@@ -237,6 +237,7 @@
     <Content Include="Scripts\Charts\angular-chart.js" />
     <Content Include="Scripts\Charts\Chart.js" />
     <Content Include="Scripts\Charts\Chart.min.js" />
+    <None Include="Scripts\Charts\angular-chart.css.map" />
     <Content Include="Scripts\FileUpload\jquery.fileupload-angular.js" />
     <Content Include="Scripts\FileUpload\jquery.fileupload-audio.js" />
     <Content Include="Scripts\FileUpload\jquery.fileupload-image.js" />
