@@ -13,6 +13,11 @@ namespace SignApplication.App_Start
             bundles.Add(new ScriptBundle("~/bundles/angular")
                 .Include("~/Scripts/Angular/angular.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular-charts")
+                .Include("~/Scripts/Charts/Chart.js")
+                .Include("~/Scripts/Charts/angular-chart.js")
+                );
+
             bundles.Add(new ScriptBundle("~/bundles/uibootstrap")
                 .Include("~/Scripts/Ui-bootstrap/ui-bootstrap-tpls-0.12.0.min.js"));
 
@@ -40,7 +45,10 @@ namespace SignApplication.App_Start
 
             bundles.Add(new StyleBundle("~/Default/css")
                 .Include("~/Themes/Default/alexander/alexander.css")
-                .Include("~/Themes/Default/css/Site.css"));
+                .Include("~/Themes/Default/css/Site.css")
+                .Include("~/Scripts/Charts/angular-chart.css")
+                );
+
 
             //bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
