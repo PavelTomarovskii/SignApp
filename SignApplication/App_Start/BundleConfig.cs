@@ -41,6 +41,7 @@ namespace SignApplication.App_Start
 
                     .Include("~/Scripts/Application/Request/request.module.js")
                     .Include("~/Scripts/Application/Request/Services/*.js")
+                    .Include("~/Scripts/Application/Request/Controller/*.js")
                 );
 
             bundles.Add(new StyleBundle("~/Default/css")

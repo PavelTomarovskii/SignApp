@@ -20,6 +20,11 @@ namespace SignApplication.Controllers
         [Inject]
         public IRequestService RequestService { get; set; }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public string CreateRequest(RequestItemView requestItem)
         {
             RequestService.SendRequest(requestItem);

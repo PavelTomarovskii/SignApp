@@ -31,6 +31,11 @@ signApp.config(['$routeProvider',
               templateUrl: 'Setup/Index',
               controller: 'SetupController'
           })
+          .when('/requests', {
+              templateUrl: 'Request/Index',
+              controller: 'requestsController',
+              controllerAs: 'vm'
+          })
           .otherwise({
               redirectTo: '/info'
           });
