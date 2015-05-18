@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<div>
+    <h2>Запросы</h2>
+    <div class="container">
+        <div class="row">
+            <pagination total-items="vm.requests.length" ng-model="vm.currentPage"
+                        max-size="vm.paginatorPages" class="pagination-sm pull-right" boundary-links="true"
+                        items-per-page="vm.pageSize" rotate="false">
+                
+            </pagination>
+        </div>
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <th ng-repeat="col in vm.colModel">
+                        <a href="" ng-click="vm.clickOnHeader(col.predicate)">{{col.name}}</a>
+                        <i ng-show="vm.predicate == col.predicate" class="glyphicon" ng-class="vm.getSortOrder()"></i>
+                    </th>
+                </tr>
+                <tr class="clickitem" ng-repeat="request in vm.requests
+                    | orderBy:vm.predicate:vm.reverse | startFrom: (vm.currentPage - 1) * vm.pageSize
+                    | limitTo: vm.pageSize">
+                    <td>{{requests.id}}</td>
+                    <td>{{requests.name}}</td>
+                    <td>{{requests.grade}}</td>
+                    <td>{{requests.job}}</td>
+                    <td>{{requests.age}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

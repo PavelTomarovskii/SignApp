@@ -231,6 +231,7 @@
     <Content Include="Scripts\Application\Login\login.js" />
     <Content Include="Scripts\Application\Menu\Controllers\menuController.js" />
     <Content Include="Scripts\Application\Menu\menuModule.js" />
+    <Content Include="Scripts\Application\Request\Controller\requests.controller.js" />
     <Content Include="Scripts\Application\Request\request.module.js" />
     <Content Include="Scripts\Application\Setup\SetupController.js" />
     <Content Include="Scripts\Charts\angular-chart.css" />
@@ -745,6 +746,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Request\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
