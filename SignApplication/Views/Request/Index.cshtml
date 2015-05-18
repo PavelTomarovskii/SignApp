@@ -19,14 +19,15 @@
                         <i ng-show="vm.predicate == col.predicate" class="glyphicon" ng-class="vm.getSortOrder()"></i>
                     </th>
                 </tr>
-                <tr class="clickitem" ng-repeat="request in vm.requests
+                <tr class="clickitem" ng-repeat="request in vm.requests 
                     | orderBy:vm.predicate:vm.reverse | startFrom: (vm.currentPage - 1) * vm.pageSize
                     | limitTo: vm.pageSize">
-                    <td>{{requests.id}}</td>
-                    <td>{{requests.name}}</td>
-                    <td>{{requests.grade}}</td>
-                    <td>{{requests.job}}</td>
-                    <td>{{requests.age}}</td>
+                    <td>{{request.id}}</td>
+                    <td>{{request.date}}</td>
+                    <td>{{request.status}}</td>
+                    <td>{{request.sentTo}}</td>
+                    <td>{{request.documents}}</td>
+                    <td>{{request.download}}</td>
                 </tr>
             </table>
         </div>
