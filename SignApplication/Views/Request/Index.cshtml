@@ -12,9 +12,9 @@
             </pagination>
         </div>
         <div class="row">
-            <table class="table">
+            <table class="table table-hover">
                 <tr>
-                    <th ng-repeat="col in vm.colModel">
+                    <th ng-repeat="col in vm.colModel" style="min-width: 42px;">
                         <a href="" ng-click="vm.clickOnHeader(col.predicate)">{{col.name}}</a>
                         <i ng-show="vm.predicate == col.predicate" class="glyphicon" ng-class="vm.getSortOrder()"></i>
                     </th>
@@ -27,7 +27,7 @@
                     <td>{{request.status}}</td>
                     <td>{{request.sentTo}}</td>
                     <td>{{request.documents}}</td>
-                    <td>{{request.download}}</td>
+                    <td style="text-align: center;"><img ng-if="request.download" src="~/Themes/Default/img/24x24/down_arrow.png" style="cursor: pointer;" /></td>
                 </tr>
             </table>
         </div>

@@ -24,12 +24,14 @@
 
         function activate() {
             
+            vm.predicate = "id";
+            vm.reverse = false;
+            
             vm.colModel.push({ name: '#', predicate: 'id' });
-            vm.colModel.push({ name: 'Request Date', predicate: 'requestdate' });
+            vm.colModel.push({ name: 'Request Date', predicate: 'date' });
             vm.colModel.push({ name: 'Status', predicate: 'status' });
-            vm.colModel.push({ name: 'Sent To', predicate: 'sentto' });
-            vm.colModel.push({ name: 'Document', predicate: 'document' });
-            vm.colModel.push({ name: 'Type', predicate: 'type' });
+            vm.colModel.push({ name: 'Sent To', predicate: 'sentTo' });
+            vm.colModel.push({ name: 'Document', predicate: 'documents' });
             vm.colModel.push({ name: 'Download', predicate: 'download' });
             
             vm.requests.push({
