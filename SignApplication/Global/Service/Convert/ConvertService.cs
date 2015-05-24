@@ -26,11 +26,17 @@ namespace SignApplication.Global.Service.Convert
 
             foreach (var file in dr.GetFiles())
             {
+                int count = 0;
+                if (!string.IsNullOrEmpty(file.Name.Replace(guid, "").Replace(".png", "").Replace("-", "")))
+                {
+                    count = System.Convert.ToInt32(file.Name.Replace(guid, "").Replace(".png", "").Replace("-", ""));
+                }
+
                 var upfile = new UploadedFile()
                 {
                     UserID = aUserID,
                     FileName = file.Name,
-                    Page = System.Convert.ToInt32(file.Name.Replace(guid, "").Replace(".png", "").Replace("-", "")) + 1,
+                    Page = count + 1,
                     ContentType = "image/png",
                     GroupID = (int) enumUploadedFilesGroup.LargePage,
                     DocumentID = aDocumentID,

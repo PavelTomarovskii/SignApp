@@ -28,11 +28,11 @@
             vm.reverse = false;
             
             vm.colModel.push({ name: '#', predicate: 'id' });
-            vm.colModel.push({ name: 'Request Date', predicate: 'date' });
-            vm.colModel.push({ name: 'Status', predicate: 'status' });
-            vm.colModel.push({ name: 'Sent To', predicate: 'sentTo' });
-            vm.colModel.push({ name: 'Document', predicate: 'documents' });
-            vm.colModel.push({ name: 'Download', predicate: 'download' });
+            vm.colModel.push({ name: 'Дата отправки', predicate: 'date' });
+            vm.colModel.push({ name: 'Статус', predicate: 'status' });
+            vm.colModel.push({ name: 'Получатель', predicate: 'sentTo' });
+            vm.colModel.push({ name: 'Название документа', predicate: 'documents' });
+            vm.colModel.push({ name: 'Скачать', predicate: 'download' });
             
             vm.requests.push({
                 id: 1,
