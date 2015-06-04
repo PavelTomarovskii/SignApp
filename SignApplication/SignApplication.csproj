@@ -234,6 +234,7 @@
     <Content Include="Scripts\Application\Request\Controller\requests.controller.js" />
     <Content Include="Scripts\Application\Request\request.module.js" />
     <Content Include="Scripts\Application\Setup\SetupController.js" />
+    <Content Include="Scripts\Application\Sign\signController.js" />
     <Content Include="Scripts\Charts\angular-chart.css" />
     <Content Include="Scripts\Charts\angular-chart.js" />
     <Content Include="Scripts\Charts\Chart.js" />
@@ -747,6 +748,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Request\Index.cshtml" />
+    <Content Include="Views\Documents\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -781,9 +783,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Upload\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Documents\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html\Document\DocumentElement.html" />

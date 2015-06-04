@@ -64,7 +64,7 @@ namespace SignApplication.Global.Service.Email
         private string CreateLink(int aRequestID)
         {
             var str = new StringBuilder();
-            str.AppendFormat("http://localhost:38324/Sign/Sign/{0}", CryptoService.Encrypt(aRequestID.ToString()));
+            str.AppendFormat("http://localhost:73/Sign/Sign/{0}", CryptoService.Encrypt(aRequestID.ToString()));
             return str.ToString();
         }
 

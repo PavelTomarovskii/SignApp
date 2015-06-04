@@ -5,7 +5,7 @@
 
         var req = {
             method: 'GET',
-            url: 'documents/getDocumentElements',
+            url: 'http://localhost:73/documents/getDocumentElements',
             params: {
                 documentID: id,
                 page: page

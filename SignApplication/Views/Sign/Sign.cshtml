@@ -3,4 +3,52 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<h2>Sign</h2>
+<div class="container" ng-controller="SignController">
+    <h3>Здравствуйте, Вам необходимо подписать данный документ. Проставьте все необходимые поля и нажмите на кнопку создать подпись.</h3>
+    <div class="row" style="text-align: center;">
+        <pagination total-items="totalPages" items-per-page="1" ng-model="currentPage" max-size="maxSize" 
+                    class="pagination-sm" boundary-links="true" rotate="false" ng-change="pageChanged()"
+                    previous-text="Предыдущая страница" next-text="Следующая страница" first-text="Первая" last-text="Последняя">
+        </pagination>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{document.Name}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="page">
+                        <img id="droppable" class="page-content" src="{{document.DocFilePath}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div>
+        <input ng-repeat="control in controls" type="text" style="position:absolute; height: {{control.Height}}px; width: {{control.Width}}px; left: {{control.Left}}px; top: {{control.Top}}px; z-index: {{control.Zindex}}" />
+    </div>*@
+    <div>
+        <input type="text" style="position:absolute; height: 45px; width: 314px; left: 945px; top: 505px; z-index: 100;" class="req" ng-valid ng-model="model1">
+        <input type="button" value="Подпись" style="position:absolute; height: 81px; width: 198px; left: 923px; top: 727px; z-index: 101; font-size: 1.5em; font-weight: bold;" class="btn btn-primary" ng-click="open()">
+        <input type="text" style="position:absolute; height: 45px; width: 120px; left: 1134px; top: 767px; z-index: 102" class="req" ng-valid ng-model="model2">
+        <input type="text" style="position:absolute; height: 38px; width: 326px; left: 943px; top: 432px; z-index: 103" class="req" ng-valid ng-model="model3">
+        <input type="text" style="position:absolute; height: 38px; width: 225px; left: 923px; top: 825px; z-index: 104" class="req" ng-valid ng-model="model4">
+        <input type="text" style="position:absolute; height: 38px; width: 186px; left: 1032px; top: 680px; z-index: 105" class="req" ng-valid ng-model="model5">
+        <input type="text" style="position:absolute; height: 38px; width: 169px; left: 398px; top: 710px; z-index: 106" class="req" ng-valid ng-model="model6">
+        <input type="text" style="position:absolute; height: 38px; width: 52px; left: 786px; top: 678px; z-index: 106" class="req" ng-valid ng-model="model7">
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Вам необходимо подписать документ</h3>
+        </div>
+        <div class="modal-body">
+            <p>Нажмите на правую кнопку мыши и провидите по полю, для нанесения личной подписи</p>
+            <canvas width="560px" heigth="300px" drawing style="background-color: #BCFFAB; cursor:default;"></canvas>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</div>

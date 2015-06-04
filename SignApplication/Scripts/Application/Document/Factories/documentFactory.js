@@ -11,7 +11,7 @@
 
         var req = {
             method: 'GET',
-            url: 'documents/getDocument',
+            url: 'http://localhost:73/documents/getDocument',
             params: {
                 documentID: id,
                 page: page

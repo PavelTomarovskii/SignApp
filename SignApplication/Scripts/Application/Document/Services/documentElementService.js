@@ -29,7 +29,7 @@
         return element;
     };
     
-    $http.get('documents/getTemplateElements').then(function (response) {
+    $http.get('http://localhost:73/documents/getTemplateElements').then(function (response) {
         elements = response.data;
         loading.resolve();
     });
