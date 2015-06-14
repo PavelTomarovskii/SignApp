@@ -1,14 +1,11 @@
-﻿@{
-    Layout = "~/Views/Shared/_MasterLayout.cshtml";
-}
-<div>
+﻿<div>
     <h2>Запросы</h2>
     <div class="container">
         <div class="row">
             <pagination total-items="vm.requests.length" ng-model="vm.currentPage"
                         max-size="vm.paginatorPages" class="pagination-sm pull-right" boundary-links="true"
-                        items-per-page="vm.pageSize" rotate="false">
-                
+                        items-per-page="vm.pageSize" rotate="false"
+                        previous-text="Предыдущая страница" next-text="Следующая страница" first-text="Первая" last-text="Последняя">
             </pagination>
         </div>
         <div class="row">
@@ -27,7 +24,11 @@
                     <td>{{request.status}}</td>
                     <td>{{request.sentTo}}</td>
                     <td>{{request.documents}}</td>
-                    <td style="text-align: center;"><img ng-if="request.download" src="~/Themes/Default/img/24x24/down_arrow.png" style="cursor: pointer;" /></td>
+                    <td style="text-align: center;">
+                        <a href="/Themes/Опуск_20152704_Валабаев.pdf">
+                        <img ng-if="request.download" src="~/Themes/Default/img/24x24/down_arrow.png" style="cursor: pointer;" />    
+                        </a>
+                    </td>
                 </tr>
             </table>
         </div>

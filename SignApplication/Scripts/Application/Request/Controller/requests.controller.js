@@ -76,10 +76,10 @@
                 },
                 {
                     id: 6,
-                    date: '2015-04-24',
+                    date: '2015-04-27',
                     status: 'Документ подписан',
-                    sentTo: 'Олег Викторович (ryzhov.oleg.vict@bk.ru)',
-                    documents: 'Дополнительное соглашение',
+                    sentTo: 'Николай Евгеньевич (valabaev.nik@bk.ru)',
+                    documents: 'Отпуск',
                     download: true
                 },
                 {

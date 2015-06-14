@@ -2,7 +2,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container" ng-show="vm.isShowLogin">
+<div class="col-md-6" ng-show="vm.isShowLogin">
     <form class="form-signin" action="Login/Login" method="POST">
         <h2 class="form-signin-heading">Вход</h2>
 
@@ -29,7 +29,7 @@
     </form>
 </div>
 
-<div class="container registration" ng-show="vm.isShowRegistration">
+<div class="col-md-6 registration" ng-show="vm.isShowRegistration">
     <form class="form-signin" action="Login/Register" method="POST">
         <h2 class="form-signin-heading">Регистрация</h2>
         <div class="row">
@@ -68,7 +68,7 @@
     </form>
 </div>
 
-<div class="container" ng-show="vm.isShowForgotPassword">
+<div class="col-md-6" ng-show="vm.isShowForgotPassword">
     <form class="form-signin" action="Login/Login" method="POST">
         <h2 class="form-signin-heading">Забыли пароль?</h2>
         <div class="row">
@@ -76,4 +76,8 @@
         </div>
         
     </form>
+</div>
+
+<div class="col-md-6">
+    <img src="/Themes/Default/img/pic.png" style="width: 500px"/>
 </div>

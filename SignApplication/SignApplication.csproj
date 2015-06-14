@@ -735,6 +735,7 @@
     <Content Include="Themes\Default\img\64x64\video.png" />
     <Content Include="Themes\Default\img\64x64\webcam.png" />
     <Content Include="Themes\Default\img\a_blue.png" />
+    <Content Include="Themes\Default\img\pic.png" />
     <Content Include="Themes\Default\img\signature.ico" />
     <Content Include="Themes\Default\img\logo.png" />
     <Content Include="Web.config">
@@ -749,6 +750,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Request\Index.cshtml" />
     <Content Include="Views\Documents\Edit.cshtml" />
+    <Content Include="Themes\Опуск_20152704_Валабаев.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
